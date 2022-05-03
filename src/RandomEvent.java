@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 public class RandomEvent {
@@ -10,6 +9,7 @@ public class RandomEvent {
     int monsterIndex = random.nextInt(player.GetMonsters().size());
 
 
+
     RandomEvent(Player player){
         this.player = player;
     }
@@ -17,12 +17,29 @@ public class RandomEvent {
     public void choseRandomMethod(){
     
         if(player.GetWonLastGame() == true) { 
-            if(probability <= 40){
-                levelUp();   
-            } else(probability <= 20) {
+            if(probability <= 30){
+                levelUp();     
+            }else if(probability <= 20) {
                 levelUp();
             }
         }
+
+
+        if(player.GetWonLastGame() == true){
+            if(probability >30 || probability <= 40){
+                monsterLeave();
+            }else if (probability > 20 || probability <= 40){
+                monsterLeave();
+            }
+        } 
+        if(player.GetMonsters().size() >= 3){
+            if(probability > 40 || probability <= 50){
+                newMonster();
+            }
+        }else if(probability > 50 || probability <= 70){
+            newMonster();
+        }
+        
     }
 
 
@@ -40,6 +57,16 @@ public class RandomEvent {
         }
         
         player.GetMonster(monsterIndex).ChangeDamage(addedDamage);
+    }
+
+
+    public void monsterLeave(){
+        player.GetMonsters().remove(monsterIndex);
+
+    }
+    public void newMonster(){
+        Store store = new Store();
+        player.BuyMonster(store.CreateRandomizedMonster());
     }
 
     

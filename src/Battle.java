@@ -39,9 +39,11 @@ public class Battle {
 		}
 		
 		if(playerMonster != null ) {
+			player.ChangeWonLastGame(true);
 			System.out.println("AI player lost");
 		}
 		if (enemyMonster != null){
+			player.ChangeWonLastGame(false);
 			System.out.println("player lost");
 		}
 	}

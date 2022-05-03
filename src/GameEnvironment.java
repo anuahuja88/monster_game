@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class GameEnvironment {
 	private Player player = new Player();
 	private Store store = new Store();
+	private RandomEvent randomEvent = new RandomEvent(player);
 	private ArrayList<Monster> monstersInStore = new ArrayList<Monster>();
 	
 	private Scanner input = new Scanner(System.in);
@@ -87,6 +88,14 @@ public class GameEnvironment {
 		
 		if(selection == 4) {
 			ViewInventory();
+		}
+
+		if(selection ==5){
+			ViewPossibleBattles();
+		}
+		if(selection == 6){
+			GoToSleep();
+
 		}
 	}
 	
@@ -180,11 +189,23 @@ public class GameEnvironment {
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
 	public void GoToSleep() {
+		if(player.GetCurrentDay() + 1 > player.GetDays()){
+			endGame();
+		}
+		player.AddDay();
+
+		RandomEvent();
 		
 	}
 	
 	public void RandomEvent() {
+		randomEvent.choseRandomMethod();
 		
+	}
+
+	public void endGame(){
+		System.out.println("Game over lmao \nyou lasted " + player.GetCurrentDay() + "corngratualtions!!!");
+
 	}
 	
 	

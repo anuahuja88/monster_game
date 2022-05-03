@@ -6,6 +6,7 @@ public class Player {
 	private int currentDay = 1;
 	private int difficulty;
 	private int coins;
+	private boolean wonLastGame = false;
 	private ArrayList<Monster> monsters = new ArrayList<Monster>();
 	private ArrayList<Item> items = new ArrayList<Item>();
 	
@@ -25,12 +26,13 @@ public class Player {
 		this.name = name;
 	}
 	
-	public void SetDays(int amount) {
-		days = amount;
-	}
 	
 	public int GetDays() {
 		return days;
+	}
+
+	public void SetDays(int days){
+		this.days = days;
 	}
 	
 	public int GetCurrentDay() {
@@ -47,6 +49,14 @@ public class Player {
 	
 	public int GetDifficuluty() {
 		return difficulty;
+	}
+
+	public void ChangeWonLastGame(boolean bool){
+		wonLastGame = bool;
+	}
+
+	public boolean GetWonLastGame(){
+		return wonLastGame;
 	}
 	
 	public void ChangeCoins(int amount) {

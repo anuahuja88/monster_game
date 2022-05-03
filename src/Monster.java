@@ -27,9 +27,17 @@ public class Monster {
 	public int GetHealth() {
 		return health;
 	}
+
+	public int GetMaxHealth(){
+		return maxHealth;
+	}
 	
 	public void ChangeHealth(int amount) {
 		this.health += amount;
+	}
+
+	public void SetHealth(int amount){
+		this.health = amount;
 	}
 	
 	public int GetDamage() {
