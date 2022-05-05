@@ -213,7 +213,5 @@ public class GameEnvironment {
 		GameEnvironment ge= new GameEnvironment();
 		ge.PrintSetupOptions();
 		ge.MainGame();
-		
-		
     }
 }
