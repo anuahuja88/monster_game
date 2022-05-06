@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Battle {
 	Player player;
 	Player enemyPlayer;
+	boolean playerWon = false;
 	
 	ArrayList<Monster> playerMonsters = new ArrayList<Monster>();
 	ArrayList<Monster> enemyMonsters = new ArrayList<Monster>();
@@ -40,6 +41,7 @@ public class Battle {
 		
 		if(playerMonster != null ) {
 			player.ChangeWonLastGame(true);
+			playerWon = true;
 			System.out.println("AI player lost");
 		}
 		if (enemyMonster != null){
@@ -65,6 +67,7 @@ public class Battle {
 		}
 	}
 	
+
 	public static void main(String[] args) throws InterruptedException {
 		Store store = new Store();
 		Store otherStore = new Store();

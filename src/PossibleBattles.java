@@ -37,6 +37,10 @@ public class PossibleBattles {
 		
 	}
 	
+	public Player getPlayer(int index) {
+		return possibleBattles.get(index);
+	}
+	
 
 	public ArrayList<String> CreateNameList() {
 		names.add("Hamish");
@@ -47,10 +51,24 @@ public class PossibleBattles {
 		return names;
 	}
 	
+	
+	public String toString() {
+		String returnText = "";
+		int count = 1;
+		for (Player player : possibleBattles) {
+			returnText += count + "\n";
+			returnText += player;
+			count++;
+		}
+		return returnText;
+	}
+	
 	public static void main(String[] args) throws InterruptedException {
 		Player player = new Player("hello", null);
 		PossibleBattles battle = new PossibleBattles(player);
 		battle.CreatePossibleBattleList();
+		System.out.println(battle);
+	
 		
 		
 		
