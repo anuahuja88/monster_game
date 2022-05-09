@@ -81,4 +81,14 @@ public class Battle {
 		battle.StartBattle();
     }
 
+	public String battleOutcomeString() {
+		String returnText = "";
+		if(playerWon) {
+			returnText += "Congratulations you won :)"; 
+		} else {
+			returnText += "You lose :/";
+		}
+		return returnText;
+	}
+
 }

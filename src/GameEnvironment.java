@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class GameEnvironment {
 	private Player player = new Player();
 	private Store store = new Store();
-	private RandomEvent randomEvent = new RandomEvent(player);
 	private ArrayList<Monster> monstersInStore = new ArrayList<Monster>();
 	
 	private Scanner input = new Scanner(System.in);
@@ -48,7 +47,7 @@ public class GameEnvironment {
 		
 		//Create a list of monsters for the player to chose from and add the one they chose also give the player 3 coins to pay 
 		System.out.println("Select you frist monster, dont worry we gave you three coins\n");
-		player.ChangeCoins(3);
+		player.ChangeCoins(13);
 		
 		monstersInStore = store.CreateMonsterList();
 		System.out.println(store.MonsterListString());
@@ -179,12 +178,25 @@ public class GameEnvironment {
 	
 	// create three different player objects with monsters attributes depending on the day, allow the player to battle one 
 	public void ViewPossibleBattles() {
-		
+		PossibleBattles battles = new PossibleBattles(player);
+		battles.CreatePossibleBattleList();
+		System.out.println(battles);
+		int selection = input.nextInt();
+		if(selection < 1 || selection > 3) {
+			System.out.println("Please enter a number between 1 and 3");
+			selection = input.nextInt();
+		}
+		Player enemy = battles.getPlayer(selection - 1);  //-1 to index with a list correctly 
+		battle(player, enemy);
 	}
 	
 	// Determine who would win between two players one the real player the other the player object created in ViewPossibleBattles method
 	public void battle(Player player, Player playerAI) {
-		
+		Battle battle = new Battle(player, playerAI);
+		battle.StartBattle();
+		String battleOutCome = battle.battleOutcomeString();
+		System.out.println(battleOutCome);
+		MainGame();
 	}
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
@@ -199,6 +211,7 @@ public class GameEnvironment {
 	}
 	
 	public void RandomEvent() {
+		RandomEvent randomEvent = new RandomEvent(player);
 		randomEvent.choseRandomMethod();
 		
 	}
