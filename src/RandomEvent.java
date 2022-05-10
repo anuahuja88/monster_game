@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class RandomEvent {
@@ -50,7 +51,7 @@ public class RandomEvent {
         int addedDamage = item.GetDamageAmount();
         int maxHealth = player.GetMonster(monsterIndex).GetMaxHealth();
 
-        //if the added health goes above teh max health just set the health to the max health
+        //if the added health goes above the max health just set the health to the max health
         if(player.GetMonster(monsterIndex).GetHealth() + addedHealth < maxHealth){
             player.GetMonster(monsterIndex).ChangeHealth(addedHealth);
         }else{
@@ -58,16 +59,30 @@ public class RandomEvent {
         }
         
         player.GetMonster(monsterIndex).ChangeDamage(addedDamage);
+        
+        System.out.println(player.GetMonster(monsterIndex) + " Has leveled up over night!");
     }
 
 
     public void monsterLeave(){
+    	System.out.println(player.GetMonster(monsterIndex) + " Has left the team overnight");
         player.GetMonsters().remove(monsterIndex);
 
     }
     public void newMonster(){
         Store store = new Store();
-        player.BuyMonster(store.CreateRandomizedMonster());
+        Monster newMonster = store.CreateRandomizedMonster();
+        player.BuyMonster(newMonster);
+        System.out.println(newMonster + " Has joined the team overnight!");
+    }
+    
+    public static void main(String[] args) throws InterruptedException {
+    	Store store = new Store();
+    	ArrayList<Monster> monsters = store.CreateMonsterList();
+		Player player = new Player("hamish", monsters);
+		
+		RandomEvent event = new RandomEvent(player);
+		event.choseRandomMethod();
     }
 
     

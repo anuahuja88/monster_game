@@ -102,7 +102,7 @@ public class GameEnvironment {
 	//print Amount of gold, current day and number of days remaining 
 	public void VeiwGameProgress() {
 		System.out.println("Progress:\nCurrent Day:" + player.GetCurrentDay() + 
-				"\nDays left: " + player.GetDays() + 
+				"\nDays left: " + (player.GetDays() - player.GetCurrentDay()) + 
 				"\nCurrent Coins: " + player.GetCoins());
 		
 		MainGame();
@@ -207,6 +207,7 @@ public class GameEnvironment {
 		player.AddDay();
 
 		RandomEvent();
+		MainGame();
 		
 	}
 	

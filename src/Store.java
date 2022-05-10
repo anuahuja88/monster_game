@@ -53,8 +53,8 @@ public class Store {
 	//create a random monster with random attributes
 	public Monster CreateRandomizedMonster() {
 		Random random = new Random();
-		
-		String monsterName = names.get(random.nextInt(names.size()) + 1);
+		CreateNameList();
+		String monsterName = names.get(random.nextInt(6));
 		int health = random.nextInt(10) + 1;
 		int maxHealth = random.nextInt(40) + 10;  //adding extra numbers works as a minimum value 
 		int damage = random.nextInt(10) + 1;
