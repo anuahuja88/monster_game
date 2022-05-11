@@ -56,7 +56,7 @@ public class Store {
 		CreateNameList();
 		String monsterName = names.get(random.nextInt(6));
 		int health = random.nextInt(10) + 1;
-		int maxHealth = random.nextInt(40) + 10;  //adding extra numbers works as a minimum value 
+		int maxHealth = random.nextInt(12) + 10;  //adding extra numbers works as a minimum value 
 		int damage = random.nextInt(10) + 1;
 		int price = 3;
 		return (new Monster(monsterName, health, maxHealth, damage, price));

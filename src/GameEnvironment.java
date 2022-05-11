@@ -202,7 +202,7 @@ public class GameEnvironment {
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
 	public void GoToSleep() {
 		if(player.GetCurrentDay() + 1 > player.GetDays()){
-			endGame();
+			endGame(true);
 		}
 		player.AddDay();
 
@@ -217,8 +217,13 @@ public class GameEnvironment {
 		
 	}
 
-	public void endGame(){
-		System.out.println("Game over lmao \nyou lasted " + player.GetCurrentDay() + "corngratualtions!!!");
+	public void endGame(boolean wonGame){
+		if (wonGame) {
+			System.out.println("Congratulations you lasted " + player.GetDays());
+		}else {
+			System.out.println("Game over lmao \nyou lasted " + player.GetCurrentDay() + "corngratualtions!!!");
+		}
+		
 
 	}
 	
