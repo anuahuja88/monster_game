@@ -51,7 +51,7 @@ public class Player {
 		return difficulty;
 	}
 
-	public void ChangeWonLastGame(boolean bool){
+	public void setWonLastGame(boolean bool){
 		wonLastGame = bool;
 	}
 

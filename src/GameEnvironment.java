@@ -8,6 +8,7 @@ public class GameEnvironment {
 	
 	private Scanner input = new Scanner(System.in);
 	private Boolean firstVisitOfTheDay = true;
+
 	private MainMenu menu;
 	
 	public GameEnvironment() {
@@ -18,6 +19,9 @@ public class GameEnvironment {
 		
 		return player;
 	}
+
+	private Boolean hasFoughtToday = false;
+
 	
 	public void PrintSetupOptions() {
 
@@ -57,7 +61,7 @@ public class GameEnvironment {
 		
 		//Create a list of monsters for the player to chose from and add the one they chose also give the player 3 coins to pay 
 		System.out.println("Select you frist monster, dont worry we gave you three coins\n");
-		player.ChangeCoins(3);
+		player.ChangeCoins(13);
 		
 		monstersInStore = store.CreateMonsterList();
 		System.out.println(store.MonsterListString());
@@ -72,8 +76,14 @@ public class GameEnvironment {
 		
 	}
 	
-	
+	//main game prints out the main options for the game letting the player chose actions and checks if their monsters are still availed to continue play
 	public void MainGame() {
+		//check if the player has any monster in there monster list if not end the game
+		if(player.GetMonsters().size() == 0) {
+			endGame(false);
+		}
+		
+		
 		int selection;
 		System.out.println("1: View game progress \n2: Visit Shop \n3: View team \n4: View inventory \n5: Veiw possible battles \n6: Go to sleep");
 		selection = input.nextInt();
@@ -112,7 +122,7 @@ public class GameEnvironment {
 	//print Amount of gold, current day and number of days remaining 
 	public void VeiwGameProgress() {
 		System.out.println("Progress:\nCurrent Day:" + player.GetCurrentDay() + 
-				"\nDays left: " + player.GetDays() + 
+				"\nDays left: " + (player.GetDays() - player.GetCurrentDay()) + 
 				"\nCurrent Coins: " + player.GetCoins());
 		
 		MainGame();
@@ -137,11 +147,11 @@ public class GameEnvironment {
 		}
 		
 		if(selected <= 3) {     
-			store.BuyMonsterSelected(player, selected - 1);
+			store.BuyMonsterSelected(player, selected - 1);   // -1 to index with monster list correctly 
 		}
 		
 		if(selected >= 4 && selected != 7) {      // 7 is the int to go back to the main menu so should not be included in the if statement
-			store.buyItemSelected(player, selected - 4);
+			store.buyItemSelected(player, selected - 4);  // -4 to index with the item list correctly
 		}
 		
 		
@@ -188,35 +198,61 @@ public class GameEnvironment {
 	
 	// create three different player objects with monsters attributes depending on the day, allow the player to battle one 
 	public void ViewPossibleBattles() {
-		
+		PossibleBattles battles = new PossibleBattles(player);
+		System.out.println(battles);
+		int selection = input.nextInt();
+		if(selection < 1 || selection > 3) {
+			System.out.println("Please enter a number between 1 and 3");
+			selection = input.nextInt();
+		}
+		Player enemy = battles.getPlayer(selection - 1);  //-1 to index with a list correctly 
+		battle(player, enemy);
 	}
 	
 	// Determine who would win between two players one the real player the other the player object created in ViewPossibleBattles method
 	public void battle(Player player, Player playerAI) {
-		
+		Battle battle = new Battle(player, playerAI);
+		battle.StartBattle();
+		String battleOutCome = battle.battleOutcomeString();
+		System.out.println(battleOutCome);
+		hasFoughtToday = true;
+		MainGame();
 	}
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
-	public void GoToSleep(MainMenu menu) {
-		if(player.GetCurrentDay() + 1 > player.GetDays()){
-			endGame();
-		}
-		player.AddDay();
 
-		RandomEvent();
-		closeMainMenu(menu);
-		launchMainMenu();
-		
+	public void GoToSleep() {
+		if(hasFoughtToday) {
+			if(player.GetCurrentDay() + 1 > player.GetDays()){
+				endGame(true);
+			}
+			player.AddDay();
+			hasFoughtToday = false;
+			RandomEvent();
+			MainGame();
 			
+		}else {
+			System.out.println("you have to fight at least once to go to sleep");
+			MainGame();
+		}
 		
 	}
 	
 	public void RandomEvent() {
+
+		RandomEvent randomEvent = new RandomEvent(player);
+		randomEvent.choseRandomMethod();
+
 		
 	}
 
-	public void endGame(){
-		System.out.println("Game over lmao \nyou lasted " + player.GetCurrentDay() + "corngratualtions!!!");
+	public void endGame(boolean wonGame){
+		if (wonGame) {
+			System.out.println("Congratulations you lasted " + player.GetDays());
+		}else {
+			System.out.println("Game over lmao \nyou lasted " + player.GetCurrentDay() + "corngratualtions!!!");
+		}
+		
 
 	}
 	

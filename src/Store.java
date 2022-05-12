@@ -18,6 +18,15 @@ public class Store {
 		return monsterList;
 	}
 	
+	// loop a given number of times creating a new randomized monster and adding it to the monster list
+		public ArrayList<Monster> CreateMonsterList(int length) {
+			CreateNameList();
+			for(int index = 0; index < length; index++) {
+				monsterList.add(CreateRandomizedMonster());
+			}
+			return monsterList;
+		}
+	
 	// create a list of items 
 	public ArrayList<Item> CreateItemList(){
 			
@@ -56,10 +65,10 @@ public class Store {
 	//create a random monster with random attributes
 	public Monster CreateRandomizedMonster() {
 		Random random = new Random();
-		
-		String monsterName = names.get(random.nextInt(names.size()));
+		CreateNameList();
+		String monsterName = names.get(random.nextInt(6));
 		int health = random.nextInt(10) + 1;
-		int maxHealth = random.nextInt(40) + 10;  //adding extra numbers works as a minimum value 
+		int maxHealth = random.nextInt(12) + 10;  //adding extra numbers works as a minimum value 
 		int damage = random.nextInt(10) + 1;
 		int price = 3;
 		return (new Monster(monsterName, health, maxHealth, damage, price));
