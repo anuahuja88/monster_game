@@ -6,6 +6,9 @@ public class Store {
 	ArrayList<Item> itemList = new ArrayList<Item>();
 	private ArrayList<String> names = new ArrayList<String>();
 	
+	public Store(){
+		CreateMonsterList();
+	}
 	// loop three times creating a new randomized monster and adding it to the monster list
 	public ArrayList<Monster> CreateMonsterList() {
 		CreateNameList();
@@ -60,6 +63,10 @@ public class Store {
 		int damage = random.nextInt(10) + 1;
 		int price = 3;
 		return (new Monster(monsterName, health, maxHealth, damage, price));
+	}
+	public ArrayList<Monster> getMonsterList() {
+		return monsterList;
+		
 	}
 	
 	// add to the list of names 

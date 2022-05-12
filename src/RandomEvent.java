@@ -6,14 +6,17 @@ public class RandomEvent {
     Player player;
     JamJar_Item item;
     int probability = random.nextInt(100);
-    int monsterIndex = random.nextInt(player.GetMonsters().size());
+    int monsterIndex;
 
 
 
     RandomEvent(Player player){
         this.player = player;
+        setMonsterIndex();
     }
-
+    public void setMonsterIndex() {
+    	monsterIndex = random.nextInt(player.GetMonsters().size());
+    }
     public void choseRandomMethod(){
     
         if(player.GetWonLastGame() == true) { 

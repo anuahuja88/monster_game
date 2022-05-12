@@ -5,16 +5,17 @@ public class Player {
 	private int days;
 	private int currentDay = 1;
 	private int difficulty;
-	private int coins;
+	private int coins = 5;
 	private boolean wonLastGame = false;
 	private ArrayList<Monster> monsters = new ArrayList<Monster>();
 	private ArrayList<Item> items = new ArrayList<Item>();
 	
 	public Player() {}
 	
-	public Player(String name, ArrayList<Monster> monsters) {
+	public Player(String name, ArrayList<Monster> monsters, int days) {
 		this.name = name;
 		this.monsters = monsters;
+		this.days = days;
 		
 	}
 	
@@ -25,15 +26,14 @@ public class Player {
 	public void SetName(String name) {
 		this.name = name;
 	}
-	
+	public void SetDays(int days){
+		this.days = days;
+	}
 	
 	public int GetDays() {
 		return days;
 	}
 
-	public void SetDays(int days){
-		this.days = days;
-	}
 	
 	public int GetCurrentDay() {
 		return currentDay;

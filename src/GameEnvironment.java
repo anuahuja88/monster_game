@@ -4,11 +4,20 @@ import java.util.Scanner;
 public class GameEnvironment {
 	private Player player = new Player();
 	private Store store = new Store();
-	private RandomEvent randomEvent = new RandomEvent(player);
 	private ArrayList<Monster> monstersInStore = new ArrayList<Monster>();
 	
 	private Scanner input = new Scanner(System.in);
 	private Boolean firstVisitOfTheDay = true;
+	private MainMenu menu;
+	
+	public GameEnvironment() {
+		launchMonsterBattle();
+	}
+	public Player getPlayer() {
+		
+		
+		return player;
+	}
 	
 	public void PrintSetupOptions() {
 
@@ -16,7 +25,7 @@ public class GameEnvironment {
 		// set the player name if not in the range needed asks again
 		System.out.println("Welcome to Monster Battle! \nPlease enter your name:");
 		String tempName = input.nextLine();
-		while (tempName.length() < 3 || tempName.length() > 15) {
+		while (tempName.length() < 3 || tempName.length() > 15 || tempName.matches("^[a-zA-Z]*$") == false) {
 			System.out.println("Please enter a name between 3 and 15 characters");
 			tempName = input.nextLine();
 		}
@@ -94,7 +103,7 @@ public class GameEnvironment {
 			ViewPossibleBattles();
 		}
 		if(selection == 6){
-			GoToSleep();
+			GoToSleep(menu);
 
 		}
 	}
@@ -188,18 +197,21 @@ public class GameEnvironment {
 	}
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
-	public void GoToSleep() {
+	public void GoToSleep(MainMenu menu) {
 		if(player.GetCurrentDay() + 1 > player.GetDays()){
 			endGame();
 		}
 		player.AddDay();
 
 		RandomEvent();
+		closeMainMenu(menu);
+		launchMainMenu();
+		
+			
 		
 	}
 	
 	public void RandomEvent() {
-		randomEvent.choseRandomMethod();
 		
 	}
 
@@ -208,10 +220,54 @@ public class GameEnvironment {
 
 	}
 	
-	
+	public Store getStore() {
+		return store;
+	}
+	public void launchMonsterBattle(){
+		MonsterBattle setupWindow = new MonsterBattle(this);
+	}
+	public void closeMonsterBattle(MonsterBattle setupWindow) {
+		setupWindow.closeWindow();
+		launchMonsterScreen();
+	}
+	public void launchMonsterScreen() {
+		MonsterScreen chooseMonsterWindow = new MonsterScreen(this);
+		
+	}
+	public void closeMonsterScreen(MonsterScreen chooseMonsterWindow) {
+		chooseMonsterWindow.closeWindow();
+		launchMainMenu();
+	}
+	public void launchMainMenu() {
+		MainMenu mainWindow = new MainMenu(this);
+
+	}
+	public void closeMainMenu(MainMenu mainWindow) {
+		mainWindow.closeWindow();
+	}
 	public static void main(String[] args) throws InterruptedException {
 		GameEnvironment ge= new GameEnvironment();
 		ge.PrintSetupOptions();
 		ge.MainGame();
     }
+	public void closeViewTeamScreen(ViewTeamScreen viewTeamScreen) {
+		viewTeamScreen.closeWindow();
+		launchMainMenu();
+		
+	}
+	public void launchViewTeamScreen() {
+		ViewTeamScreen teamScreen = new ViewTeamScreen(this);
+		
+	}
+	public void launchStoreScreen() {
+		StoreScreen storeScreen = new StoreScreen(this);
+		
+	}
+	public void closeStoreScreen(StoreScreen storeScreen) {
+		storeScreen.closeWindow();
+		launchMainMenu();
+		
+	}
+
+	
 }

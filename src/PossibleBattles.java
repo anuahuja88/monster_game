@@ -22,6 +22,10 @@ public class PossibleBattles {
 		return possibleBattles;
 	}
 	
+	// gets possible battle list
+	public ArrayList<Player> getPossibleBattles() {
+		return possibleBattles;
+	}
 	
 	// will need to implement of variation in the enemy's monsters depending on difficulty
 	public Player CreateEnemyPlayer() {
