@@ -15,6 +15,15 @@ public class Store {
 		return monsterList;
 	}
 	
+	// loop a given number of times creating a new randomized monster and adding it to the monster list
+		public ArrayList<Monster> CreateMonsterList(int length) {
+			CreateNameList();
+			for(int index = 0; index < length; index++) {
+				monsterList.add(CreateRandomizedMonster());
+			}
+			return monsterList;
+		}
+	
 	// create a list of items 
 	public ArrayList<Item> CreateItemList(){
 			

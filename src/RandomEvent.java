@@ -5,42 +5,36 @@ public class RandomEvent {
 
     Random random = new Random();
     Player player;
-    JamJar_Item item;
+    JamJar_Item item = new JamJar_Item();
     int probability = random.nextInt(100);
     int monsterIndex; 
+    boolean wonLastGame;
 
 
 
     RandomEvent(Player player){
         this.player = player;
         this.monsterIndex = random.nextInt(player.GetMonsters().size());
+        this.wonLastGame = player.GetWonLastGame();
     }
 
     public void choseRandomMethod(){
+    	
+    	if(probability <= 20) {
+    		levelUp();
+    	}
+    	if (probability >= 21 && probability <= 40){
+    		newMonster();
+    	}
     
-        if(player.GetWonLastGame() == true) { 
-            if(probability <= 30){
-                levelUp();     
-            }else if(probability <= 20) {
-                levelUp();
-            }
+        if(wonLastGame) {
+        	if(probability >= 41 && probability <= 50) {
+        		monsterLeave();
+        	} 
+        }else if (probability >= 41 && probability <= 70) {
+        	monsterLeave();
         }
-
-
-        if(player.GetWonLastGame() == true){
-            if(probability >30 || probability <= 40){
-                monsterLeave();
-            }else if (probability > 20 || probability <= 40){
-                monsterLeave();
-            }
-        } 
-        if(player.GetMonsters().size() >= 3){
-            if(probability > 40 || probability <= 50){
-                newMonster();
-            }
-        }else if(probability > 50 || probability <= 70){
-            newMonster();
-        }
+        
         
     }
 
@@ -80,7 +74,7 @@ public class RandomEvent {
     	Store store = new Store();
     	ArrayList<Monster> monsters = store.CreateMonsterList();
 		Player player = new Player("hamish", monsters);
-		
+		player.setWonLastGame(false);
 		RandomEvent event = new RandomEvent(player);
 		event.choseRandomMethod();
     }

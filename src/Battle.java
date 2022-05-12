@@ -29,12 +29,15 @@ public class Battle {
 		
 		//if the monster is null it means there is no alive monsters in the players list, meaning they lost the game
 		if(playerMonster != null ) {
-			player.ChangeWonLastGame(true);
+			player.setWonLastGame(true);
 			playerWon = true;
+			reviveDeadMonsters();
 			System.out.println("AI player lost");
 		}
 		if (enemyMonster != null){
-			player.ChangeWonLastGame(false);
+			player.setWonLastGame(false);
+			playerWon = false;
+			reviveDeadMonsters();
 			System.out.println("player lost");
 		}
 		
@@ -42,6 +45,21 @@ public class Battle {
 		
 	}
 	
+	// checks the players difficulty, if
+	//in easy set all monsters alive again and give them all 5 health, if in hard set all alive with one health
+	private void reviveDeadMonsters() {
+		for (Monster monster : player.GetMonsters()) {
+			if(monster.GetIsAlive() == false || monster.GetHealth() < 5) {  
+				monster.SetIsAlive(true);
+				if(player.GetDifficuluty() == 1) {   // 1 is the equivalent to easy, 2 is hard
+					monster.SetHealth(5);
+				} else {
+					monster.SetHealth(1);
+				}
+			}
+		}
+	}
+
 	//run a while loop comparing the two monsters health and damage outputs end the loop when one monsters health is below 0
 	//once the loop is finished determine lost and set is alive to false
 	public void Fight(Monster playerMonster, Monster enemyMonster) {
@@ -57,9 +75,8 @@ public class Battle {
 		if (playerMonster.GetHealth() > 0) {
 			enemyMonster.SetIsAlive(false);
 			System.out.println("\nYour " + playerMonster.GetMonsterName() + " has beat " + enemyPlayer.GetName() + "'s " + enemyMonster.GetMonsterName() + "You gained 3 coins\n");
-			player.ChangeCoins(3);
-			// remove the monster from the players monster list
-		} else if (enemyMonster.GetHealth() > 0){
+			player.ChangeCoins(4 - player.GetDifficuluty());  //if the difficulty is easy(1) the player gains 3 coins, if it is hard(2) they gain 2
+		}else if (enemyMonster.GetHealth() > 0){
 			playerMonster.SetIsAlive(false);
 			System.out.println("\nYour " + playerMonster.GetMonsterName() + " has lost to " + enemyPlayer.GetName() + "'s " + enemyMonster.GetMonsterName() + "\n");
 		}else {

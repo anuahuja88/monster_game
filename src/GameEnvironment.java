@@ -8,6 +8,7 @@ public class GameEnvironment {
 	
 	private Scanner input = new Scanner(System.in);
 	private Boolean firstVisitOfTheDay = true;
+	private Boolean hasFoughtToday = false;
 	
 	public void PrintSetupOptions() {
 
@@ -62,8 +63,14 @@ public class GameEnvironment {
 		
 	}
 	
-	
+	//main game prints out the main options for the game letting the player chose actions and checks if their monsters are still availed to continue play
 	public void MainGame() {
+		//check if the player has any monster in there monster list if not end the game
+		if(player.GetMonsters().size() == 0) {
+			endGame(false);
+		}
+		
+		
 		int selection;
 		System.out.println("1: View game progress \n2: Visit Shop \n3: View team \n4: View inventory \n5: Veiw possible battles \n6: Go to sleep");
 		selection = input.nextInt();
@@ -127,11 +134,11 @@ public class GameEnvironment {
 		}
 		
 		if(selected <= 3) {     
-			store.BuyMonsterSelected(player, selected - 1);
+			store.BuyMonsterSelected(player, selected - 1);   // -1 to index with monster list correctly 
 		}
 		
 		if(selected >= 4 && selected != 7) {      // 7 is the int to go back to the main menu so should not be included in the if statement
-			store.buyItemSelected(player, selected - 4);
+			store.buyItemSelected(player, selected - 4);  // -4 to index with the item list correctly
 		}
 		
 		
@@ -179,7 +186,6 @@ public class GameEnvironment {
 	// create three different player objects with monsters attributes depending on the day, allow the player to battle one 
 	public void ViewPossibleBattles() {
 		PossibleBattles battles = new PossibleBattles(player);
-		battles.CreatePossibleBattleList();
 		System.out.println(battles);
 		int selection = input.nextInt();
 		if(selection < 1 || selection > 3) {
@@ -196,18 +202,25 @@ public class GameEnvironment {
 		battle.StartBattle();
 		String battleOutCome = battle.battleOutcomeString();
 		System.out.println(battleOutCome);
+		hasFoughtToday = true;
 		MainGame();
 	}
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
 	public void GoToSleep() {
-		if(player.GetCurrentDay() + 1 > player.GetDays()){
-			endGame(true);
+		if(hasFoughtToday) {
+			if(player.GetCurrentDay() + 1 > player.GetDays()){
+				endGame(true);
+			}
+			player.AddDay();
+			hasFoughtToday = false;
+			RandomEvent();
+			MainGame();
+			
+		}else {
+			System.out.println("you have to fight at least once to go to sleep");
+			MainGame();
 		}
-		player.AddDay();
-
-		RandomEvent();
-		MainGame();
 		
 	}
 	
