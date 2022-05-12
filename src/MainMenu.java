@@ -116,7 +116,7 @@ public class MainMenu {
 		lblNewLabel.setBounds(23, 161, 253, 38);
 		window.getContentPane().add(lblNewLabel);
 		
-		JButton battle_1_Button = new JButton(manager.ViewPossibleBattles());
+		JButton battle_1_Button = new JButton();
 		battle_1_Button.setFont(new Font("Osaka", Font.PLAIN, 16));
 		battle_1_Button.setBounds(6, 211, 117, 82);
 		window.getContentPane().add(battle_1_Button);

@@ -197,7 +197,7 @@ public class GameEnvironment {
 	}
 	
 	// create three different player objects with monsters attributes depending on the day, allow the player to battle one 
-	public void ViewPossibleBattles() {
+	public ArrayList <Player> ViewPossibleBattles() {
 		PossibleBattles battles = new PossibleBattles(player);
 		System.out.println(battles);
 		int selection = input.nextInt();
@@ -207,6 +207,7 @@ public class GameEnvironment {
 		}
 		Player enemy = battles.getPlayer(selection - 1);  //-1 to index with a list correctly 
 		battle(player, enemy);
+		return battles.getPossibleBattles();
 	}
 	
 	// Determine who would win between two players one the real player the other the player object created in ViewPossibleBattles method
@@ -221,7 +222,7 @@ public class GameEnvironment {
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
 
-	public void GoToSleep() {
+	public void GoToSleep(MainMenu menu2) {
 		if(hasFoughtToday) {
 			if(player.GetCurrentDay() + 1 > player.GetDays()){
 				endGame(true);
