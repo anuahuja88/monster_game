@@ -130,7 +130,7 @@ public class GameEnvironment {
 	
 	
 	public void VisitShop() {
-		int selected;
+		int selected; 
 		if (firstVisitOfTheDay == true) {
 			store.CreateMonsterList();
 			store.CreateItemList();

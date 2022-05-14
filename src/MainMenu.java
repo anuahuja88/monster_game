@@ -104,6 +104,8 @@ public class MainMenu {
 		btnSleep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				manager.GoToSleep(screen);
+				finishedWindow();
+				manager.launchMainMenu();
 			}
 		});
 		
