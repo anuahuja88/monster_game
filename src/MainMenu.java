@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Panel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -118,54 +119,33 @@ public class MainMenu {
 		lblNewLabel.setBounds(23, 161, 253, 38);
 		window.getContentPane().add(lblNewLabel);
 		
+	
+		
 		JButton battle_1_Button = new JButton();
+		battle_1_Button.setText("Team 1");
 		battle_1_Button.setFont(new Font("Osaka", Font.PLAIN, 16));
 		battle_1_Button.setBounds(6, 211, 117, 82);
 		window.getContentPane().add(battle_1_Button);
 		
-		JButton btnBattle = new JButton("Battle 2");
+		JButton btnBattle = new JButton("Team 2");
 		btnBattle.setFont(new Font("Osaka", Font.PLAIN, 16));
 		btnBattle.setBounds(135, 211, 117, 82);
 		window.getContentPane().add(btnBattle);
 		
-		JButton btnBattle_1 = new JButton("Battle 3");
+		JButton btnBattle_1 = new JButton("Team 3");
 		btnBattle_1.setFont(new Font("Osaka", Font.PLAIN, 16));
 		btnBattle_1.setBounds(264, 211, 117, 82);
 		window.getContentPane().add(btnBattle_1);
 		
-		JLabel health1Label = new JLabel("Health:");
-		health1Label.setFont(new Font("Osaka", Font.PLAIN, 16));
-		health1Label.setBounds(23, 293, 117, 31);
+		JLabel health1Label = new JLabel("Total Health:");
+		health1Label.setFont(new Font("Osaka", Font.PLAIN, 14));
+		health1Label.setBounds(10, 293, 117, 31);
 		window.getContentPane().add(health1Label);
 		
-		JLabel health1Label_1 = new JLabel("Health:");
-		health1Label_1.setFont(new Font("Osaka", Font.PLAIN, 16));
-		health1Label_1.setBounds(152, 293, 117, 31);
-		window.getContentPane().add(health1Label_1);
-		
-		JLabel health1Label_2 = new JLabel("Health:");
-		health1Label_2.setFont(new Font("Osaka", Font.PLAIN, 16));
-		health1Label_2.setBounds(281, 293, 117, 31);
-		window.getContentPane().add(health1Label_2);
-		
-		JLabel lblDamage = new JLabel("Damage:");
-		lblDamage.setFont(new Font("Osaka", Font.PLAIN, 16));
-		lblDamage.setBounds(23, 321, 117, 31);
+		JLabel lblDamage = new JLabel("Total Damage:");
+		lblDamage.setFont(new Font("Osaka", Font.PLAIN, 14));
+		lblDamage.setBounds(10, 321, 123, 31);
 		window.getContentPane().add(lblDamage);
-		
-		JLabel lblDamage_1 = new JLabel("Damage:");
-		lblDamage_1.setFont(new Font("Osaka", Font.PLAIN, 16));
-		lblDamage_1.setBounds(152, 321, 117, 31);
-		window.getContentPane().add(lblDamage_1);
-		
-		JLabel lblDamage_2 = new JLabel("Damage:");
-		lblDamage_2.setFont(new Font("Osaka", Font.PLAIN, 16));
-		lblDamage_2.setBounds(281, 321, 117, 31);
-		window.getContentPane().add(lblDamage_2);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(6, 161, 404, 211);
-		window.getContentPane().add(panel_1);
 		
 		JButton viewTeamButton = new JButton("View Team/Item");
 		viewTeamButton.addActionListener(new ActionListener() {
@@ -177,5 +157,25 @@ public class MainMenu {
 		viewTeamButton.setFont(new Font("Osaka", Font.PLAIN, 16));
 		viewTeamButton.setBounds(264, 58, 308, 97);
 		window.getContentPane().add(viewTeamButton);
+		
+		JLabel health1Label_1 = new JLabel("Total Health: " + manager.ViewPossibleBattles(screen).get(0).getTotalHealth());
+		health1Label_1.setFont(new Font("Osaka", Font.PLAIN, 14));
+		health1Label_1.setBounds(135, 294, 117, 31);
+		window.getContentPane().add(health1Label_1);
+		
+		JLabel health1Label_2 = new JLabel("Total Health: " );
+		health1Label_2.setFont(new Font("Osaka", Font.PLAIN, 14));
+		health1Label_2.setBounds(264, 294, 117, 31);
+		window.getContentPane().add(health1Label_2);
+		
+		JLabel lblDamage_1 = new JLabel("Total Damage:");
+		lblDamage_1.setFont(new Font("Osaka", Font.PLAIN, 14));
+		lblDamage_1.setBounds(135, 321, 123, 31);
+		window.getContentPane().add(lblDamage_1);
+		
+		JLabel lblDamage_2 = new JLabel("Total Damage:");
+		lblDamage_2.setFont(new Font("Osaka", Font.PLAIN, 14));
+		lblDamage_2.setBounds(264, 321, 123, 31);
+		window.getContentPane().add(lblDamage_2);
 	}
 }

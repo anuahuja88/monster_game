@@ -12,10 +12,9 @@ public class Player {
 	
 	public Player() {}
 	
-	public Player(String name, ArrayList<Monster> monsters, int days) {
+	public Player(String name, ArrayList<Monster> monsters) {
 		this.name = name;
 		this.monsters = monsters;
-		this.days = days;
 		
 	}
 	
@@ -69,6 +68,21 @@ public class Player {
 	
 	public Monster GetMonster(int index) {
 		return monsters.get(index);
+	}
+	
+	public int getTotalHealth() {
+		int total = 0;
+		for (Monster i : monsters) {
+			total += i.GetHealth();
+		}
+		return total;
+	}
+	public int getTotalDamage() {
+		int total = 0;
+		for (Monster i : monsters) {
+			total += i.GetDamage();
+		}
+		return total;
 	}
 	
 	public ArrayList<Monster> GetMonsters() {

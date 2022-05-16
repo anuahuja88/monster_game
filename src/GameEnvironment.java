@@ -110,7 +110,7 @@ public class GameEnvironment {
 		}
 
 		if(selection ==5){
-			ViewPossibleBattles();
+			ViewPossibleBattles(menu);
 		}
 		if(selection == 6){
 			GoToSleep(menu);
@@ -197,7 +197,7 @@ public class GameEnvironment {
 	}
 	
 	// create three different player objects with monsters attributes depending on the day, allow the player to battle one 
-	public ArrayList <Player> ViewPossibleBattles() {
+	public ArrayList <Player> ViewPossibleBattles(MainMenu menu2) {
 		PossibleBattles battles = new PossibleBattles(player);
 		System.out.println(battles);
 		int selection = input.nextInt();
@@ -304,7 +304,7 @@ public class GameEnvironment {
 		storeScreen.closeWindow();
 		launchMainMenu();
 		
-	}h
+	}
 
 	
 }
