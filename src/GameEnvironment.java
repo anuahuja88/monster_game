@@ -21,8 +21,15 @@ public class GameEnvironment {
 	}
 
 	private Boolean hasFoughtToday = false;
+	
 
 	
+	public Boolean getHasFoughtToday() {
+		return hasFoughtToday;
+	}
+	public void setHasFoughtToday(Boolean hasFoughtToday) {
+		this.hasFoughtToday = hasFoughtToday;
+	}
 	public void PrintSetupOptions() {
 
 		
@@ -110,7 +117,7 @@ public class GameEnvironment {
 		}
 
 		if(selection ==5){
-			ViewPossibleBattles(menu);
+			ViewPossibleBattles();
 		}
 		if(selection == 6){
 			GoToSleep(menu);
@@ -197,16 +204,17 @@ public class GameEnvironment {
 	}
 	
 	// create three different player objects with monsters attributes depending on the day, allow the player to battle one 
-	public ArrayList <Player> ViewPossibleBattles(MainMenu menu2) {
+	public ArrayList <Player> ViewPossibleBattles() {
 		PossibleBattles battles = new PossibleBattles(player);
 		System.out.println(battles);
-		int selection = input.nextInt();
-		if(selection < 1 || selection > 3) {
-			System.out.println("Please enter a number between 1 and 3");
-			selection = input.nextInt();
-		}
-		Player enemy = battles.getPlayer(selection - 1);  //-1 to index with a list correctly 
-		battle(player, enemy);
+		//int selection = input.nextInt();
+		//if(selection < 1 || selection > 3) {
+			//System.out.println("Please enter a number between 1 and 3");
+			//selection = input.nextInt();
+		//}
+		//Player enemy = battles.getEnemyPlayer(selection - 1);  //-1 to index with a list correctly 
+		//battle(player, enemy);
+
 		return battles.getPossibleBattles();
 	}
 	

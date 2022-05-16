@@ -79,7 +79,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(monst1);
 		
 		JButton monst2 = new JButton("");
-		if (manager.getPlayer().GetMonsters().size() > 1) {
+		if (manager.getPlayer().GetMonsters().size() == 2) {
 			monst2.setText(manager.getPlayer().GetMonsters().get(1).GetMonsterName());
 		}
 		monst2.setBounds(207, 52, 169, 55);
@@ -89,8 +89,9 @@ public class ViewTeamScreen {
 		JButton monst3 = new JButton("");
 		monst3.setBounds(386, 52, 169, 55);
 		window.getContentPane().add(monst3);
-		if (manager.getPlayer().GetMonsters().size() == 2) {
-			monst2.setText(manager.getPlayer().GetMonsters().get(2).GetMonsterName());
+		if (manager.getPlayer().GetMonsters().size() == 3) {
+			monst2.setText(manager.getPlayer().GetMonsters().get(1).GetMonsterName());
+			monst3.setText(manager.getPlayer().GetMonsters().get(2).GetMonsterName());
 		}
 		
 		JLabel lblNewLabel_1 = new JLabel("Health: " + manager.getPlayer().GetMonsters().get(0).GetHealth());
@@ -102,16 +103,17 @@ public class ViewTeamScreen {
 		lblNewLabel_1_1.setBounds(207, 119, 169, 21);
 		lblNewLabel_1_1.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1_1);
-		if (manager.getPlayer().GetMonsters().size() == 1) {
-			monst2.setText("Health: " + manager.getPlayer().GetMonsters().get(1).GetHealth());
+		if (manager.getPlayer().GetMonsters().size() == 2) {
+			lblNewLabel_1_1.setText("Health: " + manager.getPlayer().GetMonsters().get(1).GetHealth());
 		}
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Health:");
 		lblNewLabel_1_2.setBounds(386, 119, 169, 21);
 		lblNewLabel_1_2.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1_2);
-		if (manager.getPlayer().GetMonsters().size() == 2) {
-			monst2.setText("Health: " + manager.getPlayer().GetMonsters().get(2).GetHealth());
+		if (manager.getPlayer().GetMonsters().size() == 3) {
+			lblNewLabel_1_1.setText("Health: " + manager.getPlayer().GetMonsters().get(1).GetHealth());
+			lblNewLabel_1_2.setText("Health: " + manager.getPlayer().GetMonsters().get(2).GetHealth());
 		}
 		
 		JLabel lblNewLabel_1_3 = new JLabel("Damage: " + manager.getPlayer().GetMonsters().get(0).GetDamage());
@@ -123,16 +125,17 @@ public class ViewTeamScreen {
 		lblNewLabel_1_3_1.setBounds(207, 152, 169, 21);
 		lblNewLabel_1_3_1.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1_3_1);
-		if (manager.getPlayer().GetMonsters().size() == 1) {
-			monst2.setText("Damage: " + manager.getPlayer().GetMonsters().get(1).GetDamage());
+		if (manager.getPlayer().GetMonsters().size() == 2) {
+			lblNewLabel_1_3_1.setText("Damage: " + manager.getPlayer().GetMonsters().get(1).GetDamage());
 		}
 		
 		JLabel lblNewLabel_1_3_2 = new JLabel("Damage:");
 		lblNewLabel_1_3_2.setBounds(386, 152, 169, 21);
 		lblNewLabel_1_3_2.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1_3_2);
-		if (manager.getPlayer().GetMonsters().size() == 2) {
-			monst2.setText("Damage: " + manager.getPlayer().GetMonsters().get(2).GetDamage());
+		if (manager.getPlayer().GetMonsters().size() == 3) {
+			lblNewLabel_1_3_1.setText("Damage: " + manager.getPlayer().GetMonsters().get(1).GetDamage());
+			lblNewLabel_1_3_2.setText("Damage: " + manager.getPlayer().GetMonsters().get(2).GetDamage());
 		}
 		
 		JButton btnNewButton_1_3 = new JButton("Apply Health potion");

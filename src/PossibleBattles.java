@@ -43,7 +43,7 @@ public class PossibleBattles {
 		
 	}
 	
-	public Player getPlayer(int index) {
+	public Player getEnemyPlayer(int index) {
 		return possibleBattles.get(index);
 	}
 	

@@ -61,7 +61,7 @@ public class MonsterScreen {
 		
 		JLabel slctMonstLabel = new JLabel("Select your first monster!");
 		slctMonstLabel.setFont(new Font("Osaka", Font.PLAIN, 16));
-		slctMonstLabel.setBounds(179, 37, 200, 23);
+		slctMonstLabel.setBounds(179, 41, 200, 23);
 		window.getContentPane().add(slctMonstLabel);
 		
 		JButton monst1Label = new JButton(manager.getStore().getMonsterList().get(0).GetMonsterName());
@@ -150,5 +150,10 @@ public class MonsterScreen {
 		lblNewLabel.setFont(new Font("Osaka", Font.PLAIN, 16));
 		lblNewLabel.setBounds(19, 75, 183, 16);
 		window.getContentPane().add(lblNewLabel);
+		
+		JLabel slctMonstLabel_1 = new JLabel("Welcome " + manager.getPlayer().GetName());
+		slctMonstLabel_1.setFont(new Font("Osaka", Font.PLAIN, 16));
+		slctMonstLabel_1.setBounds(6, 6, 200, 23);
+		window.getContentPane().add(slctMonstLabel_1);
 	}
 }
