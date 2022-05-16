@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ViewTeamScreen {
 
@@ -64,15 +65,15 @@ public class ViewTeamScreen {
 		lblNewLabel.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Main Menu");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton mainMenuButton = new JButton("Main Menu");
+		mainMenuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finshedWindow();
 			}
 		});
-		btnNewButton.setBounds(411, 317, 144, 44);
-		btnNewButton.setFont(new Font("Osaka", Font.PLAIN, 16));
-		window.getContentPane().add(btnNewButton);
+		mainMenuButton.setBounds(411, 317, 144, 44);
+		mainMenuButton.setFont(new Font("Osaka", Font.PLAIN, 16));
+		window.getContentPane().add(mainMenuButton);
 		
 		JButton monst1 = new JButton(manager.getPlayer().GetMonsters().get(0).GetMonsterName());
 		monst1.setBounds(26, 52, 169, 55);
@@ -138,45 +139,51 @@ public class ViewTeamScreen {
 			lblNewLabel_1_3_2.setText("Damage: " + manager.getPlayer().GetMonsters().get(2).GetDamage());
 		}
 		
-		JButton btnNewButton_1_3 = new JButton("Apply Health potion");
-		btnNewButton_1_3.setBounds(26, 185, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3);
+		JButton applyHP_1 = new JButton("Apply Health potion");
+		applyHP_1.setBounds(26, 185, 169, 34);
+		window.getContentPane().add(applyHP_1);
 		
-		JButton btnNewButton_1_3_1 = new JButton("Apply Strength  potion");
-		btnNewButton_1_3_1.setBounds(26, 219, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3_1);
+		JButton applySP_1 = new JButton("Apply Strength  potion");
+		applySP_1.setBounds(26, 219, 169, 34);
+		window.getContentPane().add(applySP_1);
 		
-		JButton btnNewButton_1_3_2 = new JButton("Apply JamJar");
-		btnNewButton_1_3_2.setBounds(26, 252, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3_2);
+		JButton applyJJ_1 = new JButton("Apply JamJar");
+		applyJJ_1.setBounds(26, 252, 169, 34);
+		window.getContentPane().add(applyJJ_1);
 		
-		JButton btnNewButton_1_3_3 = new JButton("Apply Health potion");
-		btnNewButton_1_3_3.setBounds(196, 185, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3_3);
+		JButton applyHP_2 = new JButton("Apply Health potion");
+		applyHP_2.setBounds(196, 185, 169, 34);
+		window.getContentPane().add(applyHP_2);
 		
-		JButton btnNewButton_1_3_4 = new JButton("Apply Health potion");
-		btnNewButton_1_3_4.setBounds(377, 185, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3_4);
+		JButton applyHP_3 = new JButton("Apply Health potion");
+		applyHP_3.setBounds(377, 185, 169, 34);
+		window.getContentPane().add(applyHP_3);
 		
-		JButton btnNewButton_1_3_1_1 = new JButton("Apply Strength  potion");
-		btnNewButton_1_3_1_1.setBounds(196, 219, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3_1_1);
+		JButton applySP_2 = new JButton("Apply Strength  potion");
+		applySP_2.setBounds(196, 219, 169, 34);
+		window.getContentPane().add(applySP_2);
 		
-		JButton btnNewButton_1_3_1_2 = new JButton("Apply Strength  potion");
-		btnNewButton_1_3_1_2.setBounds(377, 219, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3_1_2);
+		JButton applySP_3 = new JButton("Apply Strength  potion");
+		applySP_3.setBounds(377, 219, 169, 34);
+		window.getContentPane().add(applySP_3);
 		
-		JButton btnNewButton_1_3_2_1 = new JButton("Apply JamJar");
-		btnNewButton_1_3_2_1.setBounds(196, 252, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3_2_1);
+		JButton applyJJ_2 = new JButton("Apply JamJar");
+		applyJJ_2.setBounds(196, 252, 169, 34);
+		window.getContentPane().add(applyJJ_2);
 		
-		JButton btnNewButton_1_3_2_2 = new JButton("Apply JamJar");
-		btnNewButton_1_3_2_2.setBounds(377, 252, 169, 34);
-		window.getContentPane().add(btnNewButton_1_3_2_2);
+		JButton applyJJ_3 = new JButton("Apply JamJar");
+		applyJJ_3.setBounds(377, 252, 169, 34);
+		window.getContentPane().add(applyJJ_3);
 		
 		JLabel lblNewLabel_1_4 = new JLabel("Available items:");
 		lblNewLabel_1_4.setFont(new Font("Osaka", Font.PLAIN, 16));
 		lblNewLabel_1_4.setBounds(26, 296, 169, 21);
 		window.getContentPane().add(lblNewLabel_1_4);
+		
+		JLabel messageLbl = new JLabel("");
+		messageLbl.setForeground(Color.RED);
+		messageLbl.setFont(new Font("Osaka", Font.PLAIN, 14));
+		messageLbl.setBounds(221, 6, 325, 34);
+		window.getContentPane().add(messageLbl);
 	}
 }

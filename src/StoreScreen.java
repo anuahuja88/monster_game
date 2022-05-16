@@ -18,6 +18,9 @@ public class StoreScreen {
 	private Monster secondMonster;
 	private Monster thirdMonster;
 	private JLabel coinError;
+	private Item jamJar;
+	private Item strengthPotion;
+	private Item healthPotion;
 	
 
 	/**
@@ -47,6 +50,9 @@ public class StoreScreen {
 		firstMonster = manager.getStore().getMonsterList().get(0);
 		secondMonster = manager.getStore().getMonsterList().get(1);
 		thirdMonster = manager.getStore().getMonsterList().get(2);
+		jamJar = manager.getStore().getItemList().get(0);
+		strengthPotion =  manager.getStore().getItemList().get(1);
+		healthPotion = manager.getStore().getItemList().get(2);
 		initialize();
 		window.setVisible(true);
 	}
@@ -60,6 +66,11 @@ public class StoreScreen {
 	public void purchaseMonster(JLabel label) {
 		label.setText("Congratutlations your new monster has been added to the tean");
 		window.repaint();
+		
+	}
+	public void purchaseItem(JLabel label) {
+		label.setText("Congratutlations your new Item has been added to the iventory");
+		window.repaint();
 	}
 	/**
 	 * Initialize the contents of the window.
@@ -71,11 +82,17 @@ public class StoreScreen {
 		window.setBounds(100, 100, 578, 400);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
+
 		
 		JLabel welcomeLabel = new JLabel("Welcome to the Store");
 		welcomeLabel.setBounds(6, 6, 173, 40);
 		welcomeLabel.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(welcomeLabel);
+		
+		JLabel lblAvailableCoins = new JLabel("Available coins: " + manager.getPlayer().GetCoins());
+		lblAvailableCoins.setFont(new Font("Osaka", Font.PLAIN, 16));
+		lblAvailableCoins.setBounds(293, 6, 173, 40);
+		window.getContentPane().add(lblAvailableCoins);
 		
 		JLabel lblMonstersOnSale = new JLabel("Monsters on sale");
 		lblMonstersOnSale.setBounds(6, 45, 133, 40);
@@ -173,12 +190,12 @@ public class StoreScreen {
 				if (manager.getPlayer().GetCoins() > price) {
 					manager.getPlayer().BuyMonster(firstMonster);
 					manager.getPlayer().ChangeCoins(-(price));
+					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().GetCoins());
 					purchaseMonster(coinError);
 				}else {
 					coinError.setText("Not enough coins to purchase monster");
 		
 				}	
-				coinError.setText("Congratutlations your new monster has been added to the tean");
 				
 			}
 		});
@@ -194,9 +211,8 @@ public class StoreScreen {
 			if (manager.getPlayer().GetCoins() > price) {
 				manager.getPlayer().BuyMonster(secondMonster);
 				manager.getPlayer().ChangeCoins(-(price));
-				finshedWindow();
-				manager.launchStoreScreen();
-				coinError.setText("Congratutlations your new monster has been added to the tean");
+				lblAvailableCoins.setText("Available coins: " + manager.getPlayer().GetCoins());
+				purchaseMonster(coinError);
 			}else {
 				coinError.setText("Not enough coins to purchase monster");
 	
@@ -212,9 +228,8 @@ public class StoreScreen {
 				if (manager.getPlayer().GetCoins() > thirdMonster.GetPrice()) {
 					manager.getPlayer().BuyMonster(thirdMonster);
 					manager.getPlayer().ChangeCoins(-(thirdMonster.GetPrice()));
-					finshedWindow();
-					manager.launchStoreScreen();
-					coinError.setText("Congratutlations your new monster has been added to the tean");
+					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().GetCoins());
+					purchaseMonster(coinError);
 				}else {
 					coinError.setText("Not enough coins to purchase monster");
 		
@@ -225,16 +240,13 @@ public class StoreScreen {
 		purchaseMonst3.setBounds(345, 185, 117, 29);
 		window.getContentPane().add(purchaseMonst3);
 		
-		JLabel lblAvailableCoins = new JLabel("Available coins: " + manager.getPlayer().GetCoins());
-		lblAvailableCoins.setFont(new Font("Osaka", Font.PLAIN, 16));
-		lblAvailableCoins.setBounds(293, 6, 173, 40);
-		window.getContentPane().add(lblAvailableCoins);
 		
-		JLabel healthPotion = new JLabel("Health Potion");
-		healthPotion.setForeground(Color.BLACK);
-		healthPotion.setFont(new Font("Osaka", Font.PLAIN, 14));
-		healthPotion.setBounds(16, 250, 124, 26);
-		window.getContentPane().add(healthPotion);
+		
+		JLabel healthPotionlbl = new JLabel("Health Potion");
+		healthPotionlbl.setForeground(Color.BLACK);
+		healthPotionlbl.setFont(new Font("Osaka", Font.PLAIN, 14));
+		healthPotionlbl.setBounds(16, 250, 124, 26);
+		window.getContentPane().add(healthPotionlbl);
 		
 		JLabel healthPotionAttribute = new JLabel("(Increases health by 5)");
 		healthPotionAttribute.setForeground(Color.RED);
@@ -274,14 +286,55 @@ public class StoreScreen {
 		window.getContentPane().add(jamJarPotion);
 		
 		JButton purchaseHealthPotion = new JButton("Purchase");
+		purchaseHealthPotion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (manager.getPlayer().GetCoins() > healthPotion.GetPrice()) {
+					manager.getPlayer().BuyItem(healthPotion);
+					manager.getPlayer().ChangeCoins(-3);
+					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().GetCoins());
+					purchaseItem(coinError);
+				}else {
+					coinError.setText("Not enough coins to purchase item");
+		
+				}		
+				
+			}
+		});
 		purchaseHealthPotion.setBounds(6, 338, 117, 29);
 		window.getContentPane().add(purchaseHealthPotion);
 		
 		JButton purchaseStrengthPotion = new JButton("Purchase");
+		purchaseStrengthPotion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+	
+			if (manager.getPlayer().GetCoins() > healthPotion.GetPrice()) {
+				manager.getPlayer().BuyItem(healthPotion);
+				manager.getPlayer().ChangeCoins(-3);
+				lblAvailableCoins.setText("Available coins: " + manager.getPlayer().GetCoins());
+				purchaseItem(coinError);
+			}else {
+				coinError.setText("Not enough coins to purchase item");
+	
+			}
+			}
+		});
 		purchaseStrengthPotion.setBounds(165, 338, 117, 29);
 		window.getContentPane().add(purchaseStrengthPotion);
 		
 		JButton purchaseJamJar = new JButton("Purchase");
+		purchaseJamJar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (manager.getPlayer().GetCoins() > jamJar.GetPrice()) {
+					manager.getPlayer().BuyItem(jamJar);
+					manager.getPlayer().ChangeCoins(-3);
+					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().GetCoins());
+					purchaseItem(coinError);
+				}else {
+					coinError.setText("Not enough coins to purchase item");
+				}
+			}
+		});
 		purchaseJamJar.setBounds(323, 338, 117, 29);
 		window.getContentPane().add(purchaseJamJar);
 		
