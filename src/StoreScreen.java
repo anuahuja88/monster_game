@@ -14,15 +14,6 @@ public class StoreScreen {
 
 	private JFrame window;
 	private GameEnvironment manager;
-	private int price_1 = manager.getStore().getMonsterList().get(0).GetPrice();
-	private int price_2 = manager.getStore().getMonsterList().get(1).GetPrice();
-	private int price_3 = manager.getStore().getMonsterList().get(2).GetPrice();
-	private int health_1 = manager.getStore().getMonsterList().get(0).GetHealth();
-	private int health_2 = manager.getStore().getMonsterList().get(1).GetHealth();
-	private int health_3 = manager.getStore().getMonsterList().get(2).GetHealth();
-	private int damage_1 = manager.getStore().getMonsterList().get(0).GetDamage();
-	private int damage_2 = manager.getStore().getMonsterList().get(1).GetDamage();
-	private int damage_3 = manager.getStore().getMonsterList().get(2).GetDamage();
 	
 
 	/**
@@ -47,7 +38,7 @@ public class StoreScreen {
 	public StoreScreen() {
 		initialize();
 	}
-	public StoreScreen(GameEnvironment incoming) {
+	StoreScreen(GameEnvironment incoming) {
 		manager = incoming;
 		initialize();
 		window.setVisible(true);
@@ -114,47 +105,47 @@ public class StoreScreen {
 		monster_3.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monster_3);
 		
-		JLabel monst1Health = new JLabel("Health: " + health_1);
+		JLabel monst1Health = new JLabel("Health: " + manager.getStore().getMonsterList().get(0).GetHealth());
 		monst1Health.setBounds(15, 109, 124, 26);
 		monst1Health.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst1Health);
 		
-		JLabel monst2Health = new JLabel("Health: " +  health_2);
+		JLabel monst2Health = new JLabel("Health: " +  manager.getStore().getMonsterList().get(1).GetHealth());
 		monst2Health.setBounds(184, 113, 124, 26);
 		monst2Health.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst2Health);
 		
-		JLabel monst3Health = new JLabel("Health: " +  health_3);
+		JLabel monst3Health = new JLabel("Health: " +  manager.getStore().getMonsterList().get(2).GetHealth());
 		monst3Health.setBounds(356, 113, 124, 26);
 		monst3Health.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst3Health);
 		
-		JLabel monst1Damage = new JLabel("Damage: " + damage_1);
+		JLabel monst1Damage = new JLabel("Damage: " + manager.getStore().getMonsterList().get(0).GetDamage());
 		monst1Damage.setBounds(15, 136, 124, 26);
 		monst1Damage.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst1Damage);
 		
-		JLabel monst2Damage = new JLabel("Damage: " + damage_2);
+		JLabel monst2Damage = new JLabel("Damage: " +  manager.getStore().getMonsterList().get(1).GetDamage());
 		monst2Damage.setBounds(184, 140, 124, 26);
 		monst2Damage.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst2Damage);
 		
-		JLabel monst3Damage = new JLabel("Damage: " + damage_3);
+		JLabel monst3Damage = new JLabel("Damage: " + manager.getStore().getMonsterList().get(2).GetDamage());
 		monst3Damage.setBounds(356, 140, 124, 26);
 		monst3Damage.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst3Damage);
 		
-		JLabel monst1Price = new JLabel("Price: " + price_1);
+		JLabel monst1Price = new JLabel("Price: " + manager.getStore().getMonsterList().get(0).GetPrice());
 		monst1Price.setBounds(15, 161, 124, 26);
 		monst1Price.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst1Price);
 		
-		JLabel monst2Price = new JLabel("Price: " + price_2);
+		JLabel monst2Price = new JLabel("Price: " + manager.getStore().getMonsterList().get(1).GetPrice());
 		monst2Price.setBounds(185, 165, 124, 26);
 		monst2Price.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst2Price);
 		
-		JLabel monst3Price = new JLabel("Price: " + price_3);
+		JLabel monst3Price = new JLabel("Price: " + manager.getStore().getMonsterList().get(2).GetPrice());
 		monst3Price.setBounds(356, 165, 124, 26);
 		monst3Price.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(monst3Price);

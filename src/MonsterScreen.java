@@ -91,6 +91,7 @@ public class MonsterScreen {
 		JButton monst3Label = new JButton(manager.getStore().getMonsterList().get(2).GetMonsterName());
 		monst3Label.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				manager.getStore().CreateMonsterList(manager.getPlayer().GetMonsters().size());
 				manager.getPlayer().GetMonsters().add(manager.getStore().getMonsterList().get(2));
 				manager.getPlayer().ChangeCoins(-3);
 				finshedWindow();
