@@ -304,7 +304,7 @@ public class GameEnvironment {
 		storeScreen.closeWindow();
 		launchMainMenu();
 		
-	}
+	}h
 
 	
 }

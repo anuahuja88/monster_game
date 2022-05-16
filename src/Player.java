@@ -5,7 +5,7 @@ public class Player {
 	private int days;
 	private int currentDay = 1;
 	private int difficulty;
-	private int coins = 5;
+	private int coins = 10;
 	private boolean wonLastGame = false;
 	private ArrayList<Monster> monsters = new ArrayList<Monster>();
 	private ArrayList<Item> items = new ArrayList<Item>();

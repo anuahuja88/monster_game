@@ -79,16 +79,17 @@ public class ViewTeamScreen {
 		window.getContentPane().add(monst1);
 		
 		JButton monst2 = new JButton("");
-		monst2.setBounds(207, 52, 169, 55);
-		window.getContentPane().add(monst2);
 		if (manager.getPlayer().GetMonsters().size() > 1) {
 			monst2.setText(manager.getPlayer().GetMonsters().get(1).GetMonsterName());
 		}
+		monst2.setBounds(207, 52, 169, 55);
+		window.getContentPane().add(monst2);
+		
 		
 		JButton monst3 = new JButton("");
 		monst3.setBounds(386, 52, 169, 55);
 		window.getContentPane().add(monst3);
-		if (manager.getPlayer().GetMonsters().size() > 2) {
+		if (manager.getPlayer().GetMonsters().size() == 2) {
 			monst2.setText(manager.getPlayer().GetMonsters().get(2).GetMonsterName());
 		}
 		
@@ -101,7 +102,7 @@ public class ViewTeamScreen {
 		lblNewLabel_1_1.setBounds(207, 119, 169, 21);
 		lblNewLabel_1_1.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1_1);
-		if (manager.getPlayer().GetMonsters().size() > 1) {
+		if (manager.getPlayer().GetMonsters().size() == 1) {
 			monst2.setText("Health: " + manager.getPlayer().GetMonsters().get(1).GetHealth());
 		}
 		
@@ -109,7 +110,7 @@ public class ViewTeamScreen {
 		lblNewLabel_1_2.setBounds(386, 119, 169, 21);
 		lblNewLabel_1_2.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1_2);
-		if (manager.getPlayer().GetMonsters().size() > 1) {
+		if (manager.getPlayer().GetMonsters().size() == 2) {
 			monst2.setText("Health: " + manager.getPlayer().GetMonsters().get(2).GetHealth());
 		}
 		
@@ -122,7 +123,7 @@ public class ViewTeamScreen {
 		lblNewLabel_1_3_1.setBounds(207, 152, 169, 21);
 		lblNewLabel_1_3_1.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1_3_1);
-		if (manager.getPlayer().GetMonsters().size() > 1) {
+		if (manager.getPlayer().GetMonsters().size() == 1) {
 			monst2.setText("Damage: " + manager.getPlayer().GetMonsters().get(1).GetDamage());
 		}
 		
@@ -130,7 +131,7 @@ public class ViewTeamScreen {
 		lblNewLabel_1_3_2.setBounds(386, 152, 169, 21);
 		lblNewLabel_1_3_2.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(lblNewLabel_1_3_2);
-		if (manager.getPlayer().GetMonsters().size() > 1) {
+		if (manager.getPlayer().GetMonsters().size() == 2) {
 			monst2.setText("Damage: " + manager.getPlayer().GetMonsters().get(2).GetDamage());
 		}
 		

@@ -158,10 +158,11 @@ public class StoreScreen {
 		
 		JButton purchaseMonst1 = new JButton("Purchase");
 		purchaseMonst1.addActionListener(new ActionListener() {
+			int price = manager.getStore().getMonsterList().get(0).GetPrice();
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetCoins() > price_1) {
+				if (manager.getPlayer().GetCoins() > price) {
 					manager.getPlayer().BuyMonster(manager.getStore().getMonsterList().get(0));
-					manager.getPlayer().ChangeCoins(-(price_1));
+					manager.getPlayer().ChangeCoins(-(price));
 					finshedWindow();
 					manager.launchStoreScreen();
 				}else {
@@ -204,7 +205,7 @@ public class StoreScreen {
 		panel.setBounds(6, 82, 456, 132);
 		window.getContentPane().add(panel);
 		
-		JLabel helathPotionPrice = new JLabel("Price:");
+		JLabel helathPotionPrice = new JLabel("Price: 3");
 		helathPotionPrice.setFont(new Font("Osaka", Font.PLAIN, 14));
 		helathPotionPrice.setBounds(15, 303, 124, 26);
 		window.getContentPane().add(helathPotionPrice);
@@ -221,12 +222,12 @@ public class StoreScreen {
 		StrengthPotion.setBounds(177, 250, 124, 26);
 		window.getContentPane().add(StrengthPotion);
 		
-		JLabel strengthPotionPrice = new JLabel("Price:");
+		JLabel strengthPotionPrice = new JLabel("Price: 3");
 		strengthPotionPrice.setFont(new Font("Osaka", Font.PLAIN, 14));
 		strengthPotionPrice.setBounds(177, 303, 124, 26);
 		window.getContentPane().add(strengthPotionPrice);
 		
-		JLabel jamJarPotion = new JLabel("Price:");
+		JLabel jamJarPotion = new JLabel("Price: 5");
 		jamJarPotion.setFont(new Font("Osaka", Font.PLAIN, 14));
 		jamJarPotion.setBounds(338, 303, 124, 26);
 		window.getContentPane().add(jamJarPotion);
