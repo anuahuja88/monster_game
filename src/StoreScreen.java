@@ -307,8 +307,8 @@ public class StoreScreen {
 		purchaseStrengthPotion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	
-			if (manager.getPlayer().GetCoins() > healthPotion.GetPrice()) {
-				manager.getPlayer().BuyItem(healthPotion);
+			if (manager.getPlayer().GetCoins() > strengthPotion.GetPrice()) {
+				manager.getPlayer().BuyItem(strengthPotion);
 				manager.getPlayer().ChangeCoins(-3);
 				lblAvailableCoins.setText("Available coins: " + manager.getPlayer().GetCoins());
 				purchaseItem(coinError);

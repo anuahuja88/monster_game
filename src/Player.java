@@ -88,7 +88,7 @@ public class Player {
 	public ArrayList<Monster> GetMonsters() {
 		return monsters;
 	}
-	
+
 	public Monster GetFirstAlive() {
 		for(Monster monster : monsters) {
 			if (monster.GetIsAlive() == true ) {

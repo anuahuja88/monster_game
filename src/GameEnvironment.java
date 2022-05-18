@@ -5,7 +5,6 @@ public class GameEnvironment {
 	private Player player = new Player();
 	private Store store = new Store();
 	private ArrayList<Monster> monstersInStore = new ArrayList<Monster>();
-	
 	private Scanner input = new Scanner(System.in);
 	private Boolean firstVisitOfTheDay = true;
 
@@ -21,6 +20,7 @@ public class GameEnvironment {
 	}
 
 	private Boolean hasFoughtToday = false;
+
 	
 
 	
@@ -268,6 +268,7 @@ public class GameEnvironment {
 	public Store getStore() {
 		return store;
 	}
+
 	public void launchMonsterBattle(){
 		MonsterBattle setupWindow = new MonsterBattle(this);
 	}
