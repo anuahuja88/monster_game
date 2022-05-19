@@ -13,11 +13,10 @@ public class SetUp {
 		screen = setupScreen;
 		setName();
 		setDays();
-		setDifficulty();
 	}
 	
 	private String getName() {
-		String name = ((AbstractButton) screen.textFieldName).getText();
+		String name = screen.textFieldName.getText();
 		return name;
 	}
 
@@ -45,18 +44,8 @@ public class SetUp {
 		return null;			
 		
 	}
-	public String getDifficulty() {
-		return getSelectedButton(screen.diffbuttongroup);
-	}
-	public void setDifficulty() {
-		switch(getDifficulty().toLowerCase()) {
-			case "easy":
-				manager.getPlayer().SetDifficulty(1);
-				break;
-			case "hard":
-				manager.getPlayer().SetDifficulty(2);
-				break;
-		}
+	public void setDifficulty(String diff) {
+		
 	}
 
 }

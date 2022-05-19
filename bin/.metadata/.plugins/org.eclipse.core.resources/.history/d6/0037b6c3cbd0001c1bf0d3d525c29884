@@ -17,7 +17,7 @@ public class SetUp {
 	}
 	
 	private String getName() {
-		String name = ((AbstractButton) screen.textFieldName).getText();
+		String name = screen.textFieldName.getText();
 		return name;
 	}
 
