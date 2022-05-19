@@ -1,6 +1,8 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
+import main.Player;
+import main.Battle;
 
 import org.junit.jupiter.api.Test;
 

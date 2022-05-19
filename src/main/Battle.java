@@ -8,7 +8,7 @@ public class Battle {
 	boolean playerWon = false;
 	
 
-	Battle(Player player, Player enemyPlayer){
+	public Battle(Player player, Player enemyPlayer){
 		this.player = player;
 		this.enemyPlayer = enemyPlayer;
 		
@@ -49,7 +49,7 @@ public class Battle {
 	
 	// checks the players difficulty, if
 	//in easy set all monsters alive again and give them all 5 health, if in hard set all alive with one health
-	private void reviveDeadMonsters() {
+	public void reviveDeadMonsters() {
 
 		for (Monster monster : player.GetMonsters()) {
 			if(monster.GetIsAlive() == false || monster.GetHealth() < 0) {  
