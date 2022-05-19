@@ -2,41 +2,95 @@ package main;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BattleScreen {
 
-	private JFrame frame;
+	private JFrame window;
+	private GameEnvironment manager;
+	private BattleScreen screen;
+	private Player enemyPlayer;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BattleScreen window = new BattleScreen();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
 	 */
+	public BattleScreen(GameEnvironment incoming) {
+		manager = incoming;
+		screen = this;
+		initialize();
+		window.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		window.dispose();
+	}
+	public void finishedWindow() {
+		manager.closeBattleScreen(this);
+	}
+
 	public BattleScreen() {
 		initialize();
+	}
+	public Player chooseEnemyPlayer() {
+		for (Player battle : manager.ViewPossibleBattles()) {
+			if(battle.getPlayerSelected() == true) {
+				enemyPlayer = battle;
+			}
+		}
+		return enemyPlayer;
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 578, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window = new JFrame();
+		window.setTitle("Battle Screen");
+		window.setBounds(100, 100, 578, 400);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.getContentPane().setLayout(null);
+		
+		JLabel welcomeLabel = new JLabel("Battle Zone!");
+		welcomeLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+		welcomeLabel.setBounds(224, 12, 154, 15);
+		window.getContentPane().add(welcomeLabel);
+		
+		JLabel vsLabel = new JLabel("VS");
+		vsLabel.setFont(new Font("Dialog", Font.BOLD, 26));
+		vsLabel.setBounds(257, 143, 67, 59);
+		window.getContentPane().add(vsLabel);
+		
+		JButton batlleButton = new JButton("Battle!");
+		batlleButton.setBounds(211, 245, 154, 75);
+		window.getContentPane().add(batlleButton);
+		
+		JButton mainMenuButton = new JButton("Main Menu");
+		mainMenuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				finishedWindow();
+				manager.launchMainMenu();
+			}
+		});
+		mainMenuButton.setBounds(419, 322, 145, 35);
+		window.getContentPane().add(mainMenuButton);
+		
+		JLabel homePlayer = new JLabel(manager.getPlayer().GetName());
+		homePlayer.setFont(new Font("Dialog", Font.BOLD, 16));
+		homePlayer.setBounds(55, 51, 154, 15);
+		window.getContentPane().add(homePlayer);
+		
+		enemyPlayer = chooseEnemyPlayer();
+		JLabel enemyPlayerLbl = new JLabel(enemyPlayer.GetName());
+		enemyPlayerLbl.setFont(new Font("Dialog", Font.BOLD, 16));
+		enemyPlayerLbl.setBounds(383, 52, 154, 15);
+		window.getContentPane().add(enemyPlayerLbl);
 	}
-
 }

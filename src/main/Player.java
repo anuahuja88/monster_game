@@ -7,6 +7,7 @@ public class Player {
 	private int currentDay = 1;
 	private int difficulty;
 	private int coins = 10;
+	private boolean playerSelected = false;
 	private boolean wonLastGame = false;
 	private ArrayList<Monster> monsters = new ArrayList<Monster>();
 	private ArrayList<Item> items = new ArrayList<Item>();
@@ -49,6 +50,12 @@ public class Player {
 	
 	public int GetDifficuluty() {
 		return difficulty;
+	}
+	public void setPlayerSelected(boolean selected) {
+		playerSelected = selected;
+	}
+	public boolean getPlayerSelected() {
+		return playerSelected;
 	}
 
 	public void setWonLastGame(boolean bool){
