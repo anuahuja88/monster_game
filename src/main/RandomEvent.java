@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,7 +16,7 @@ public class RandomEvent {
 
 
 
-    RandomEvent(Player player){
+    public RandomEvent(Player player){
         this.player = player;
         setMonsterIndex();
     }

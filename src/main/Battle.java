@@ -1,4 +1,6 @@
+package main;
 import java.util.ArrayList;
+
 
 public class Battle {
 	Player player;
@@ -12,7 +14,7 @@ public class Battle {
 		
 	}
 	
-	//run fights between every monster in the list until one team is complelty dead
+	//run fights between every monster in the list until one team is dead
 	public void StartBattle() {
 		Boolean fightInProgress = true;
 		Monster playerMonster = player.GetFirstAlive();
@@ -48,13 +50,14 @@ public class Battle {
 	// checks the players difficulty, if
 	//in easy set all monsters alive again and give them all 5 health, if in hard set all alive with one health
 	private void reviveDeadMonsters() {
+
 		for (Monster monster : player.GetMonsters()) {
-			if(monster.GetIsAlive() == false || monster.GetHealth() < 5) {  
+			if(monster.GetIsAlive() == false || monster.GetHealth() < 0) {  
 				monster.SetIsAlive(true);
 				if(player.GetDifficuluty() == 1) {   // 1 is the equivalent to easy, 2 is hard
-					monster.SetHealth(5);
+					monster.SetHealth(5);   // if you selected easy all dead monsters are set to 5 health
 				} else {
-					monster.SetHealth(1);
+					monster.SetHealth(1);;  // if you selected hard all dead monsters are set to 1 health
 				}
 			}
 		}

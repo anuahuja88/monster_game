@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 
 public class Player {
@@ -134,8 +135,14 @@ public class Player {
 	}
 	
 	public void BuyMonster(Monster monster) {
-		monsters.add(monster);
+		if (monsters.size() >= 3) {
+			System.out.println("sorry you already have the max amount of monsters");
+		} else {
+			monsters.add(monster);
+		}
 	}
+	
+	
 	
 	public void BuyItem(Item selectedItem) {
 		items.add(selectedItem);

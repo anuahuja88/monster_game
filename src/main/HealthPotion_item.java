@@ -1,23 +1,24 @@
+package main;
 
-public class JamJar_Item implements Item{
-	private int price = 5;
+public class HealthPotion_item implements Item{
+	private int price = 3;
 	private int addedHealth = 5;
-	private int addedDamage = 5;
-
 	
+	
+	// applies health potion to selected monster
 	public Monster ApplyItem(Player player, int monsterIndex) {
 		Monster monster = (Monster) player.GetMonsters().get(monsterIndex);
 		monster.ChangeHealth(addedHealth);
-		monster.ChangeDamage(addedDamage);
 		return monster;
 	}
 	
+
 	public int GetHealthAmount() {
 		return addedHealth;
 		}
 	
 	public int GetDamageAmount() {
-		return addedDamage;
+		return 0;
 		}
 	
 	public int GetPrice() {
@@ -25,6 +26,7 @@ public class JamJar_Item implements Item{
 	}
 	
 	public String toString() {
-		return "Jam Jar increses health by " + addedHealth + ", increases damage by " + addedDamage + " and costs " + price + " coins";
+		return "Health potion inreaces Health by " + addedHealth + " and costs " + price + " coins";
 	}
+
 }
