@@ -70,10 +70,25 @@ public class Player {
 		return monsters.get(index);
 	}
 	
+	public int getTotalHealth() {
+		int total = 0;
+		for (Monster i : monsters) {
+			total += i.GetHealth();
+		}
+		return total;
+	}
+	public int getTotalDamage() {
+		int total = 0;
+		for (Monster i : monsters) {
+			total += i.GetDamage();
+		}
+		return total;
+	}
+	
 	public ArrayList<Monster> GetMonsters() {
 		return monsters;
 	}
-	
+
 	public Monster GetFirstAlive() {
 		for(Monster monster : monsters) {
 			if (monster.GetIsAlive() == true ) {

@@ -5,7 +5,6 @@ public class GameEnvironment {
 	private Player player = new Player();
 	private Store store = new Store();
 	private ArrayList<Monster> monstersInStore = new ArrayList<Monster>();
-	
 	private Scanner input = new Scanner(System.in);
 	private Boolean firstVisitOfTheDay = true;
 
@@ -23,6 +22,14 @@ public class GameEnvironment {
 	private Boolean hasFoughtToday = false;
 
 	
+
+	
+	public Boolean getHasFoughtToday() {
+		return hasFoughtToday;
+	}
+	public void setHasFoughtToday(Boolean hasFoughtToday) {
+		this.hasFoughtToday = hasFoughtToday;
+	}
 	public void PrintSetupOptions() {
 
 		
@@ -200,13 +207,14 @@ public class GameEnvironment {
 	public ArrayList <Player> ViewPossibleBattles() {
 		PossibleBattles battles = new PossibleBattles(player);
 		System.out.println(battles);
-		int selection = input.nextInt();
-		if(selection < 1 || selection > 3) {
-			System.out.println("Please enter a number between 1 and 3");
-			selection = input.nextInt();
-		}
-		Player enemy = battles.getPlayer(selection - 1);  //-1 to index with a list correctly 
-		battle(player, enemy);
+		//int selection = input.nextInt();
+		//if(selection < 1 || selection > 3) {
+			//System.out.println("Please enter a number between 1 and 3");
+			//selection = input.nextInt();
+		//}
+		//Player enemy = battles.getEnemyPlayer(selection - 1);  //-1 to index with a list correctly 
+		//battle(player, enemy);
+
 		return battles.getPossibleBattles();
 	}
 	
@@ -260,6 +268,7 @@ public class GameEnvironment {
 	public Store getStore() {
 		return store;
 	}
+
 	public void launchMonsterBattle(){
 		MonsterBattle setupWindow = new MonsterBattle(this);
 	}
@@ -304,7 +313,7 @@ public class GameEnvironment {
 		storeScreen.closeWindow();
 		launchMainMenu();
 		
-	}h
+	}
 
 	
 }

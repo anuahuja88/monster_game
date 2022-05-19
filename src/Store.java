@@ -35,6 +35,10 @@ public class Store {
 			itemList.add(new HealthPotion_item());
 			return itemList;
 		}
+	public ArrayList<Item> getItemList(){
+		CreateItemList();
+		return itemList;
+	}
 	
 	//enter in the index of the monster needed form the monster list and then if the players has enough coins add to the players monsters
 	public void BuyMonsterSelected(Player player, int monsterIndex) {
