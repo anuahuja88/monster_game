@@ -12,7 +12,6 @@ public class PossibleBattles {
 	
 	PossibleBattles(Player player) {
 		this.player = player;
-		this.playerMonsterLength = player.getMonsters().size();
 		createPossibleBattleList();
 	}
 	
@@ -37,7 +36,7 @@ public class PossibleBattles {
 		Random random  = new Random();
 		Store monsterCreator = new Store();
 		
-		ArrayList<Monster> enemyMonsters = monsterCreator.createMonsterList(); // creates a monster list with an equal number as the main player for the enemy
+		ArrayList<Monster> enemyMonsters = monsterCreator.createMonsterList(0); 
 		String name = names.get(random.nextInt(names.size()));
 		Player enemy = new Player(name, enemyMonsters);
 		
