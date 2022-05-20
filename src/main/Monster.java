@@ -17,47 +17,47 @@ public class Monster {
 		this.price = price;
 	}
 	
-	public String GetMonsterName() {
+	public String getMonsterName() {
 		return monsterName;
 	}
 	
-	public void SetMonsterName(String name) {
+	public void setMonsterName(String name) {
 		this.monsterName = name;
 	}
 	
-	public int GetHealth() {
+	public int getHealth() {
 		return health;
 	}
 
-	public int GetMaxHealth(){
+	public int getMaxHealth(){
 		return maxHealth;
 	}
 	
-	public void ChangeHealth(int amount) {
+	public void changeHealth(int amount) {
 		this.health += amount;
 	}
 
-	public void SetHealth(int amount){
+	public void setHealth(int amount){
 		this.health = amount;
 	}
 	
-	public int GetDamage() {
+	public int getDamage() {
 		return damage;
 	}
 	
-	public void ChangeDamage(int amount) {
+	public void changeDamage(int amount) {
 		damage += amount;
 	}
 	
-	public Boolean GetIsAlive() {
+	public Boolean getIsAlive() {
 		return isAlive;
 	}
 	
-	public void SetIsAlive(Boolean bool) {
+	public void setIsAlive(Boolean bool) {
 		isAlive = bool;
 	}
 	
-	public int GetPrice() {
+	public int getPrice() {
 		return price;
 	}
 	

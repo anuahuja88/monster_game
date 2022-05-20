@@ -98,7 +98,7 @@ public class ViewTeamScreen {
 		
 		JLabel hlthPotionInvent = new JLabel("Health Potions: 0");
 
-		for (Item i : manager.getPlayer().GetItems()) {
+		for (Item i : manager.getPlayer().getItems()) {
 			if (i == healthPotion) {
 				amountHealth ++;
 			}
@@ -110,7 +110,7 @@ public class ViewTeamScreen {
 		
 		JLabel lblStrengthPotions = new JLabel("Strength Potions: 0");
 
-		for (Item i : manager.getPlayer().GetItems()) {
+		for (Item i : manager.getPlayer().getItems()) {
 			if (i == strengthPotion) {
 				amountStrength ++;
 			}
@@ -121,7 +121,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(lblStrengthPotions);
 		
 		JLabel lblJamJars = new JLabel("Jam Jars: 0");
-		for (Item i : manager.getPlayer().GetItems()) {
+		for (Item i : manager.getPlayer().getItems()) {
 			if (i == jamJar) {
 				amountJam ++;
 			}
@@ -131,14 +131,14 @@ public class ViewTeamScreen {
 		lblJamJars.setBounds(293, 329, 118, 21);
 		window.getContentPane().add(lblJamJars);
 		
-		JButton monst1 = new JButton(manager.getPlayer().GetMonsters().get(0).GetMonsterName());
+		JButton monst1 = new JButton(manager.getPlayer().getMonsters().get(0).getMonsterName());
 		monst1.setBounds(26, 52, 169, 55);
 		window.getContentPane().add(monst1);
 		
 		JButton monst2 = new JButton("");
 		monst2.setBounds(207, 52, 169, 55);
-		if (manager.getPlayer().GetMonsters().size() == 2) {
-			monst2.setText(manager.getPlayer().GetMonsters().get(1).GetMonsterName());
+		if (manager.getPlayer().getMonsters().size() == 2) {
+			monst2.setText(manager.getPlayer().getMonsters().get(1).getMonsterName());
 		}
 		window.getContentPane().add(monst2);
 		
@@ -146,12 +146,12 @@ public class ViewTeamScreen {
 		JButton monst3 = new JButton("");
 		monst3.setBounds(386, 52, 169, 55);
 		window.getContentPane().add(monst3);
-		if (manager.getPlayer().GetMonsters().size() == 3) {
-			monst2.setText(manager.getPlayer().GetMonsters().get(1).GetMonsterName());
-			monst3.setText(manager.getPlayer().GetMonsters().get(2).GetMonsterName());
+		if (manager.getPlayer().getMonsters().size() == 3) {
+			monst2.setText(manager.getPlayer().getMonsters().get(1).getMonsterName());
+			monst3.setText(manager.getPlayer().getMonsters().get(2).getMonsterName());
 		}
 		
-		JLabel healthLbl1 = new JLabel("Health: " + manager.getPlayer().GetMonsters().get(0).GetHealth());
+		JLabel healthLbl1 = new JLabel("Health: " + manager.getPlayer().getMonsters().get(0).getHealth());
 		healthLbl1.setBounds(26, 119, 169, 21);
 		healthLbl1.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(healthLbl1);
@@ -160,20 +160,20 @@ public class ViewTeamScreen {
 		healthLbl2.setBounds(207, 119, 169, 21);
 		healthLbl2.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(healthLbl2);
-		if (manager.getPlayer().GetMonsters().size() == 2) {
-			healthLbl2.setText("Health: " + manager.getPlayer().GetMonsters().get(1).GetHealth());
+		if (manager.getPlayer().getMonsters().size() == 2) {
+			healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(1).getHealth());
 		}
 		
 		JLabel healthLbl3 = new JLabel("Health:");
 		healthLbl3.setBounds(386, 119, 169, 21);
 		healthLbl3.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(healthLbl3);
-		if (manager.getPlayer().GetMonsters().size() == 3) {
-			healthLbl2.setText("Health: " + manager.getPlayer().GetMonsters().get(1).GetHealth());
-			healthLbl3.setText("Health: " + manager.getPlayer().GetMonsters().get(2).GetHealth());
+		if (manager.getPlayer().getMonsters().size() == 3) {
+			healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(1).getHealth());
+			healthLbl3.setText("Health: " + manager.getPlayer().getMonsters().get(2).getHealth());
 		}
 		
-		JLabel damageLbl1 = new JLabel("Damage: " + manager.getPlayer().GetMonsters().get(0).GetDamage());
+		JLabel damageLbl1 = new JLabel("Damage: " + manager.getPlayer().getMonsters().get(0).getDamage());
 		damageLbl1.setBounds(26, 152, 169, 21);
 		damageLbl1.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(damageLbl1);
@@ -182,30 +182,30 @@ public class ViewTeamScreen {
 		damageLbl2.setBounds(207, 152, 169, 21);
 		damageLbl2.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(damageLbl2);
-		if (manager.getPlayer().GetMonsters().size() == 2) {
-			damageLbl2.setText("Damage: " + manager.getPlayer().GetMonsters().get(1).GetDamage());
+		if (manager.getPlayer().getMonsters().size() == 2) {
+			damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(1).getDamage());
 		}
 		
 		JLabel damageLbl3 = new JLabel("Damage:");
 		damageLbl3.setBounds(386, 152, 169, 21);
 		damageLbl3.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(damageLbl3);
-		if (manager.getPlayer().GetMonsters().size() == 3) {
-			damageLbl2.setText("Damage: " + manager.getPlayer().GetMonsters().get(1).GetDamage());
-			damageLbl3.setText("Damage: " + manager.getPlayer().GetMonsters().get(2).GetDamage());
+		if (manager.getPlayer().getMonsters().size() == 3) {
+			damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(1).getDamage());
+			damageLbl3.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
 		}
 		
 		JButton applyHP_1 = new JButton("Apply Health potion");
 		applyHP_1.setBounds(26, 185, 169, 34);
 		applyHP_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetItems().contains(healthPotion) == true){
-					manager.getPlayer().GetMonsters().get(0).ChangeHealth(5);
-					healthLbl1.setText("Health: " + manager.getPlayer().GetMonsters().get(0).GetHealth());
+				if (manager.getPlayer().getItems().contains(healthPotion) == true){
+					manager.getPlayer().getMonsters().get(0).changeHealth(5);
+					healthLbl1.setText("Health: " + manager.getPlayer().getMonsters().get(0).getHealth());
 					hlthPotionInvent.setText("Health Potions: " + (amountHealth -1));
 					messageLbl.setText("Health Potion Applied to monster");
 					window.repaint();
-					manager.getPlayer().GetItems().remove(healthPotion);
+					manager.getPlayer().getItems().remove(healthPotion);
 				}else {
 					messageLbl.setText("Item does not exist in your inventory");
 				}
@@ -217,13 +217,13 @@ public class ViewTeamScreen {
 		applySP_1.setBounds(26, 219, 169, 34);
 		applySP_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetItems().contains(strengthPotion) == true){
-					manager.getPlayer().GetMonsters().get(0).ChangeDamage(5);
-					damageLbl1.setText("Damage: " + manager.getPlayer().GetMonsters().get(0).GetDamage());
+				if (manager.getPlayer().getItems().contains(strengthPotion) == true){
+					manager.getPlayer().getMonsters().get(0).changeDamage(5);
+					damageLbl1.setText("Damage: " + manager.getPlayer().getMonsters().get(0).getDamage());
 					messageLbl.setText("Strength Potion Applied to monster");
 					lblStrengthPotions.setText("Strength Potions: " + (amountStrength-1));
 					window.repaint();
-					manager.getPlayer().GetItems().remove(strengthPotion);
+					manager.getPlayer().getItems().remove(strengthPotion);
 				}else {
 					messageLbl.setText("Item does not exist in your inventory");
 				}
@@ -235,15 +235,15 @@ public class ViewTeamScreen {
 		applyJJ_1.setBounds(26, 252, 169, 34);
 		applyJJ_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetItems().contains(jamJar) == true){
-					manager.getPlayer().GetMonsters().get(0).ChangeHealth(5);
-					manager.getPlayer().GetMonsters().get(0).ChangeDamage(5);
-					healthLbl1.setText("Health: " + manager.getPlayer().GetMonsters().get(0).GetHealth());
-					damageLbl1.setText("Damage: " + manager.getPlayer().GetMonsters().get(0).GetDamage());
+				if (manager.getPlayer().getItems().contains(jamJar) == true){
+					manager.getPlayer().getMonsters().get(0).changeHealth(5);
+					manager.getPlayer().getMonsters().get(0).changeDamage(5);
+					healthLbl1.setText("Health: " + manager.getPlayer().getMonsters().get(0).getHealth());
+					damageLbl1.setText("Damage: " + manager.getPlayer().getMonsters().get(0).getDamage());
 					messageLbl.setText("Jam Jar Applied to monster");
 					lblJamJars.setText("Jam Jars: " + (amountJam-1));
 					window.repaint();
-					manager.getPlayer().GetItems().remove(jamJar);
+					manager.getPlayer().getItems().remove(jamJar);
 				}else {
 					messageLbl.setText("Item does not exist in your inventory");
 				}
@@ -255,14 +255,14 @@ public class ViewTeamScreen {
 		applyHP_2.setBounds(196, 185, 169, 34);
 		applyHP_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetMonsters().size() == 2) {
-					if (manager.getPlayer().GetItems().contains(healthPotion) == true){
-						manager.getPlayer().GetMonsters().get(1).ChangeHealth(5);
-						healthLbl2.setText("Health: " + manager.getPlayer().GetMonsters().get(1).GetHealth());
+				if (manager.getPlayer().getMonsters().size() == 2) {
+					if (manager.getPlayer().getItems().contains(healthPotion) == true){
+						manager.getPlayer().getMonsters().get(1).changeHealth(5);
+						healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(1).getHealth());
 						messageLbl.setText("Health Potion Applied to monster");
 						hlthPotionInvent.setText("Health Potions: " + (amountHealth -1));
 						window.repaint();
-						manager.getPlayer().GetItems().remove(healthPotion);
+						manager.getPlayer().getItems().remove(healthPotion);
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -278,14 +278,14 @@ public class ViewTeamScreen {
 		applyHP_3.setBounds(377, 185, 169, 34);
 		applyHP_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetMonsters().size() == 3) {
-					if (manager.getPlayer().GetItems().contains(healthPotion) == true){
-						manager.getPlayer().GetMonsters().get(2).ChangeHealth(5);
-						healthLbl3.setText("Health: " + manager.getPlayer().GetMonsters().get(2).GetHealth());
+				if (manager.getPlayer().getMonsters().size() == 3) {
+					if (manager.getPlayer().getItems().contains(healthPotion) == true){
+						manager.getPlayer().getMonsters().get(2).changeHealth(5);
+						healthLbl3.setText("Health: " + manager.getPlayer().getMonsters().get(2).getHealth());
 						messageLbl.setText("Health Potion Applied to monster");
 						hlthPotionInvent.setText("Health Potions: " + (amountHealth -1));
 						window.repaint();
-						manager.getPlayer().GetItems().remove(healthPotion);
+						manager.getPlayer().getItems().remove(healthPotion);
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -304,14 +304,14 @@ public class ViewTeamScreen {
 		applySP_2.setBounds(196, 219, 169, 34);
 		applySP_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetMonsters().size() == 2) {
-					if (manager.getPlayer().GetItems().contains(strengthPotion) == true){
-						manager.getPlayer().GetMonsters().get(1).ChangeDamage(5);
-						damageLbl2.setText("Damage: " + manager.getPlayer().GetMonsters().get(1).GetDamage());
+				if (manager.getPlayer().getMonsters().size() == 2) {
+					if (manager.getPlayer().getItems().contains(strengthPotion) == true){
+						manager.getPlayer().getMonsters().get(1).changeDamage(5);
+						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(1).getDamage());
 						messageLbl.setText("Strength Potion Applied to monster");
 						lblStrengthPotions.setText("Strength Potions: " + (amountStrength-1));
 						window.repaint();
-						manager.getPlayer().GetItems().remove(strengthPotion);
+						manager.getPlayer().getItems().remove(strengthPotion);
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -326,14 +326,14 @@ public class ViewTeamScreen {
 		applySP_3.setBounds(377, 219, 169, 34);
 		applySP_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetMonsters().size() == 3) {
-					if (manager.getPlayer().GetItems().contains(strengthPotion) == true){
-						manager.getPlayer().GetMonsters().get(2).ChangeDamage(5);
-						damageLbl2.setText("Damage: " + manager.getPlayer().GetMonsters().get(2).GetDamage());
+				if (manager.getPlayer().getMonsters().size() == 3) {
+					if (manager.getPlayer().getItems().contains(strengthPotion) == true){
+						manager.getPlayer().getMonsters().get(2).changeDamage(5);
+						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
 						messageLbl.setText("Strength Potion Applied to monster");
 						lblStrengthPotions.setText("Strength Potions: " + (amountStrength-1));
 						window.repaint();
-						manager.getPlayer().GetItems().remove(strengthPotion);
+						manager.getPlayer().getItems().remove(strengthPotion);
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -348,16 +348,16 @@ public class ViewTeamScreen {
 		applyJJ_2.setBounds(196, 252, 169, 34);
 		applyJJ_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetMonsters().size() == 2) {
-					if (manager.getPlayer().GetItems().contains(jamJar) == true){
-						manager.getPlayer().GetMonsters().get(1).ChangeHealth(5);
-						manager.getPlayer().GetMonsters().get(1).ChangeDamage(5);
-						healthLbl2.setText("Health: " + manager.getPlayer().GetMonsters().get(1).GetHealth());
-						damageLbl2.setText("Damage: " + manager.getPlayer().GetMonsters().get(1).GetDamage());
+				if (manager.getPlayer().getMonsters().size() == 2) {
+					if (manager.getPlayer().getItems().contains(jamJar) == true){
+						manager.getPlayer().getMonsters().get(1).changeHealth(5);
+						manager.getPlayer().getMonsters().get(1).changeDamage(5);
+						healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(1).getHealth());
+						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(1).getDamage());
 						messageLbl.setText("Strength Potion Applied to monster");
 						lblJamJars.setText("Jam Jars: " + (amountJam-1));
 						window.repaint();
-						manager.getPlayer().GetItems().remove(jamJar);
+						manager.getPlayer().getItems().remove(jamJar);
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -373,16 +373,16 @@ public class ViewTeamScreen {
 		applyJJ_3.setBounds(377, 252, 169, 34);
 		applyJJ_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().GetMonsters().size() == 3) {
-					if (manager.getPlayer().GetItems().contains(jamJar) == true){
-						manager.getPlayer().GetMonsters().get(2).ChangeHealth(5);
-						manager.getPlayer().GetMonsters().get(2).ChangeDamage(5);
-						healthLbl2.setText("Health: " + manager.getPlayer().GetMonsters().get(2).GetHealth());
-						damageLbl2.setText("Damage: " + manager.getPlayer().GetMonsters().get(2).GetDamage());
+				if (manager.getPlayer().getMonsters().size() == 3) {
+					if (manager.getPlayer().getItems().contains(jamJar) == true){
+						manager.getPlayer().getMonsters().get(2).changeHealth(5);
+						manager.getPlayer().getMonsters().get(2).changeDamage(5);
+						healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(2).getHealth());
+						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
 						messageLbl.setText("Jam Jar Applied to monster");
 						lblJamJars.setText("Jam Jars: " + (amountJam-1));
 						window.repaint();
-						manager.getPlayer().GetItems().remove(jamJar);
+						manager.getPlayer().getItems().remove(jamJar);
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}

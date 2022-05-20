@@ -17,12 +17,12 @@ public class Battle {
 	//run fights between every monster in the list until one team is dead
 	public void StartBattle() {
 		Boolean fightInProgress = true;
-		Monster playerMonster = player.GetFirstAlive();
-		Monster enemyMonster = enemyPlayer.GetFirstAlive();
+		Monster playerMonster = player.getFirstAlive();
+		Monster enemyMonster = enemyPlayer.getFirstAlive();
 		while(fightInProgress == true ) {
-			playerMonster = player.GetFirstAlive();
-			enemyMonster = enemyPlayer.GetFirstAlive();
-			if(player.CheckMonstersAlive() == true && enemyPlayer.CheckMonstersAlive() == true) {
+			playerMonster = player.getFirstAlive();
+			enemyMonster = enemyPlayer.getFirstAlive();
+			if(player.checkMonstersAlive() == true && enemyPlayer.checkMonstersAlive() == true) {
 				Fight(playerMonster, enemyMonster);
 			} else {
 				fightInProgress = false;
@@ -51,13 +51,13 @@ public class Battle {
 	//in easy set all monsters alive again and give them all 5 health, if in hard set all alive with one health
 	public void reviveDeadMonsters() {
 
-		for (Monster monster : player.GetMonsters()) {
-			if(monster.GetIsAlive() == false || monster.GetHealth() < 0) {  
-				monster.SetIsAlive(true);
-				if(player.GetDifficuluty() == 1) {   // 1 is the equivalent to easy, 2 is hard
-					monster.SetHealth(5);   // if you selected easy all dead monsters are set to 5 health
+		for (Monster monster : player.getMonsters()) {
+			if(monster.getIsAlive() == false || monster.getHealth() < 0) {  
+				monster.setIsAlive(true);
+				if(player.getDifficuluty() == 1) {   // 1 is the equivalent to easy, 2 is hard
+					monster.setHealth(5);   // if you selected easy all dead monsters are set to 5 health
 				} else {
-					monster.SetHealth(1);;  // if you selected hard all dead monsters are set to 1 health
+					monster.setHealth(1);;  // if you selected hard all dead monsters are set to 1 health
 				}
 			}
 		}
@@ -66,26 +66,26 @@ public class Battle {
 	//run a while loop comparing the two monsters health and damage outputs end the loop when one monsters health is below 0
 	//once the loop is finished determine lost and set is alive to false
 	public void Fight(Monster playerMonster, Monster enemyMonster) {
-		int playerDamage = playerMonster.GetDamage();
-		int enemyDamage = enemyMonster.GetDamage();
+		int playerDamage = playerMonster.getDamage();
+		int enemyDamage = enemyMonster.getDamage();
 		
-		while(playerMonster.GetHealth() > 0 && enemyMonster.GetHealth() > 0) {
+		while(playerMonster.getHealth() > 0 && enemyMonster.getHealth() > 0) {
 			System.out.println(playerMonster + "\n" + enemyMonster);
-			playerMonster.ChangeHealth(- enemyDamage); 
-			enemyMonster.ChangeHealth(- playerDamage);
+			playerMonster.changeHealth(- enemyDamage); 
+			enemyMonster.changeHealth(- playerDamage);
 		}	
 		
-		if (playerMonster.GetHealth() > 0) {
-			enemyMonster.SetIsAlive(false);
-			System.out.println("\nYour " + playerMonster.GetMonsterName() + " has beat " + enemyPlayer.GetName() + "'s " + enemyMonster.GetMonsterName() + "You gained 3 coins\n");
-			player.ChangeCoins(4 - player.GetDifficuluty());  //if the difficulty is easy(1) the player gains 3 coins, if it is hard(2) they gain 2
-		}else if (enemyMonster.GetHealth() > 0){
-			playerMonster.SetIsAlive(false);
-			System.out.println("\nYour " + playerMonster.GetMonsterName() + " has lost to " + enemyPlayer.GetName() + "'s " + enemyMonster.GetMonsterName() + "\n");
+		if (playerMonster.getHealth() > 0) {
+			enemyMonster.setIsAlive(false);
+			System.out.println("\nYour " + playerMonster.getMonsterName() + " has beat " + enemyPlayer.getName() + "'s " + enemyMonster.getMonsterName() + "You gained 3 coins\n");
+			player.changeCoins(4 - player.getDifficuluty());  //if the difficulty is easy(1) the player gains 3 coins, if it is hard(2) they gain 2
+		}else if (enemyMonster.getHealth() > 0){
+			playerMonster.setIsAlive(false);
+			System.out.println("\nYour " + playerMonster.getMonsterName() + " has lost to " + enemyPlayer.getName() + "'s " + enemyMonster.getMonsterName() + "\n");
 		}else {
-			System.out.println("\nBoth " + playerMonster.GetMonsterName() + " and " + enemyMonster.GetMonsterName() + " have knocked eachother out\n");
-			enemyMonster.SetIsAlive(false);
-			playerMonster.SetIsAlive(false);
+			System.out.println("\nBoth " + playerMonster.getMonsterName() + " and " + enemyMonster.getMonsterName() + " have knocked eachother out\n");
+			enemyMonster.setIsAlive(false);
+			playerMonster.setIsAlive(false);
 		}
 	}
 	
@@ -95,8 +95,8 @@ public class Battle {
 		Store otherStore = new Store();
 		
 		
-		Player player = new Player("hello", store.CreateMonsterList());
-		Player enPlayer = new Player("bob", otherStore.CreateMonsterList());
+		Player player = new Player("hello", store.createMonsterList());
+		Player enPlayer = new Player("bob", otherStore.createMonsterList());
 		Battle battle = new Battle(player, enPlayer);
 		
 		System.out.println(battle.player + "\n" + battle.enemyPlayer);

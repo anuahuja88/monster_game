@@ -2,15 +2,15 @@ package main;
 
 public interface Item {
 
-	public default int GetHealthAmount() {
+	public default int getHealthAmount() {
 		return 0 ;
 		}
 	
-	public default int GetDamageAmount() {
+	public default int getDamageAmount() {
 		return 0 ;
 		}
 	
-	public default int GetPrice() {
+	public default int getPrice() {
 		return 0;
 	}
 	

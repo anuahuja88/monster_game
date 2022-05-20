@@ -8,10 +8,10 @@ public class Store {
 	private ArrayList<String> names = new ArrayList<String>();
 	
 	public Store(){
-		CreateMonsterList();
+		createMonsterList();
 	}
 	// loop three times creating a new randomized monster and adding it to the monster list
-	public ArrayList<Monster> CreateMonsterList() {
+	public ArrayList<Monster> createMonsterList() {
 		CreateNameList();
 		for(int index = 0; index < 3; index++) {
 			monsterList.add(CreateRandomizedMonster());
@@ -19,8 +19,8 @@ public class Store {
 		return monsterList;
 	}
 	
-	// loop a given number of times creating a new randomized monster and adding it to the monster list
-		public ArrayList<Monster> CreateMonsterList(int length) {
+	// loop three times creating a new randomized monster and adding it to the monster list
+		public ArrayList<Monster> createMonsterList(int length) {
 			CreateNameList();
 			for(int index = 0; index < length; index++) {
 				monsterList.add(CreateRandomizedMonster());
@@ -28,8 +28,9 @@ public class Store {
 			return monsterList;
 		}
 	
+	
 	// create a list of items 
-	public ArrayList<Item> CreateItemList(){
+	public ArrayList<Item> createItemList(){
 			
 			itemList.add(new JamJar_Item());
 			itemList.add(new StrengthPotion_item());
@@ -37,17 +38,17 @@ public class Store {
 			return itemList;
 		}
 	public ArrayList<Item> getItemList(){
-		CreateItemList();
+		createItemList();
 		return itemList;
 	}
 	
 	//enter in the index of the monster needed form the monster list and then if the players has enough coins add to the players monsters
-	public void BuyMonsterSelected(Player player, int monsterIndex) {
+	public void buyMonsterSelected(Player player, int monsterIndex) {
 		Monster selectedMonster = monsterList.get(monsterIndex);
-		if (selectedMonster.GetPrice() <= player.GetCoins()) {
-			player.BuyMonster(selectedMonster);
-			player.ChangeCoins(- selectedMonster.GetPrice()); // Negative to take away from the player coins
-			System.out.println(player.GetMonsters());
+		if (selectedMonster.getPrice() <= player.getCoins()) {
+			player.addMonster(selectedMonster);
+			player.changeCoins(- selectedMonster.getPrice()); // Negative to take away from the player coins
+			System.out.println(player.getMonsters());
 		} else {
 			System.out.println("Not enough coins to purchase");
 		}
@@ -56,10 +57,10 @@ public class Store {
 	//enter the index of the item and add it the players item list
 	public void buyItemSelected(Player player, int itemIndex) {
 		Item selectedItem = itemList.get(itemIndex);
-		if (selectedItem.GetPrice() <= player.GetCoins()) {
-			player.BuyItem(selectedItem);
-			player.ChangeCoins(- selectedItem.GetPrice());
-			System.out.println(player.GetItems());
+		if (selectedItem.getPrice() <= player.getCoins()) {
+			player.addItem(selectedItem);
+			player.changeCoins(- selectedItem.getPrice());
+			System.out.println(player.getItems());
 		} else {
 			System.out.println("Not enough coins to purchase");
 		}
@@ -136,8 +137,8 @@ public class Store {
 	
 	public static void main(String[] args) throws InterruptedException {
 		Store store = new Store();
-		store.CreateMonsterList();
-		store.CreateItemList();
+		store.createMonsterList();
+		store.createItemList();
 		System.out.println(store);
 		
     }

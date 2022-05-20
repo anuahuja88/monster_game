@@ -6,22 +6,15 @@ public class JamJar_Item implements Item{
 	private int addedDamage = 5;
 
 	
-	public Monster ApplyItem(Player player, int monsterIndex) {
-		Monster monster = (Monster) player.GetMonsters().get(monsterIndex);
-		monster.ChangeHealth(addedHealth);
-		monster.ChangeDamage(addedDamage);
-		return monster;
-	}
-	
-	public int GetHealthAmount() {
+	public int getHealthAmount() {
 		return addedHealth;
 		}
 	
-	public int GetDamageAmount() {
+	public int getDamageAmount() {
 		return addedDamage;
 		}
 	
-	public int GetPrice() {
+	public int getPrice() {
 		return price;
 	}
 	

@@ -8,22 +8,16 @@ public class GameEnvironment {
 	private ArrayList<Monster> monstersInStore = new ArrayList<Monster>();
 	private Scanner input = new Scanner(System.in);
 	private Boolean firstVisitOfTheDay = true;
-
+	private Boolean hasFoughtToday = false;
+	
 	private MainMenu menu;
 	
 	public GameEnvironment() {
 		launchMonsterBattle();
 	}
 	public Player getPlayer() {
-		
-		
 		return player;
 	}
-
-	private Boolean hasFoughtToday = false;
-
-	
-
 	
 	public Boolean getHasFoughtToday() {
 		return hasFoughtToday;
@@ -31,7 +25,7 @@ public class GameEnvironment {
 	public void setHasFoughtToday(Boolean hasFoughtToday) {
 		this.hasFoughtToday = hasFoughtToday;
 	}
-	public void PrintSetupOptions() {
+	public void printSetupOptions() {
 
 		
 		// set the player name if not in the range needed asks again
@@ -41,8 +35,8 @@ public class GameEnvironment {
 			System.out.println("Please enter a name between 3 and 15 characters");
 			tempName = input.nextLine();
 		}
-		player.SetName(tempName);
-		System.out.println("Your name is " + player.GetName());
+		player.setName(tempName);
+		System.out.println("Your name is " + player.getName());
 		
 		// set the days the player plays if not in range ask again
 		System.out.println("How many days do you want to play? (Between 5 and 15)");
@@ -52,8 +46,8 @@ public class GameEnvironment {
 			
 			tempDays = input.nextInt();
 		}
-		player.SetDays(tempDays);
-		System.out.println("You selected " + player.GetDays() + " days");
+		player.setDays(tempDays);
+		System.out.println("You selected " + player.getDays() + " days");
 		
 		
 		// set the player difficulty if not 1 or 2 ask again 
@@ -63,31 +57,31 @@ public class GameEnvironment {
 			System.out.println("Please enter a difficulty between 1 and 2");
 			tempDifficulty = input.nextInt();
 		}
-		player.SetDifficulty(tempDifficulty);
-		System.out.println("you selected a difficulty of " + player.GetDifficuluty());
+		player.setDifficulty(tempDifficulty);
+		System.out.println("you selected a difficulty of " + player.getDifficuluty());
 		
 		
 		//Create a list of monsters for the player to chose from and add the one they chose also give the player 3 coins to pay 
 		System.out.println("Select you frist monster, dont worry we gave you three coins\n");
-		player.ChangeCoins(13);
+		player.changeCoins(13);
 		
-		monstersInStore = store.CreateMonsterList();
+
 		System.out.println(store.MonsterListString());
 		int monsterSlected = input.nextInt();
 		while(monsterSlected < 1 || monsterSlected > 4) {
 			System.out.println("Please enter a valid number between 1 and 4");
 			monsterSlected = input.nextInt();
 		}
-		store.BuyMonsterSelected(player, monsterSlected - 1);
+		store.buyMonsterSelected(player, monsterSlected - 1);
 		store.EmptyStore();
 		
 		
 	}
 	
 	//main game prints out the main options for the game letting the player chose actions and checks if their monsters are still availed to continue play
-	public void MainGame() {
+	public void mainGame() {
 		//check if the player has any monster in there monster list if not end the game
-		if(player.GetMonsters().size() == 0) {
+		if(player.getMonsters().size() == 0) {
 			endGame(false);
 		}
 		
@@ -102,15 +96,15 @@ public class GameEnvironment {
 		}
 		
 		if(selection == 1) {
-			VeiwGameProgress();
+			veiwGameProgress();
 		}
 		
 		if(selection == 2) {
-			VisitShop();
+			visitShop();
 		}
 		
 		if(selection == 3) {
-			ViewTeam();
+			viewTeam();
 		}
 		
 		if(selection == 4) {
@@ -118,30 +112,30 @@ public class GameEnvironment {
 		}
 
 		if(selection ==5){
-			ViewPossibleBattles();
+			viewPossibleBattles();
 		}
 		if(selection == 6){
-			GoToSleep(menu);
+			goToSleep(menu);
 
 		}
 	}
 	
 	
 	//print Amount of gold, current day and number of days remaining 
-	public void VeiwGameProgress() {
-		System.out.println("Progress:\nCurrent Day:" + player.GetCurrentDay() + 
-				"\nDays left: " + (player.GetDays() - player.GetCurrentDay()) + 
-				"\nCurrent Coins: " + player.GetCoins());
+	public void veiwGameProgress() {
+		System.out.println("Progress:\nCurrent Day:" + player.getCurrentDay() + 
+				"\nDays left: " + (player.getDays() - player.getCurrentDay()) + 
+				"\nCurrent Coins: " + player.getCoins());
 		
-		MainGame();
+		mainGame();
 	}
 	
 	
-	public void VisitShop() {
+	public void visitShop() {
 		int selected; 
 		if (firstVisitOfTheDay == true) {
-			store.CreateMonsterList();
-			store.CreateItemList();
+			store.createMonsterList();
+			store.createItemList();
 			firstVisitOfTheDay = false;
 		}
 		
@@ -155,7 +149,7 @@ public class GameEnvironment {
 		}
 		
 		if(selected <= 3) {     
-			store.BuyMonsterSelected(player, selected - 1);   // -1 to index with monster list correctly 
+			store.buyMonsterSelected(player, selected - 1);   // -1 to index with monster list correctly 
 		}
 		
 		if(selected >= 4 && selected != 7) {      // 7 is the int to go back to the main menu so should not be included in the if statement
@@ -163,21 +157,21 @@ public class GameEnvironment {
 		}
 		
 		
-		MainGame();
+		mainGame();
 	}
 	
 	
 	// print monsters in players monster list
-	public void ViewTeam() {
-		System.out.println("Your Team:\n " + player.MonstersTeamString());
-		MainGame();
+	public void viewTeam() {
+		System.out.println("Your Team:\n " + player.monstersTeamString());
+		mainGame();
 	}
 	
 	// print the monster and item list from the player, allow the player to apply an item to a monster
 	public void ViewInventory() {
-		ArrayList<Item> items = player.GetItems();
+		ArrayList<Item> items = player.getItems();
 		
-		System.out.println("Select an item to apply: \n" + player.ItemListString() + (items.size() + 1) + ": Return to main menu");
+		System.out.println("Select an item to apply: \n" + player.itemListString() + (items.size() + 1) + ": Return to main menu");
 		int itemSelected = input.nextInt();
 		while(itemSelected < 1 || itemSelected > items.size() + 1) {   // added one on to size because that is the option to go back to the main menu
 			System.out.println("Please enter a number between 1 and " + (items.size() + 1));
@@ -186,35 +180,35 @@ public class GameEnvironment {
 		
 		if(itemSelected < items.size() + 1) {   //only allows to apply an item if the selected number is not to return 
 			int count = 0;
-			for(Monster monster : player.GetMonsters()) {
+			for(Monster monster : player.getMonsters()) {
 				count++;
 				System.out.println(count + ": " + monster);
 			}
 			
 			int monsterSelected = input.nextInt();
-			while(monsterSelected < 1 || monsterSelected > player.GetMonsters().size()) {
-				System.out.println("Please select a number between 1 and " + player.GetMonsters().size());
+			while(monsterSelected < 1 || monsterSelected > player.getMonsters().size()) {
+				System.out.println("Please select a number between 1 and " + player.getMonsters().size());
 				monsterSelected = input.nextInt();
 			}
 			
-			player.GetMonsters().get(monsterSelected - 1).ChangeHealth(items.get(itemSelected - 1).GetHealthAmount());   //apply the item to the monster selected stats
-			player.GetMonsters().get(monsterSelected - 1).ChangeDamage(items.get(itemSelected - 1).GetDamageAmount());
+			player.getMonsters().get(monsterSelected - 1).changeHealth(items.get(itemSelected - 1).getHealthAmount());   //apply the item to the monster selected stats
+			player.getMonsters().get(monsterSelected - 1).changeDamage(items.get(itemSelected - 1).getDamageAmount());
 		}
 		
-		MainGame();
+		mainGame();
 	}
 	
 	// create three different player objects with monsters attributes depending on the day, allow the player to battle one 
-	public ArrayList <Player> ViewPossibleBattles() {
+	public ArrayList <Player> viewPossibleBattles() {
 		PossibleBattles battles = new PossibleBattles(player);
 		System.out.println(battles);
-		//int selection = input.nextInt();
-		//if(selection < 1 || selection > 3) {
-			//System.out.println("Please enter a number between 1 and 3");
-			//selection = input.nextInt();
-		//}
-		//Player enemy = battles.getEnemyPlayer(selection - 1);  //-1 to index with a list correctly 
-		//battle(player, enemy);
+		int selection = input.nextInt();
+		if(selection < 1 || selection > 3) {
+			System.out.println("Please enter a number between 1 and 3");
+			selection = input.nextInt();
+		}
+		Player enemy = battles.getEnemyPlayer(selection - 1);  //-1 to index with a list correctly 
+		battle(player, enemy);
 
 		return battles.getPossibleBattles();
 	}
@@ -226,29 +220,29 @@ public class GameEnvironment {
 		String battleOutCome = battle.battleOutcomeString();
 		System.out.println(battleOutCome);
 		hasFoughtToday = true;
-		MainGame();
+		mainGame();
 	}
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
 
-	public void GoToSleep(MainMenu menu2) {
+	public void goToSleep(MainMenu menu2) {
 		if(hasFoughtToday) {
-			if(player.GetCurrentDay() + 1 > player.GetDays()){
+			if(player.getCurrentDay() + 1 > player.getDays()){
 				endGame(true);
 			}
-			player.AddDay();
+			player.addDay();
 			hasFoughtToday = false;
-			RandomEvent();
-			MainGame();
+			randomEvent();
+			mainGame();
 			
 		}else {
 			System.out.println("you have to fight at least once to go to sleep");
-			MainGame();
+			mainGame();
 		}
 		
 	}
 	
-	public void RandomEvent() {
+	public void randomEvent() {
 
 		RandomEvent randomEvent = new RandomEvent(player);
 		randomEvent.choseRandomMethod();
@@ -258,9 +252,9 @@ public class GameEnvironment {
 
 	public void endGame(boolean wonGame){
 		if (wonGame) {
-			System.out.println("Congratulations you lasted " + player.GetDays());
+			System.out.println("Congratulations you lasted " + player.getDays());
 		}else {
-			System.out.println("Game over lmao \nyou lasted " + player.GetCurrentDay() + "corngratualtions!!!");
+			System.out.println("Game over lmao \nyou lasted " + player.getCurrentDay() + "corngratualtions!!!");
 		}
 		
 
@@ -294,8 +288,8 @@ public class GameEnvironment {
 	}
 	public static void main(String[] args) throws InterruptedException {
 		GameEnvironment ge= new GameEnvironment();
-		ge.PrintSetupOptions();
-		ge.MainGame();
+		ge.printSetupOptions();
+		ge.mainGame();
     }
 	public void closeViewTeamScreen(ViewTeamScreen viewTeamScreen) {
 		viewTeamScreen.closeWindow();

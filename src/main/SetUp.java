@@ -23,7 +23,7 @@ public class SetUp {
 	}
 
 	public void setName() {
-		manager.getPlayer().SetName(this.getName());
+		manager.getPlayer().setName(this.getName());
 		
 	}
 	private int getDays() {
@@ -31,7 +31,7 @@ public class SetUp {
 		return days;
 	}
 	public void setDays() {
-		manager.getPlayer().SetDays(this.getDays());
+		manager.getPlayer().setDays(this.getDays());
 	}
 	public String getSelectedButton(ButtonGroup buttonGroup) {
 		for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
@@ -52,10 +52,10 @@ public class SetUp {
 	public void setDifficulty() {
 		switch(getDifficulty().toLowerCase()) {
 			case "easy":
-				manager.getPlayer().SetDifficulty(1);
+				manager.getPlayer().setDifficulty(1);
 				break;
 			case "hard":
-				manager.getPlayer().SetDifficulty(2);
+				manager.getPlayer().setDifficulty(2);
 				break;
 		}
 	}

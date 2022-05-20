@@ -21,8 +21,8 @@ public class RandomEvent {
         setMonsterIndex();
     }
     public void setMonsterIndex() {
-        this.monsterIndex = random.nextInt(player.GetMonsters().size());
-        this.wonLastGame = player.GetWonLastGame();
+        this.monsterIndex = random.nextInt(player.getMonsters().size());
+        this.wonLastGame = player.getWonLastGame();
 
     }
     public void choseRandomMethod(){
@@ -48,38 +48,38 @@ public class RandomEvent {
 
     //add a jamjar item to a random monster in players monster list 
     public void levelUp(){
-        int addedHealth = item.GetHealthAmount();
-        int addedDamage = item.GetDamageAmount();
-        int maxHealth = player.GetMonster(monsterIndex).GetMaxHealth();
+        int addedHealth = item.getHealthAmount();
+        int addedDamage = item.getDamageAmount();
+        int maxHealth = player.getMonster(monsterIndex).getMaxHealth();
 
         //if the added health goes above the max health just set the health to the max health
-        if(player.GetMonster(monsterIndex).GetHealth() + addedHealth < maxHealth){
-            player.GetMonster(monsterIndex).ChangeHealth(addedHealth);
+        if(player.getMonster(monsterIndex).getHealth() + addedHealth < maxHealth){
+            player.getMonster(monsterIndex).changeHealth(addedHealth);
         }else{
-            player.GetMonster(monsterIndex).SetHealth(maxHealth);;
+            player.getMonster(monsterIndex).setHealth(maxHealth);;
         }
         
-        player.GetMonster(monsterIndex).ChangeDamage(addedDamage);
+        player.getMonster(monsterIndex).changeDamage(addedDamage);
         
-        System.out.println(player.GetMonster(monsterIndex) + " Has leveled up over night!");
+        System.out.println(player.getMonster(monsterIndex) + " Has leveled up over night!");
     }
 
 
     public void monsterLeave(){
-    	System.out.println(player.GetMonster(monsterIndex) + " Has left the team overnight");
-        player.GetMonsters().remove(monsterIndex);
+    	System.out.println(player.getMonster(monsterIndex) + " Has left the team overnight");
+        player.getMonsters().remove(monsterIndex);
 
     }
     public void newMonster(){
         Store store = new Store();
         Monster newMonster = store.CreateRandomizedMonster();
-        player.BuyMonster(newMonster);
+        player.addMonster(newMonster);
         System.out.println(newMonster + " Has joined the team overnight!");
     }
     
     public static void main(String[] args) throws InterruptedException {
     	Store store = new Store();
-    	ArrayList<Monster> monsters = store.CreateMonsterList();
+    	ArrayList<Monster> monsters = store.createMonsterList();
 		Player player = new Player("hamish", monsters);
 		player.setWonLastGame(false);
 		RandomEvent event = new RandomEvent(player);

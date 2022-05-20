@@ -5,21 +5,21 @@ public class StrengthPotion_item implements Item {
 	private int addedDamage = 5;
 	
 	public Monster ApplyItem(Player player, int monsterIndex) {
-		Monster monster = (Monster) player.GetMonsters().get(monsterIndex);
-		monster.ChangeDamage(addedDamage);
+		Monster monster = (Monster) player.getMonsters().get(monsterIndex);
+		monster.changeDamage(addedDamage);
 		return monster;
 	}
 	
-	public int GetHealthAmount() {
+	public int getHealthAmount() {
 		return 0;
 		}
 	
 	
-	public int GetDamageAmount() {
+	public int getDamageAmount() {
 		return addedDamage;
 		}
 	
-	public int GetPrice() {
+	public int getPrice() {
 		return price;
 	}
 	

@@ -71,17 +71,17 @@ public class MainMenu {
 		window.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel coinLabel = new JLabel("Coins: " + manager.getPlayer().GetCoins());
+		JLabel coinLabel = new JLabel("Coins: " + manager.getPlayer().getCoins());
 		coinLabel.setBounds(10, 6, 267, 23);
 		panel.add(coinLabel);
 		coinLabel.setFont(new Font("Osaka", Font.PLAIN, 16));
 		
-		JLabel lblCurrentDau = new JLabel("Current day: " + manager.getPlayer().GetCurrentDay());
+		JLabel lblCurrentDau = new JLabel("Current day: " + manager.getPlayer().getCurrentDay());
 		lblCurrentDau.setBounds(10, 38, 267, 23);
 		panel.add(lblCurrentDau);
 		lblCurrentDau.setFont(new Font("Osaka", Font.PLAIN, 16));
 		
-		JLabel lblDaysRemaining = new JLabel("Days remaining: " + (manager.getPlayer().GetDays()- manager.getPlayer().GetCurrentDay() ));
+		JLabel lblDaysRemaining = new JLabel("Days remaining: " + (manager.getPlayer().getDays()- manager.getPlayer().getCurrentDay() ));
 		lblDaysRemaining.setBounds(10, 68, 267, 23);
 		panel.add(lblDaysRemaining);
 		lblDaysRemaining.setFont(new Font("Osaka", Font.PLAIN, 16));
@@ -112,20 +112,20 @@ public class MainMenu {
 		JButton battle_1_Button = new JButton();
 		battle_1_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				manager.ViewPossibleBattles().get(0).setPlayerSelected(true);
+				manager.viewPossibleBattles().get(0).setPlayerSelected(true);
 				finishedWindow();
 				manager.launchBattleScreen();
 			}
 		});
-		battle_1_Button.setText(manager.ViewPossibleBattles().get(0).GetName());
+		battle_1_Button.setText(manager.viewPossibleBattles().get(0).getName());
 		battle_1_Button.setFont(new Font("Osaka", Font.PLAIN, 16));
 		battle_1_Button.setBounds(6, 211, 147, 82);
 		window.getContentPane().add(battle_1_Button);
 		
-		JButton btnBattle = new JButton(manager.ViewPossibleBattles().get(1).GetName());
+		JButton btnBattle = new JButton(manager.viewPossibleBattles().get(1).getName());
 		btnBattle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				manager.ViewPossibleBattles().get(1).setPlayerSelected(true);
+				manager.viewPossibleBattles().get(1).setPlayerSelected(true);
 				finishedWindow();
 				manager.launchBattleScreen();
 			}
@@ -134,10 +134,10 @@ public class MainMenu {
 		btnBattle.setBounds(165, 211, 147, 82);
 		window.getContentPane().add(btnBattle);
 		
-		JButton btnBattle_1 = new JButton(manager.ViewPossibleBattles().get(2).GetName());
+		JButton btnBattle_1 = new JButton(manager.viewPossibleBattles().get(2).getName());
 		btnBattle_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				manager.ViewPossibleBattles().get(2).setPlayerSelected(true);
+				manager.viewPossibleBattles().get(2).setPlayerSelected(true);
 				finishedWindow();
 				manager.launchBattleScreen();
 			}
@@ -146,12 +146,12 @@ public class MainMenu {
 		btnBattle_1.setBounds(324, 211, 150, 82);
 		window.getContentPane().add(btnBattle_1);
 		
-		JLabel health1Label = new JLabel("Total Health: " +  Integer.toString(manager.ViewPossibleBattles().get(0).getTotalHealth()));
+		JLabel health1Label = new JLabel("Total Health: " +  Integer.toString(manager.viewPossibleBattles().get(0).getTotalHealth()));
 		health1Label.setFont(new Font("Osaka", Font.PLAIN, 14));
 		health1Label.setBounds(10, 293, 117, 31);
 		window.getContentPane().add(health1Label);
 		
-		JLabel lblDamage = new JLabel("Total Damage: " + Integer.toString(manager.ViewPossibleBattles().get(0).getTotalDamage()));
+		JLabel lblDamage = new JLabel("Total Damage: " + Integer.toString(manager.viewPossibleBattles().get(0).getTotalDamage()));
 		lblDamage.setFont(new Font("Osaka", Font.PLAIN, 14));
 		lblDamage.setBounds(10, 321, 123, 31);
 		window.getContentPane().add(lblDamage);
@@ -167,22 +167,22 @@ public class MainMenu {
 		viewTeamButton.setBounds(264, 58, 308, 97);
 		window.getContentPane().add(viewTeamButton);
 		
-		JLabel health1Label_1 = new JLabel("Total Health: " + Integer.toString(manager.ViewPossibleBattles().get(1).getTotalHealth()));
+		JLabel health1Label_1 = new JLabel("Total Health: " + Integer.toString(manager.viewPossibleBattles().get(1).getTotalHealth()));
 		health1Label_1.setFont(new Font("Osaka", Font.PLAIN, 14));
 		health1Label_1.setBounds(165, 293, 117, 31);
 		window.getContentPane().add(health1Label_1);
 		
-		JLabel health1Label_2 = new JLabel("Total Health: "  + Integer.toString(manager.ViewPossibleBattles().get(2).getTotalHealth()));
+		JLabel health1Label_2 = new JLabel("Total Health: "  + Integer.toString(manager.viewPossibleBattles().get(2).getTotalHealth()));
 		health1Label_2.setFont(new Font("Osaka", Font.PLAIN, 14));
 		health1Label_2.setBounds(324, 293, 117, 31);
 		window.getContentPane().add(health1Label_2);
 		
-		JLabel lblDamage_1 = new JLabel("Total Damage: " + Integer.toString(manager.ViewPossibleBattles().get(1).getTotalDamage()));
+		JLabel lblDamage_1 = new JLabel("Total Damage: " + Integer.toString(manager.viewPossibleBattles().get(1).getTotalDamage()));
 		lblDamage_1.setFont(new Font("Osaka", Font.PLAIN, 14));
 		lblDamage_1.setBounds(166, 321, 123, 31);
 		window.getContentPane().add(lblDamage_1);
 		
-		JLabel lblDamage_2 = new JLabel("Total Damage: " + Integer.toString(manager.ViewPossibleBattles().get(2).getTotalDamage()));
+		JLabel lblDamage_2 = new JLabel("Total Damage: " + Integer.toString(manager.viewPossibleBattles().get(2).getTotalDamage()));
 		lblDamage_2.setFont(new Font("Osaka", Font.PLAIN, 14));
 		lblDamage_2.setBounds(324, 321, 123, 31);
 		window.getContentPane().add(lblDamage_2);

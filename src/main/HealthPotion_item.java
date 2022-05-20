@@ -5,23 +5,16 @@ public class HealthPotion_item implements Item{
 	private int addedHealth = 5;
 	
 	
-	// applies health potion to selected monster
-	public Monster ApplyItem(Player player, int monsterIndex) {
-		Monster monster = (Monster) player.GetMonsters().get(monsterIndex);
-		monster.ChangeHealth(addedHealth);
-		return monster;
-	}
-	
 
-	public int GetHealthAmount() {
+	public int getHealthAmount() {
 		return addedHealth;
 		}
 	
-	public int GetDamageAmount() {
+	public int getDamageAmount() {
 		return 0;
 		}
 	
-	public int GetPrice() {
+	public int getPrice() {
 		return price;
 	}
 	

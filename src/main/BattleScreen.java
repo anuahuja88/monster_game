@@ -40,7 +40,7 @@ public class BattleScreen {
 		initialize();
 	}
 	public Player chooseEnemyPlayer() {
-		for (Player battle : manager.ViewPossibleBattles()) {
+		for (Player battle : manager.viewPossibleBattles()) {
 			if(battle.getPlayerSelected() == true) {
 				enemyPlayer = battle;
 			}
@@ -82,13 +82,13 @@ public class BattleScreen {
 		mainMenuButton.setBounds(419, 322, 145, 35);
 		window.getContentPane().add(mainMenuButton);
 		
-		JLabel homePlayer = new JLabel(manager.getPlayer().GetName());
+		JLabel homePlayer = new JLabel(manager.getPlayer().getName());
 		homePlayer.setFont(new Font("Dialog", Font.BOLD, 16));
 		homePlayer.setBounds(55, 51, 154, 15);
 		window.getContentPane().add(homePlayer);
 		
 		enemyPlayer = chooseEnemyPlayer();
-		JLabel enemyPlayerLbl = new JLabel(enemyPlayer.GetName());
+		JLabel enemyPlayerLbl = new JLabel(enemyPlayer.getName());
 		enemyPlayerLbl.setFont(new Font("Dialog", Font.BOLD, 16));
 		enemyPlayerLbl.setBounds(383, 52, 154, 15);
 		window.getContentPane().add(enemyPlayerLbl);

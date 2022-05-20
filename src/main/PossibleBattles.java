@@ -9,21 +9,22 @@ public class PossibleBattles {
 	ArrayList<String> names = new ArrayList<String>();
 	ArrayList<Player> possibleBattles = new ArrayList<Player>();
 	
-	//int difficulty = player.GetDifficuluty();
 	
 	PossibleBattles(Player player) {
 		this.player = player;
-		this.playerMonsterLength = player.GetMonsters().size();
-		CreatePossibleBattleList();
+		this.playerMonsterLength = player.getMonsters().size();
+		createPossibleBattleList();
 	}
 	
 	//creates a list of three players to chose to fight
-	public ArrayList<Player> CreatePossibleBattleList() {
+	public ArrayList<Player> createPossibleBattleList() {
 		for(int i = 0; i < 3; i++) {
-			possibleBattles.add(CreateEnemyPlayer());
+			possibleBattles.add(createEnemyPlayer());
 		}
 		return possibleBattles;
 	}
+	
+	
 	
 	// gets possible battle list
 	public ArrayList<Player> getPossibleBattles() {
@@ -31,12 +32,12 @@ public class PossibleBattles {
 	}
 	
 	// will need to implement of variation in the enemy's monsters depending on difficulty
-	public Player CreateEnemyPlayer() {
-		CreateNameList();
+	public Player createEnemyPlayer() {
+		createNameList();
 		Random random  = new Random();
 		Store monsterCreator = new Store();
 		
-		ArrayList<Monster> enemyMonsters = monsterCreator.CreateMonsterList(playerMonsterLength); // creates a monster list with an equal number as the main player for the enemy
+		ArrayList<Monster> enemyMonsters = monsterCreator.createMonsterList(); // creates a monster list with an equal number as the main player for the enemy
 		String name = names.get(random.nextInt(names.size()));
 		Player enemy = new Player(name, enemyMonsters);
 		
@@ -49,7 +50,7 @@ public class PossibleBattles {
 	}
 	
 
-	public ArrayList<String> CreateNameList() {
+	public ArrayList<String> createNameList() {
 		names.add("Hamish");
 		names.add("Anu");
 		names.add("Robert");
@@ -73,7 +74,7 @@ public class PossibleBattles {
 	public static void main(String[] args) throws InterruptedException {
 		Player player = new Player("hello", null);
 		PossibleBattles battle = new PossibleBattles(player);
-		battle.CreatePossibleBattleList();
+		battle.createPossibleBattleList();
 		System.out.println(battle);
 	
 		

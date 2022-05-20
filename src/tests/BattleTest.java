@@ -16,11 +16,11 @@ class BattleTest {
 		Monster monster2 = new Monster("testname", 10, 40 ,10, 3);
 		Player player = new Player();
 		Player enemyPlayer = new Player();
-		player.BuyMonster(monster1);
-		enemyPlayer.BuyMonster(monster2);
+		player.addMonster(monster1);
+		enemyPlayer.addMonster(monster2);
 		Battle battle = new Battle(player, enemyPlayer);
 		battle.StartBattle();
-		assertTrue(player.GetWonLastGame());
+		assertTrue(player.getWonLastGame());
 	}
 	
 	
@@ -31,11 +31,11 @@ class BattleTest {
 		Monster monster2 = new Monster("testname", 20, 40 ,20, 3);
 		Player player = new Player();
 		Player enemyPlayer = new Player();
-		player.BuyMonster(monster1);
-		enemyPlayer.BuyMonster(monster2);
+		player.addMonster(monster1);
+		enemyPlayer.addMonster(monster2);
 		Battle battle = new Battle(player, enemyPlayer);
 		battle.StartBattle();
-		assertFalse(player.GetWonLastGame());
+		assertFalse(player.getWonLastGame());
 	}
 	
 	// if the player has lost check if the revive method works correctly on easy
@@ -44,10 +44,10 @@ class BattleTest {
 		Monster monster1 = new Monster("testname", 10, 20 ,10, 3);
 		Monster monster2 = new Monster("testname", 20, 40 ,20, 3);
 		Player player = new Player();
-		player.SetDifficulty(1);
+		player.setDifficulty(1);
 		Player enemyPlayer = new Player();
-		player.BuyMonster(monster1);
-		enemyPlayer.BuyMonster(monster2);
+		player.addMonster(monster1);
+		enemyPlayer.addMonster(monster2);
 		Battle battle = new Battle(player, enemyPlayer);
 		battle.StartBattle();
 		battle.reviveDeadMonsters();
@@ -62,10 +62,10 @@ class BattleTest {
 			Monster monster1 = new Monster("testname", 10, 20 ,10, 3);
 			Monster monster2 = new Monster("testname", 20, 40 ,20, 3);
 			Player player = new Player();
-			player.SetDifficulty(2);
+			player.setDifficulty(2);
 			Player enemyPlayer = new Player();
-			player.BuyMonster(monster1);
-			enemyPlayer.BuyMonster(monster2);
+			player.addMonster(monster1);
+			enemyPlayer.addMonster(monster2);
 			Battle battle = new Battle(player, enemyPlayer);
 			battle.StartBattle();
 			battle.reviveDeadMonsters();

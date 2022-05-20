@@ -16,10 +16,10 @@ class RandomEventTest {
 		RandomEvent event = new RandomEvent(player);
 		Monster monster1 = new Monster("firstAlive", 10, 20 ,10, 3);
 		Monster monster2 = new Monster("firstAlive", 10, 20 ,10, 3);
-		player.BuyMonster(monster1);
-		player.BuyMonster(monster2);
+		player.addMonster(monster1);
+		player.addMonster(monster2);
 		event.newMonster();
-		assertEquals(1, player.GetMonsters().size());
+		assertEquals(1, player.getMonsters().size());
 		
 		
 		

@@ -20,35 +20,35 @@ public class Player {
 		
 	}
 	
-	public String GetName() {
+	public String getName() {
 		return name;
 	}
 	
-	public void SetName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
-	public void SetDays(int days){
+	public void setDays(int days){
 		this.days = days;
 	}
 	
-	public int GetDays() {
+	public int getDays() {
 		return days;
 	}
 
 	
-	public int GetCurrentDay() {
+	public int getCurrentDay() {
 		return currentDay;
 	}
 	
-	public void AddDay() {
+	public void addDay() {
 		currentDay++;
 	}
 	
-	public void SetDifficulty(int temp) {
+	public void setDifficulty(int temp) {
 		difficulty = temp;
 	}
 	
-	public int GetDifficuluty() {
+	public int getDifficuluty() {
 		return difficulty;
 	}
 	public void setPlayerSelected(boolean selected) {
@@ -62,53 +62,53 @@ public class Player {
 		wonLastGame = bool;
 	}
 
-	public boolean GetWonLastGame(){
+	public boolean getWonLastGame(){
 		return wonLastGame;
 	}
 	
-	public void ChangeCoins(int amount) {
+	public void changeCoins(int amount) {
 		coins += amount;
 	}
 	
-	public int GetCoins() {
+	public int getCoins() {
 		return coins;
 	}
 	
-	public Monster GetMonster(int index) {
+	public Monster getMonster(int index) {
 		return monsters.get(index);
 	}
 	
 	public int getTotalHealth() {
 		int total = 0;
 		for (Monster i : monsters) {
-			total += i.GetHealth();
+			total += i.getHealth();
 		}
 		return total;
 	}
 	public int getTotalDamage() {
 		int total = 0;
 		for (Monster i : monsters) {
-			total += i.GetDamage();
+			total += i.getDamage();
 		}
 		return total;
 	}
 	
-	public ArrayList<Monster> GetMonsters() {
+	public ArrayList<Monster> getMonsters() {
 		return monsters;
 	}
 
-	public Monster GetFirstAlive() {
+	public Monster getFirstAlive() {
 		for(Monster monster : monsters) {
-			if (monster.GetIsAlive() == true ) {
+			if (monster.getIsAlive() == true ) {
 				return monster;
 			}
 		}
 		return null;
 	}
 	
-	public Boolean CheckMonstersAlive() {
+	public Boolean checkMonstersAlive() {
 		for(Monster monster : monsters) {
-			if (monster.GetIsAlive() == true) {
+			if (monster.getIsAlive() == true) {
 				return true;
 			}
 		}
@@ -116,7 +116,7 @@ public class Player {
 	}
 	
 	// return a string that contains all monsters in the monster list 
-	public String MonstersTeamString() {
+	public String monstersTeamString() {
 		String returnString = "";
 		for(Monster i : monsters) {
 			returnString += i + "\n";
@@ -125,12 +125,12 @@ public class Player {
 		return returnString;
 	}
 	
-	public ArrayList<Item> GetItems() {
+	public ArrayList<Item> getItems() {
 		return items;
 	}
 	
 	// return a string that contains all items in the items list, make a count so items can be selected
-	public String ItemListString() {
+	public String itemListString() {
 		String returnString = "";
 		int count = 0;
 		for(Item i : items) {
@@ -141,7 +141,7 @@ public class Player {
 		return returnString;
 	}
 	
-	public void BuyMonster(Monster monster) {
+	public void addMonster(Monster monster) {
 		if (monsters.size() >= 3) {
 			System.out.println("sorry you already have the max amount of monsters");
 		} else {
@@ -151,13 +151,13 @@ public class Player {
 	
 	
 	
-	public void BuyItem(Item selectedItem) {
+	public void addItem(Item selectedItem) {
 		items.add(selectedItem);
 	}
 	
 	public String toString() {
 		String returnText  = "";
-		returnText += name + "\n" + MonstersTeamString();
+		returnText += name + "\n" + monstersTeamString();
 		return returnText;
 	}
 	

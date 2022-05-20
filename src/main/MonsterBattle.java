@@ -156,13 +156,13 @@ public class MonsterBattle {
 	
 				}else {
 				
-				manager.getPlayer().SetDays(dayslider.getValue());
-				manager.getPlayer().SetName(nameTextField.getText());
+				manager.getPlayer().setDays(dayslider.getValue());
+				manager.getPlayer().setName(nameTextField.getText());
 				if (easyBox.isSelected()) {
-					manager.getPlayer().SetDifficulty(0);
+					manager.getPlayer().setDifficulty(0);
 					
 				}else {
-					manager.getPlayer().SetDifficulty(1);
+					manager.getPlayer().setDifficulty(1);
 				}
 				finishedWindow();
 					
