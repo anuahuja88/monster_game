@@ -1,5 +1,6 @@
 package main;
 
+	// interface for all item objects 
 public interface Item {
 
 	public default int getHealthAmount() {

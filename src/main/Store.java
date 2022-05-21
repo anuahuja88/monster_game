@@ -2,6 +2,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
+	//store creates two lists of monster and items and prints options to the player to buy
 public class Store {
 	private ArrayList<Monster> monsterList = new ArrayList<Monster>();
 	ArrayList<Item> itemList = new ArrayList<Item>();
@@ -9,6 +10,7 @@ public class Store {
 	
 	public Store(){
 		createMonsterList();
+		createItemList();
 	}
 	// loop three times creating a new randomized monster and adding it to the monster list
 	public ArrayList<Monster> createMonsterList() {
@@ -38,7 +40,6 @@ public class Store {
 			return itemList;
 		}
 	public ArrayList<Item> getItemList(){
-		createItemList();
 		return itemList;
 	}
 	

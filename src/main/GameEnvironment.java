@@ -2,6 +2,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+	//game environment runs all classes needed and reads input from the scanner to play the game in console 
 public class GameEnvironment {
 	private Player player = new Player();
 	private Store store = new Store();
@@ -240,7 +241,7 @@ public class GameEnvironment {
 			if(player.getCurrentDay() + 1 > player.getDays()){
 				endGame(true);
 			}
-			player.addDay();
+			player.addCurrentDay();
 			hasFoughtToday = false;
 			randomEvent();
 			//mainGame();

@@ -14,7 +14,7 @@ class PlayerTest {
 	void addDayToCurrentTest() {
 		Player player = new Player();
 		player.setDays(10);
-		player.addDay();
+		player.addCurrentDay();
 		assertEquals(2, player.getCurrentDay());
 	}
 	
