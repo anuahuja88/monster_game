@@ -38,5 +38,6 @@ class MonsterTest {
 		assertFalse(monster.getIsAlive());
 		
 	}
+	
 
 }

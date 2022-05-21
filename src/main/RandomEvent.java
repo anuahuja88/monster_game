@@ -2,6 +2,9 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
+	//RandomEvent runs three level up, added monster and monster leaves on a monster in the player objects monster list
+	//Events are selected based on the choseRandomMethod method based on the probability variable a random number 0 to 100
+	//If the player lost the last game the probability of a monster leaving goes up
 public class RandomEvent {
 
     Random random = new Random();

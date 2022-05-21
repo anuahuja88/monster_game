@@ -1,6 +1,8 @@
 package main;
 import java.util.ArrayList;
 
+	// the player class stores a name, days(to be played), current day, difficulty (either 1 or 2)
+	// coins and a boolean for one last game. it also contains a monster and item list
 public class Player {
 	private String name;
 	private int days;
@@ -40,7 +42,7 @@ public class Player {
 		return currentDay;
 	}
 	
-	public void addDay() {
+	public void addCurrentDay() {
 		currentDay++;
 	}
 	

@@ -2,6 +2,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
+	// PossibleBattles class creates a list of three player objects for the player to chose to battle from 
 public class PossibleBattles {
 	private Player player;
 	private Player enemyPlayer;
@@ -10,7 +11,7 @@ public class PossibleBattles {
 	ArrayList<Player> possibleBattles = new ArrayList<Player>();
 	
 	
-	PossibleBattles(Player player) {
+	public PossibleBattles(Player player) {
 		this.player = player;
 		createPossibleBattleList();
 	}

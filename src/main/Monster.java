@@ -1,5 +1,6 @@
 package main;
 
+	// the monster object stores a name, health, max health, damage and price
 public class Monster {
 	private String monsterName;
 	private int health;

@@ -1,5 +1,6 @@
 package main;
 
+	//Increase monster damage by 3 and cost 3 coins 
 public class StrengthPotion_item implements Item {
 	private int price = 3;
 	private int addedDamage = 5;

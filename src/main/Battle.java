@@ -1,7 +1,7 @@
 package main;
 import java.util.ArrayList;
 
-
+	//take two player objects and compare both monster lists to fins which player wins the battle
 public class Battle {
 	Player player;
 	Player enemyPlayer;
