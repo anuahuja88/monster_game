@@ -6,11 +6,13 @@ public class GameEnvironment {
 	private Player player = new Player();
 	private Store store = new Store();
 	private ArrayList<Monster> monstersInStore = new ArrayList<Monster>();
+	private PossibleBattles battles = new PossibleBattles(player);
 	private Scanner input = new Scanner(System.in);
 	private Boolean firstVisitOfTheDay = true;
 	private Boolean hasFoughtToday = false;
 	
 	private MainMenu menu;
+	private Battle battle = new Battle(player, player);
 	
 	public GameEnvironment() {
 		launchMonsterBattle();
@@ -18,12 +20,20 @@ public class GameEnvironment {
 	public Player getPlayer() {
 		return player;
 	}
-	
+	public PossibleBattles getBattles() {
+		return battles;
+	}
+	public void setBattles(PossibleBattles battles) {
+		this.battles = battles;
+	}
 	public Boolean getHasFoughtToday() {
 		return hasFoughtToday;
 	}
 	public void setHasFoughtToday(Boolean hasFoughtToday) {
 		this.hasFoughtToday = hasFoughtToday;
+	}
+	public Battle getBattle() {
+		return battle ;
 	}
 	public void printSetupOptions() {
 
@@ -112,10 +122,10 @@ public class GameEnvironment {
 		}
 
 		if(selection ==5){
-			viewPossibleBattles();
+			getBattles().getPossibleBattles();
 		}
 		if(selection == 6){
-			goToSleep(menu);
+			//goToSleep(menu);
 
 		}
 	}
@@ -199,19 +209,19 @@ public class GameEnvironment {
 	}
 	
 	// create three different player objects with monsters attributes depending on the day, allow the player to battle one 
-	public ArrayList <Player> viewPossibleBattles() {
-		PossibleBattles battles = new PossibleBattles(player);
-		System.out.println(battles);
-		int selection = input.nextInt();
-		if(selection < 1 || selection > 3) {
-			System.out.println("Please enter a number between 1 and 3");
-			selection = input.nextInt();
-		}
-		Player enemy = battles.getEnemyPlayer(selection - 1);  //-1 to index with a list correctly 
-		battle(player, enemy);
+	//public ArrayList <Player> viewPossibleBattles() {
+	
+	//	System.out.println(battles);
+	//	int selection = input.nextInt();
+	//	if(selection < 1 || selection > 3) {
+	//		System.out.println("Please enter a number between 1 and 3");
+	//		selection = input.nextInt();
+	//	}
+	//	Player enemy = battles.getEnemyPlayer(selection - 1);  //-1 to index with a list correctly 
+	//	battle(player, enemy);
 
-		return battles.getPossibleBattles();
-	}
+	//return battles.getPossibleBattles();
+	//}
 	
 	// Determine who would win between two players one the real player the other the player object created in ViewPossibleBattles method
 	public void battle(Player player, Player playerAI) {
@@ -220,12 +230,12 @@ public class GameEnvironment {
 		String battleOutCome = battle.battleOutcomeString();
 		System.out.println(battleOutCome);
 		hasFoughtToday = true;
-		mainGame();
+		//mainGame();
 	}
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
 
-	public void goToSleep(MainMenu menu2) {
+	public void goToSleep(BattleScreen screen) {
 		if(hasFoughtToday) {
 			if(player.getCurrentDay() + 1 > player.getDays()){
 				endGame(true);
@@ -233,11 +243,11 @@ public class GameEnvironment {
 			player.addDay();
 			hasFoughtToday = false;
 			randomEvent();
-			mainGame();
+			//mainGame();
 			
 		}else {
 			System.out.println("you have to fight at least once to go to sleep");
-			mainGame();
+			//mainGame();
 		}
 		
 	}

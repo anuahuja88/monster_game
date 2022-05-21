@@ -15,11 +15,14 @@ public class Battle {
 	}
 	
 	//run fights between every monster in the list until one team is dead
+
 	public void StartBattle() {
 		Boolean fightInProgress = true;
 		Monster playerMonster = player.getFirstAlive();
 		Monster enemyMonster = enemyPlayer.getFirstAlive();
+		
 		while(fightInProgress == true ) {
+			System.out.println("This: " + playerMonster.getMonsterName());
 			playerMonster = player.getFirstAlive();
 			enemyMonster = enemyPlayer.getFirstAlive();
 			if(player.checkMonstersAlive() == true && enemyPlayer.checkMonstersAlive() == true) {
