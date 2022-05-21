@@ -25,7 +25,9 @@ public class Store {
 		public ArrayList<Monster> createMonsterList(int length) {
 			CreateNameList();
 			for(int index = 0; index < length; index++) {
+				
 				monsterList.add(CreateRandomizedMonster());
+				System.out.println(monsterList.get(index).getMonsterName());
 			}
 			return monsterList;
 		}

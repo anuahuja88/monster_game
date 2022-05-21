@@ -12,6 +12,9 @@ public class RandomEvent {
     JamJar_Item item = new JamJar_Item();
     int probability = random.nextInt(100);
     int monsterIndex;
+    boolean levelUp = false;
+    boolean monsterLeave = false;
+    boolean newMonster = false;
 
 
     boolean wonLastGame;
@@ -32,17 +35,21 @@ public class RandomEvent {
     	
     	if(probability <= 20) {
     		levelUp();
+    		levelUp = true;
     	}
     	if (probability >= 21 && probability <= 40){
     		newMonster();
+    		newMonster = true;
     	}
     
         if(wonLastGame) {
         	if(probability >= 41 && probability <= 50) {
         		monsterLeave();
+        		monsterLeave = true;
         	} 
         }else if (probability >= 41 && probability <= 70) {
         	monsterLeave();
+        	monsterLeave = true;
         }
         
         

@@ -131,9 +131,24 @@ public class ViewTeamScreen {
 		lblJamJars.setBounds(293, 329, 118, 21);
 		window.getContentPane().add(lblJamJars);
 		
-		JButton monst1 = new JButton(manager.getPlayer().getMonsters().get(0).getMonsterName());
+		JLabel healthLbl1 = new JLabel("Health: ");
+		healthLbl1.setBounds(26, 119, 169, 21);
+		healthLbl1.setFont(new Font("Osaka", Font.PLAIN, 16));
+		window.getContentPane().add(healthLbl1);
+		
+		JLabel damageLbl1 = new JLabel("Damage: ");
+		damageLbl1.setBounds(26, 152, 169, 21);
+		damageLbl1.setFont(new Font("Osaka", Font.PLAIN, 16));
+		window.getContentPane().add(damageLbl1);
+		
+		JButton monst1 = new JButton();
 		monst1.setBounds(26, 52, 169, 55);
 		window.getContentPane().add(monst1);
+		if (manager.getPlayer().getMonsters().size() != 0) {
+			monst1.setText(manager.getPlayer().getMonsters().get(0).getMonsterName());
+			healthLbl1.setText("Health: " + manager.getPlayer().getMonsters().get(0).getHealth());
+			damageLbl1.setText("Damage: " + manager.getPlayer().getMonsters().get(0).getDamage());
+		}
 		
 		JButton monst2 = new JButton("");
 		monst2.setBounds(207, 52, 169, 55);
@@ -151,10 +166,7 @@ public class ViewTeamScreen {
 			monst3.setText(manager.getPlayer().getMonsters().get(2).getMonsterName());
 		}
 		
-		JLabel healthLbl1 = new JLabel("Health: " + manager.getPlayer().getMonsters().get(0).getHealth());
-		healthLbl1.setBounds(26, 119, 169, 21);
-		healthLbl1.setFont(new Font("Osaka", Font.PLAIN, 16));
-		window.getContentPane().add(healthLbl1);
+		
 		
 		JLabel healthLbl2 = new JLabel("Health:");
 		healthLbl2.setBounds(207, 119, 169, 21);
@@ -173,10 +185,7 @@ public class ViewTeamScreen {
 			healthLbl3.setText("Health: " + manager.getPlayer().getMonsters().get(2).getHealth());
 		}
 		
-		JLabel damageLbl1 = new JLabel("Damage: " + manager.getPlayer().getMonsters().get(0).getDamage());
-		damageLbl1.setBounds(26, 152, 169, 21);
-		damageLbl1.setFont(new Font("Osaka", Font.PLAIN, 16));
-		window.getContentPane().add(damageLbl1);
+		
 		
 		JLabel damageLbl2 = new JLabel("Damage:");
 		damageLbl2.setBounds(207, 152, 169, 21);
@@ -297,10 +306,7 @@ public class ViewTeamScreen {
 		});
 		window.getContentPane().add(applyHP_3);
 		
-		JButton applySP_2 = 
-				
-				
-				new JButton("Apply Strength  potion");
+		JButton applySP_2 = new JButton("Apply Strength  potion");
 		applySP_2.setBounds(196, 219, 169, 34);
 		applySP_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -354,7 +360,7 @@ public class ViewTeamScreen {
 						manager.getPlayer().getMonsters().get(1).changeDamage(5);
 						healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(1).getHealth());
 						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(1).getDamage());
-						messageLbl.setText("Strength Potion Applied to monster");
+						messageLbl.setText("Jam Jar Applied to monster");
 						lblJamJars.setText("Jam Jars: " + (amountJam-1));
 						window.repaint();
 						manager.getPlayer().getItems().remove(jamJar);

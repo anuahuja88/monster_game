@@ -328,7 +328,7 @@ public class StoreScreen {
 
 				if (manager.getPlayer().getCoins() > jamJar.getPrice()) {
 					manager.getPlayer().addItem(jamJar);
-					manager.getPlayer().changeCoins(-3);
+					manager.getPlayer().changeCoins(-5);
 					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
 					purchaseItem(coinError);
 				}else {

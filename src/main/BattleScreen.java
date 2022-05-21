@@ -59,7 +59,7 @@ public class BattleScreen {
 		
 		JLabel messageLabel = new JLabel("");
 		messageLabel.setForeground(Color.RED);
-		messageLabel.setBounds(199, 39, 154, 109);
+		messageLabel.setBounds(39, 26, 471, 27);
 		window.getContentPane().add(messageLabel);
 		
 		JLabel welcomeLabel = new JLabel("Battle Zone!");
@@ -77,12 +77,18 @@ public class BattleScreen {
 			public void actionPerformed(ActionEvent e) {
 				manager.battle(manager.getPlayer(), enemyPlayer);
 				if (manager.getPlayer().getWonLastGame() == false) {
-					messageLabel.setText("You lost loll");
+					messageLabel.setText("You lost");
+					if (manager.getPlayer().getCoins() < 3) {
+						manager.endGame(true);
+						manager.launchGameOverScreen();
+					}
 					
 				}else {
 					messageLabel.setText("You won");
-					manager.goToSleep(screen);
+					manager.launchPostBattleScreen();
+					
 				}
+				
 		
 			}
 		});
@@ -109,9 +115,14 @@ public class BattleScreen {
 		enemyPlayerLbl.setBounds(383, 52, 154, 15);
 		window.getContentPane().add(enemyPlayerLbl);
 		
-		JButton myMonst1 = new JButton(manager.getPlayer().getMonsters().get(0).getMonsterName());
+		JButton myMonst1 = new JButton("");
 		myMonst1.setBounds(42, 78, 145, 59);
 		window.getContentPane().add(myMonst1);
+		if (manager.getPlayer().getMonsters().size() == 0) {
+			messageLabel.setText("No monsters in team, purchase monster from store before continuing");
+		}else {
+			myMonst1.setText(manager.getPlayer().getMonsters().get(0).getMonsterName());
+		}
 		
 		JButton myMonst2 = new JButton("");
 		myMonst2.setBounds(42, 149, 145, 59);
@@ -138,7 +149,7 @@ public class BattleScreen {
 		JButton enemyMonst2 = new JButton("");
 		enemyMonst2.setBounds(365, 149, 145, 59);
 		window.getContentPane().add(enemyMonst2);
-		if (manager.getPlayer().getMonsters().size() == 2) {
+		if (enemyPlayer.getMonsters().size() == 2) {
 			enemyMonst2.setText(enemyPlayer.getMonsters().get(1).getMonsterName());
 			
 		}
@@ -146,7 +157,7 @@ public class BattleScreen {
 		JButton enemyMonst3 = new JButton("");
 		enemyMonst3.setBounds(365, 220, 145, 59);
 		window.getContentPane().add(enemyMonst3);
-		if (manager.getPlayer().getMonsters().size() == 3) {
+		if (enemyPlayer.getMonsters().size() == 3) {
 			enemyMonst2.setText(enemyPlayer.getMonsters().get(1).getMonsterName());
 			enemyMonst3.setText(enemyPlayer.getMonsters().get(2).getMonsterName());
 			

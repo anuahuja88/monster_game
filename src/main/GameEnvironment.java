@@ -236,7 +236,7 @@ public class GameEnvironment {
 	
 	// if a battle has happened increase the current day, if the current day is the max amount end the game, run chance of a random event 
 
-	public void goToSleep(BattleScreen screen) {
+	public void goToSleep(PostBattleScreen screen) {
 		if(hasFoughtToday) {
 			if(player.getCurrentDay() + 1 > player.getDays()){
 				endGame(true);
@@ -244,6 +244,7 @@ public class GameEnvironment {
 			player.addCurrentDay();
 			hasFoughtToday = false;
 			randomEvent();
+			battles.resetPossibleBattles();
 			//mainGame();
 			
 		}else {
@@ -326,6 +327,21 @@ public class GameEnvironment {
 	public void closeBattleScreen(BattleScreen battleScreen) {
 		battleScreen.closeWindow();
 		launchMainMenu();
+		
+	}
+	public void launchPostBattleScreen() {
+		 PostBattleScreen postBattleScreen = new  PostBattleScreen(this);
+	}
+	public void closePostBattleScreen( PostBattleScreen postBattleScreen) {
+		postBattleScreen.closeWindow();
+		launchMainMenu();
+	}
+	public void launchGameOverScreen() {
+		GameOverScreen gameOverScreen = new GameOverScreen(this);
+	}
+	public void closeGameOverScreen(GameOverScreen gameOverScreen) {
+		gameOverScreen.closeWindow();
+		launchMonsterBattle();
 	}
 
 	
