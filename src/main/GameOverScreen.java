@@ -73,14 +73,14 @@ public class GameOverScreen {
 		messageLbl.setBounds(66, 158, 466, 28);
 		window.getContentPane().add(messageLbl);
 		
-		JButton restartButton = new JButton("Play Again");
-		restartButton.addActionListener(new ActionListener() {
+		JButton quitButton = new JButton("Quit");
+		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
 			}
 		});
-		restartButton.setFont(new Font("Osaka", Font.PLAIN, 16));
-		restartButton.setBounds(173, 256, 205, 66);
-		window.getContentPane().add(restartButton);
+		quitButton.setFont(new Font("Osaka", Font.PLAIN, 16));
+		quitButton.setBounds(173, 256, 205, 66);
+		window.getContentPane().add(quitButton);
 	}
 }

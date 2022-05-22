@@ -20,6 +20,7 @@ public class MainMenu {
 	private JFrame window;
 	private GameEnvironment manager;
 	private MainMenu screen;
+	private RandomEvent random;
 
 	/**
 	 * Launch the application.
@@ -46,6 +47,13 @@ public class MainMenu {
 		initialize();
 		window.setVisible(true);
 	}
+	public MainMenu(GameEnvironment incoming, RandomEvent newRandom) {
+		manager = incoming;
+		screen = this;
+		random = newRandom;
+		initialize();
+		window.setVisible(true);
+	}
 	
 	public void closeWindow() {
 		window.dispose();
@@ -56,6 +64,8 @@ public class MainMenu {
 	public MainMenu() {
 		initialize();
 	}
+
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -113,7 +123,6 @@ public class MainMenu {
 		JButton battle_1_Button = new JButton();
 		battle_1_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (manager.getBattles().getPossibleBattles().get(0).size() == 0)
 				manager.getBattles().getPossibleBattles().get(0).setPlayerSelected(true);
 				finishedWindow();
 				manager.launchBattleScreen();
@@ -194,17 +203,23 @@ public class MainMenu {
 		randomEventLbl.setFont(new Font("Dialog", Font.BOLD, 16));
 		randomEventLbl.setBounds(165, 21, 407, 22);
 		window.getContentPane().add(randomEventLbl);
-		if (manager.getRandomEvent().monsterLeave == true) {
+		try {
+		if (random.monsterLeave == true) {
+			System.out.println("asdf");
 			randomEventLbl.setText("Monster randomly left overnight");
 			manager.getRandomEvent().monsterLeave = false;
 		}
-		if (manager.getRandomEvent().newMonster == true) {
+		if (random.newMonster == true) {
 			randomEventLbl.setText("New Monster randomly joined overnight");
 			manager.getRandomEvent().newMonster = false;
 		}
-		if (manager.getRandomEvent().levelUp == true) {
+		if (random.levelUp == true) {
 			randomEventLbl.setText("Monster randomly levelled up overnight");
 			manager.getRandomEvent().levelUp = false;
 		}
+		}catch (Exception e) {
+			randomEventLbl.setText("");
+		}
+		
 	}
 }

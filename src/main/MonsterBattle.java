@@ -160,9 +160,10 @@ public class MonsterBattle {
 				manager.getPlayer().setName(nameTextField.getText());
 				if (easyBox.isSelected()) {
 					manager.getPlayer().setDifficulty(0);
-					
+					manager.getPlayer().setCoins(10);
 				}else {
 					manager.getPlayer().setDifficulty(1);
+					manager.getPlayer().setCoins(5);
 				}
 				finishedWindow();
 					

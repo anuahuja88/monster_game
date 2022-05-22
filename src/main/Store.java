@@ -95,6 +95,10 @@ public class Store {
 		names.add("Scarry Guy");
 		names.add("Goop Thing");
 		names.add("Horrible Hands");
+		names.add("Big Vlad");
+		names.add("Auntie patel");
+		names.add("Happy man");
+		names.add("King Kong");
 		
 		return names;
 	}

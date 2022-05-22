@@ -79,13 +79,14 @@ public class BattleScreen {
 				if (manager.getPlayer().getWonLastGame() == false) {
 					messageLabel.setText("You lost");
 					if (manager.getPlayer().getCoins() < 3) {
+						finishedWindow();
 						manager.endGame(true);
 						manager.launchGameOverScreen();
 					}
 					
 				}else {
-					manager.launchPostBattleScreen();
-					
+					finishedWindow();
+					manager.launchPostBattleScreen();	
 				}
 				
 		
@@ -99,6 +100,7 @@ public class BattleScreen {
 			public void actionPerformed(ActionEvent arg0) {
 				enemyPlayer.setPlayerSelected(false);
 				finishedWindow();
+				manager.launchMainMenu();
 			}
 		});
 		mainMenuButton.setBounds(419, 322, 145, 35);

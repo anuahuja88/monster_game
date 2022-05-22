@@ -8,7 +8,7 @@ public class Player {
 	private int days;
 	private int currentDay = 1;
 	private int difficulty;
-	private int coins = 10;
+	private int coins;
 	private boolean playerSelected;
 	private boolean wonLastGame = false;
 	private ArrayList<Monster> monsters = new ArrayList<Monster>();
@@ -72,6 +72,9 @@ public class Player {
 		coins += amount;
 	}
 	
+	public void setCoins(int coins) {
+		this.coins  = coins;
+	}
 	public int getCoins() {
 		return coins;
 	}

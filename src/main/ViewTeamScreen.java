@@ -264,7 +264,7 @@ public class ViewTeamScreen {
 		applyHP_2.setBounds(207, 185, 206, 34);
 		applyHP_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().getMonsters().size() == 2) {
+				if (manager.getPlayer().getMonsters().size() >= 2) {
 					if (manager.getPlayer().getItems().contains(healthPotion) == true){
 						manager.getPlayer().getMonsters().get(1).changeHealth(5);
 						healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(1).getHealth());
@@ -310,7 +310,7 @@ public class ViewTeamScreen {
 		applySP_2.setBounds(207, 219, 206, 34);
 		applySP_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().getMonsters().size() == 2) {
+				if (manager.getPlayer().getMonsters().size() >= 2) {
 					if (manager.getPlayer().getItems().contains(strengthPotion) == true){
 						manager.getPlayer().getMonsters().get(1).changeDamage(5);
 						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(1).getDamage());
@@ -335,7 +335,7 @@ public class ViewTeamScreen {
 				if (manager.getPlayer().getMonsters().size() == 3) {
 					if (manager.getPlayer().getItems().contains(strengthPotion) == true){
 						manager.getPlayer().getMonsters().get(2).changeDamage(5);
-						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
+						damageLbl3.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
 						messageLbl.setText("Strength Potion Applied to monster");
 						lblStrengthPotions.setText("Strength Potions: " + (amountStrength-1));
 						window.repaint();
@@ -354,7 +354,7 @@ public class ViewTeamScreen {
 		applyJJ_2.setBounds(207, 252, 206, 34);
 		applyJJ_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().getMonsters().size() == 2) {
+				if (manager.getPlayer().getMonsters().size() >= 2) {
 					if (manager.getPlayer().getItems().contains(jamJar) == true){
 						manager.getPlayer().getMonsters().get(1).changeHealth(5);
 						manager.getPlayer().getMonsters().get(1).changeDamage(5);
@@ -383,8 +383,8 @@ public class ViewTeamScreen {
 					if (manager.getPlayer().getItems().contains(jamJar) == true){
 						manager.getPlayer().getMonsters().get(2).changeHealth(5);
 						manager.getPlayer().getMonsters().get(2).changeDamage(5);
-						healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(2).getHealth());
-						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
+						healthLbl3.setText("Health: " + manager.getPlayer().getMonsters().get(2).getHealth());
+						damageLbl3.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
 						messageLbl.setText("Jam Jar Applied to monster");
 						lblJamJars.setText("Jam Jars: " + (amountJam-1));
 						window.repaint();

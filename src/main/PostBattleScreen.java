@@ -67,29 +67,18 @@ public class PostBattleScreen {
 		window.getContentPane().add(messageLabel);
 		
 		JButton btnNewButton = new JButton("Sleep");
-		btnNewButton.setBounds(190, 210, 151, 57);
+		btnNewButton.setBounds(191, 287, 151, 57);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.goToSleep(screen);
 				finishedWindow();
 			}
 		});
 		btnNewButton.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(btnNewButton);
 		
-		JLabel coinsGained = new JLabel("You gained" + manager.getBattle().addedCoins);
+		JLabel coinsGained = new JLabel("You gained " + manager.getBattle().getAddedCoins() + " coins");
 		coinsGained.setForeground(Color.BLACK);
 		coinsGained.setBounds(158, 73, 245, 33);
 		window.getContentPane().add(coinsGained);
-		
-		JButton mainMenu = new JButton("Main Menu");
-		mainMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
-			}
-		});
-		mainMenu.setFont(new Font("Osaka", Font.PLAIN, 16));
-		mainMenu.setBounds(190, 279, 151, 57);
-		window.getContentPane().add(mainMenu);
 	}
 }

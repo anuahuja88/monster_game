@@ -188,7 +188,7 @@ public class StoreScreen {
 		purchaseMonst1.addActionListener(new ActionListener() {
 			int price = firstMonster.getPrice();
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().getCoins() > price) {
+				if (manager.getPlayer().getCoins() >= price) {
 					manager.getPlayer().addMonster(firstMonster);
 					manager.getPlayer().changeCoins(-(price));
 					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
@@ -209,7 +209,7 @@ public class StoreScreen {
 		purchaseMonst2.addActionListener(new ActionListener() {
 			int price = secondMonster.getPrice();
 			public void actionPerformed(ActionEvent e) {
-			if (manager.getPlayer().getCoins() > price) {
+			if (manager.getPlayer().getCoins() >= price) {
 				manager.getPlayer().addMonster(secondMonster);
 				manager.getPlayer().changeCoins(-(price));
 				lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
@@ -226,7 +226,7 @@ public class StoreScreen {
 		JButton purchaseMonst3 = new JButton("Purchase");
 		purchaseMonst3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().getCoins() > thirdMonster.getPrice()) {
+				if (manager.getPlayer().getCoins() >= thirdMonster.getPrice()) {
 					manager.getPlayer().addMonster(thirdMonster);
 					manager.getPlayer().changeCoins(-(thirdMonster.getPrice()));
 					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
@@ -289,7 +289,7 @@ public class StoreScreen {
 		JButton purchaseHealthPotion = new JButton("Purchase");
 		purchaseHealthPotion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().getCoins() > healthPotion.getPrice()) {
+				if (manager.getPlayer().getCoins() >= healthPotion.getPrice()) {
 					manager.getPlayer().addItem(healthPotion);
 					manager.getPlayer().changeCoins(-3);
 					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
@@ -308,7 +308,7 @@ public class StoreScreen {
 		purchaseStrengthPotion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	
-			if (manager.getPlayer().getCoins() > strengthPotion.getPrice()) {
+			if (manager.getPlayer().getCoins() >= strengthPotion.getPrice()) {
 				manager.getPlayer().addItem(strengthPotion);
 				manager.getPlayer().changeCoins(-3);
 				lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
@@ -326,7 +326,7 @@ public class StoreScreen {
 		purchaseJamJar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (manager.getPlayer().getCoins() > jamJar.getPrice()) {
+				if (manager.getPlayer().getCoins() >= jamJar.getPrice()) {
 					manager.getPlayer().addItem(jamJar);
 					manager.getPlayer().changeCoins(-5);
 					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());

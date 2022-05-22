@@ -8,23 +8,36 @@ public class Battle {
 	boolean playerWon;
 	int addedCoins;
 	
+	
+	private int turn = 0;
+	
 
 	public Battle(Player player, Player enemyPlayer){
 		this.player = player;
 		this.enemyPlayer = enemyPlayer;
 		
 	}
+	public int potentialCoins() {
+		if (player.getDifficuluty() == 0){
+			addedCoins = enemyPlayer.getMonsters().size() * 3;
+		}else {
+			addedCoins = enemyPlayer.getMonsters().size() * 2;
+		}
+		return addedCoins;
+	}
+	public int getAddedCoins() {
+		return addedCoins;
+	}
+
 	
 	//run fights between every monster in the list until one team is dead
 
 	public void StartBattle() {
-		Boolean fightInProgress = true;
+		int winnings = potentialCoins();
 		ArrayList<Monster> playerMonsters = player.getMonsters();
 		ArrayList<Monster> enemyMonsters = enemyPlayer.getMonsters();
 		int index = 0;
 		while (playerMonsters.size() != 0 && enemyMonsters.size() != 0) {
-			System.out.println("Player monsters size" + playerMonsters.size());
-			System.out.println("Enemy monsters size" + enemyMonsters.size());
 			if (playerMonsters.get(index).getIsAlive() == false) {
 				index++;
 			}
@@ -43,17 +56,10 @@ public class Battle {
 			player.setWonLastGame(true);
 			playerWon = true;
 			// adds coins when player wins a battle depending on difficulty level
-			if (player.getDifficuluty() == 1){
-				addedCoins = player.getMonsters().size() * 3;
-				player.changeCoins(addedCoins);
-			}else {
-				addedCoins = player.getMonsters().size() * 2;
-				player.changeCoins(addedCoins);
-			}
-			
+			player.changeCoins(winnings);
+			System.out.println(getAddedCoins());
 			
 		}
-		
 		
 
 		
@@ -105,30 +111,29 @@ public class Battle {
 		int enemyHealth = enemyMonster.getHealth();
 		boolean fightOver = false;
 		
-		System.out.println(playerMonster.getMonsterName()+ " is fighting " + enemyMonster.getMonsterName());
-		System.out.println("Player Damage: " + playerDamage);
-		System.out.println("Enemy Damage: " + enemyDamage);
 		while (fightOver == false) {
-			System.out.println("Player Health: " + playerHealth);
-			System.out.println("Enemy Health: " + enemyHealth);
-			enemyHealth -= playerDamage;
-			
-			if (enemyHealth <= 0) {
-				fightOver = true;
+			if (turn == 0) {
+				enemyHealth -= playerDamage;
+				turn = 1;
+				if (enemyHealth <= 0) {
+					fightOver = true;
+					
+					
+					enemyPlayer.getMonsters().remove(0);
+					System.out.println(playerMonster.getMonsterName() + " has won");
+					break;
+				}
 				
+			} else {
+				playerHealth -= enemyDamage;
+				turn = 0;
+				if (playerHealth <= 0) {
+					fightOver = true;
+					player.getMonsters().remove(0);
+					System.out.println(enemyMonster.getMonsterName() + "has won");
+					break;
+				}
 				
-				enemyPlayer.getMonsters().remove(0);
-				System.out.println(playerMonster.getMonsterName() + " has won");
-				break;
-			}
-			
-			playerHealth -= enemyDamage;
-			
-			if (playerHealth <= 0) {
-				fightOver = true;
-				player.getMonsters().remove(0);
-				System.out.println(enemyMonster.getMonsterName() + "has won");
-				break;
 			}
 		}
 	

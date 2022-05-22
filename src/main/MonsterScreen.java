@@ -14,6 +14,7 @@ public class MonsterScreen {
 
 	private JFrame window;
 	private GameEnvironment manager;
+	private Store store;
 	
 
 	/**
@@ -40,6 +41,7 @@ public class MonsterScreen {
 	}
 	public MonsterScreen(GameEnvironment incoming) {
 		manager = incoming;
+		store = new Store();
 		initialize();
 		window.setVisible(true);
 	}
@@ -65,7 +67,7 @@ public class MonsterScreen {
 		slctMonstLabel.setBounds(179, 41, 200, 23);
 		window.getContentPane().add(slctMonstLabel);
 		
-		JButton monst1Label = new JButton(manager.getStore().getMonsterList().get(0).getMonsterName());
+		JButton monst1Label = new JButton(store.getMonsterList().get(0).getMonsterName());
 		monst1Label.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				manager.getPlayer().getMonsters().add(manager.getStore().getMonsterList().get(0));
@@ -77,10 +79,10 @@ public class MonsterScreen {
 		monst1Label.setBounds(19, 103, 173, 95);
 		window.getContentPane().add(monst1Label);
 		
-		JButton monst2Label = new JButton(manager.getStore().getMonsterList().get(1).getMonsterName());
+		JButton monst2Label = new JButton(store.getMonsterList().get(1).getMonsterName());
 		monst2Label.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.getPlayer().getMonsters().add(manager.getStore().getMonsterList().get(1));
+				manager.getPlayer().getMonsters().add(store.getMonsterList().get(1));
 				manager.getPlayer().changeCoins(-3);
 				finshedWindow();
 			}
@@ -93,7 +95,7 @@ public class MonsterScreen {
 		monst3Label.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				manager.getStore().createMonsterList(manager.getPlayer().getMonsters().size());
-				manager.getPlayer().getMonsters().add(manager.getStore().getMonsterList().get(2));
+				manager.getPlayer().getMonsters().add(store.getMonsterList().get(2));
 				manager.getPlayer().changeCoins(-3);
 				finshedWindow();
 			}
@@ -102,47 +104,47 @@ public class MonsterScreen {
 		monst3Label.setBounds(389, 103, 173, 95);
 		window.getContentPane().add(monst3Label);
 		
-		JLabel health1Label = new JLabel("Health: " + manager.getStore().getMonsterList().get(0).getHealth());
+		JLabel health1Label = new JLabel("Health: " + store.getMonsterList().get(0).getHealth());
 		health1Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		health1Label.setBounds(29, 209, 173, 31);
 		window.getContentPane().add(health1Label);
 		
-		JLabel health2Label = new JLabel("Health: " + manager.getStore().getMonsterList().get(1).getHealth());
+		JLabel health2Label = new JLabel("Health: " + store.getMonsterList().get(1).getHealth());
 		health2Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		health2Label.setBounds(214, 209, 173, 31);
 		window.getContentPane().add(health2Label);
 		
-		JLabel health3Label = new JLabel("Health: " + manager.getStore().getMonsterList().get(2).getHealth());
+		JLabel health3Label = new JLabel("Health: " + store.getMonsterList().get(2).getHealth());
 		health3Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		health3Label.setBounds(399, 209, 173, 31);
 		window.getContentPane().add(health3Label);
 		
-		JLabel damage1Label = new JLabel("Damage: " + manager.getStore().getMonsterList().get(0).getDamage());
+		JLabel damage1Label = new JLabel("Damage: " + store.getMonsterList().get(0).getDamage());
 		damage1Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		damage1Label.setBounds(29, 250, 173, 31);
 		window.getContentPane().add(damage1Label);
 		
-		JLabel damage2Label = new JLabel("Damage: " + manager.getStore().getMonsterList().get(1).getDamage());
+		JLabel damage2Label = new JLabel("Damage: " + store.getMonsterList().get(1).getDamage());
 		damage2Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		damage2Label.setBounds(214, 250, 173, 31);
 		window.getContentPane().add(damage2Label);
 		
-		JLabel damage3Label = new JLabel("Damage: " + manager.getStore().getMonsterList().get(2).getDamage());
+		JLabel damage3Label = new JLabel("Damage: " + store.getMonsterList().get(2).getDamage());
 		damage3Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		damage3Label.setBounds(399, 250, 173, 31);
 		window.getContentPane().add(damage3Label);
 		
-		JLabel price1Label = new JLabel("Price: $" + manager.getStore().getMonsterList().get(0).getPrice());
+		JLabel price1Label = new JLabel("Price: $" + store.getMonsterList().get(0).getPrice());
 		price1Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		price1Label.setBounds(29, 293, 173, 31);
 		window.getContentPane().add(price1Label);
 		
-		JLabel price2Label = new JLabel("Price: $" + manager.getStore().getMonsterList().get(1).getPrice());
+		JLabel price2Label = new JLabel("Price: $" + store.getMonsterList().get(1).getPrice());
 		price2Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		price2Label.setBounds(214, 293, 173, 31);
 		window.getContentPane().add(price2Label);
 		
-		JLabel price3Label = new JLabel("Price: $" + manager.getStore().getMonsterList().get(2).getPrice());
+		JLabel price3Label = new JLabel("Price: $" + store.getMonsterList().get(2).getPrice());
 		price3Label.setFont(new Font("Osaka", Font.PLAIN, 16));
 		price3Label.setBounds(399, 293, 173, 31);
 		window.getContentPane().add(price3Label);
