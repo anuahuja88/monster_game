@@ -36,6 +36,9 @@ public class GameOverScreen {
 	/**
 	 * Create the application.
 	 */
+	public GameOverScreen() {
+		initialize();
+	}
 	public GameOverScreen(GameEnvironment incoming) {
 		manager = incoming;
 		screen = this;

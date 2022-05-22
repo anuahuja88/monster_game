@@ -25,11 +25,21 @@ public class RandomEvent {
     public RandomEvent(Player player){
         this.player = player;
         setMonsterIndex();
+        choseRandomMethod();
     }
     public void setMonsterIndex() {
-        this.monsterIndex = random.nextInt(player.getMonsters().size());
+    	if(player.getMonsters().size() == 3) {
+    		this.monsterIndex = random.nextInt(3);
+    	} else {
+    		this.monsterIndex = 0;
+    	}
+
+        
         this.wonLastGame = player.getWonLastGame();
 
+    }
+    public int getMonsterIndex() {
+    	return monsterIndex;
     }
     public void choseRandomMethod(){
     	

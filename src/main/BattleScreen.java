@@ -84,7 +84,6 @@ public class BattleScreen {
 					}
 					
 				}else {
-					messageLabel.setText("You won");
 					manager.launchPostBattleScreen();
 					
 				}
@@ -128,6 +127,7 @@ public class BattleScreen {
 		myMonst2.setBounds(42, 149, 145, 59);
 		window.getContentPane().add(myMonst2);
 		if (manager.getPlayer().getMonsters().size() == 2) {
+			myMonst1.setText(manager.getPlayer().getMonsters().get(0).getMonsterName());
 			myMonst2.setText(manager.getPlayer().getMonsters().get(1).getMonsterName());
 			
 		}
@@ -137,19 +137,25 @@ public class BattleScreen {
 		myMonst3.setBounds(42, 220, 145, 59);
 		window.getContentPane().add(myMonst3);
 		if (manager.getPlayer().getMonsters().size() == 3) {
+			myMonst1.setText(manager.getPlayer().getMonsters().get(0).getMonsterName());
 			myMonst2.setText(manager.getPlayer().getMonsters().get(1).getMonsterName());
 			myMonst3.setText(manager.getPlayer().getMonsters().get(2).getMonsterName());
 			
 		}
 		
-		JButton enemyMonst1 = new JButton(enemyPlayer.getMonsters().get(0).getMonsterName());
+		JButton enemyMonst1 = new JButton("");
 		enemyMonst1.setBounds(365, 78, 145, 59);
 		window.getContentPane().add(enemyMonst1);
+		if (enemyPlayer.getMonsters().size() == 1) {
+			enemyMonst1.setText(enemyPlayer.getMonsters().get(0).getMonsterName());
+			
+		}
 		
 		JButton enemyMonst2 = new JButton("");
 		enemyMonst2.setBounds(365, 149, 145, 59);
 		window.getContentPane().add(enemyMonst2);
 		if (enemyPlayer.getMonsters().size() == 2) {
+			enemyMonst1.setText(enemyPlayer.getMonsters().get(0).getMonsterName());
 			enemyMonst2.setText(enemyPlayer.getMonsters().get(1).getMonsterName());
 			
 		}
@@ -158,6 +164,7 @@ public class BattleScreen {
 		enemyMonst3.setBounds(365, 220, 145, 59);
 		window.getContentPane().add(enemyMonst3);
 		if (enemyPlayer.getMonsters().size() == 3) {
+			enemyMonst1.setText(enemyPlayer.getMonsters().get(0).getMonsterName());
 			enemyMonst2.setText(enemyPlayer.getMonsters().get(1).getMonsterName());
 			enemyMonst3.setText(enemyPlayer.getMonsters().get(2).getMonsterName());
 			

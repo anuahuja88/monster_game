@@ -66,7 +66,7 @@ public class ViewTeamScreen {
 	private void initialize() {
 		window = new JFrame();
 		window.getContentPane().setFont(new Font("Osaka", Font.PLAIN, 16));
-		window.setBounds(100, 100, 578, 400);
+		window.setBounds(100, 100, 622, 427);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
@@ -82,7 +82,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(lblNewLabel);
 		
 		JButton mainMenuButton = new JButton("Main Menu");
-		mainMenuButton.setBounds(411, 317, 144, 44);
+		mainMenuButton.setBounds(464, 340, 144, 44);
 		mainMenuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finshedWindow();
@@ -117,7 +117,7 @@ public class ViewTeamScreen {
 		}
 		lblStrengthPotions.setText("Strength Potions: " + amountStrength);
 		lblStrengthPotions.setFont(new Font("Osaka", Font.PLAIN, 14));
-		lblStrengthPotions.setBounds(146, 329, 128, 21);
+		lblStrengthPotions.setBounds(146, 329, 150, 21);
 		window.getContentPane().add(lblStrengthPotions);
 		
 		JLabel lblJamJars = new JLabel("Jam Jars: 0");
@@ -128,7 +128,7 @@ public class ViewTeamScreen {
 		}
 		lblJamJars.setText("Jam Jars: " + amountJam);
 		lblJamJars.setFont(new Font("Osaka", Font.PLAIN, 14));
-		lblJamJars.setBounds(293, 329, 118, 21);
+		lblJamJars.setBounds(317, 329, 118, 21);
 		window.getContentPane().add(lblJamJars);
 		
 		JLabel healthLbl1 = new JLabel("Health: ");
@@ -205,7 +205,7 @@ public class ViewTeamScreen {
 		}
 		
 		JButton applyHP_1 = new JButton("Apply Health potion");
-		applyHP_1.setBounds(26, 185, 169, 34);
+		applyHP_1.setBounds(6, 185, 206, 34);
 		applyHP_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getItems().contains(healthPotion) == true){
@@ -223,7 +223,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(applyHP_1);
 		
 		JButton applySP_1 = new JButton("Apply Strength  potion");
-		applySP_1.setBounds(26, 219, 169, 34);
+		applySP_1.setBounds(6, 219, 206, 34);
 		applySP_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getItems().contains(strengthPotion) == true){
@@ -241,7 +241,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(applySP_1);
 		
 		JButton applyJJ_1 = new JButton("Apply JamJar");
-		applyJJ_1.setBounds(26, 252, 169, 34);
+		applyJJ_1.setBounds(6, 252, 206, 34);
 		applyJJ_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getItems().contains(jamJar) == true){
@@ -261,7 +261,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(applyJJ_1);
 		
 		JButton applyHP_2 = new JButton("Apply Health potion");
-		applyHP_2.setBounds(196, 185, 169, 34);
+		applyHP_2.setBounds(207, 185, 206, 34);
 		applyHP_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getMonsters().size() == 2) {
@@ -284,7 +284,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(applyHP_2);
 		
 		JButton applyHP_3 = new JButton("Apply Health potion");
-		applyHP_3.setBounds(377, 185, 169, 34);
+		applyHP_3.setBounds(405, 185, 203, 34);
 		applyHP_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getMonsters().size() == 3) {
@@ -307,7 +307,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(applyHP_3);
 		
 		JButton applySP_2 = new JButton("Apply Strength  potion");
-		applySP_2.setBounds(196, 219, 169, 34);
+		applySP_2.setBounds(207, 219, 206, 34);
 		applySP_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getMonsters().size() == 2) {
@@ -329,7 +329,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(applySP_2);
 		
 		JButton applySP_3 = new JButton("Apply Strength  potion");
-		applySP_3.setBounds(377, 219, 169, 34);
+		applySP_3.setBounds(405, 219, 203, 34);
 		applySP_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getMonsters().size() == 3) {
@@ -351,7 +351,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(applySP_3);
 		
 		JButton applyJJ_2 = new JButton("Apply JamJar");
-		applyJJ_2.setBounds(196, 252, 169, 34);
+		applyJJ_2.setBounds(207, 252, 206, 34);
 		applyJJ_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getMonsters().size() == 2) {
@@ -376,7 +376,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(applyJJ_2);
 		
 		JButton applyJJ_3 = new JButton("Apply JamJar");
-		applyJJ_3.setBounds(377, 252, 169, 34);
+		applyJJ_3.setBounds(405, 252, 203, 34);
 		applyJJ_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (manager.getPlayer().getMonsters().size() == 3) {

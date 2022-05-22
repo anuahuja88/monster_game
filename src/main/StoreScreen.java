@@ -80,7 +80,7 @@ public class StoreScreen {
 		
 		window = new JFrame();
 		window.setTitle("Store");
-		window.setBounds(100, 100, 578, 400);
+		window.setBounds(100, 100, 622, 427);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 
@@ -111,7 +111,7 @@ public class StoreScreen {
 				finshedWindow();
 			}
 		});
-		mainMenuButton.setBounds(465, 332, 107, 40);
+		mainMenuButton.setBounds(465, 332, 143, 40);
 		mainMenuButton.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(mainMenuButton);
 		

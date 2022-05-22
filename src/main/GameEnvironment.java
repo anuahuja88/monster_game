@@ -36,6 +36,9 @@ public class GameEnvironment {
 	public Battle getBattle() {
 		return battle ;
 	}
+	public RandomEvent getRandomEvent() {
+		return randomEvent();
+	}
 	public void printSetupOptions() {
 
 		
@@ -254,11 +257,10 @@ public class GameEnvironment {
 		
 	}
 	
-	public void randomEvent() {
+	public RandomEvent randomEvent() {
 
 		RandomEvent randomEvent = new RandomEvent(player);
-		randomEvent.choseRandomMethod();
-
+		return randomEvent;
 		
 	}
 

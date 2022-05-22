@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import java.awt.Color;
 
 public class MainMenu {
 
@@ -62,7 +63,7 @@ public class MainMenu {
 	private void initialize() {
 		window = new JFrame();
 		window.setTitle("Main Menu");
-		window.setBounds(100, 100, 578, 400);
+		window.setBounds(100, 100, 622, 427);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
@@ -99,7 +100,7 @@ public class MainMenu {
 			}
 		});
 		VisitStoreButton.setFont(new Font("Osaka", Font.PLAIN, 16));
-		VisitStoreButton.setBounds(446, 331, 130, 38);
+		VisitStoreButton.setBounds(478, 346, 130, 38);
 		window.getContentPane().add(VisitStoreButton);
 		
 		JLabel lblNewLabel = new JLabel("Choose a team to battle");
@@ -112,6 +113,7 @@ public class MainMenu {
 		JButton battle_1_Button = new JButton();
 		battle_1_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (manager.getBattles().getPossibleBattles().get(0).size() == 0)
 				manager.getBattles().getPossibleBattles().get(0).setPlayerSelected(true);
 				finishedWindow();
 				manager.launchBattleScreen();
@@ -186,5 +188,23 @@ public class MainMenu {
 		lblDamage_2.setFont(new Font("Osaka", Font.PLAIN, 14));
 		lblDamage_2.setBounds(324, 321, 123, 31);
 		window.getContentPane().add(lblDamage_2);
+		
+		JLabel randomEventLbl = new JLabel("");
+		randomEventLbl.setForeground(Color.RED);
+		randomEventLbl.setFont(new Font("Dialog", Font.BOLD, 16));
+		randomEventLbl.setBounds(165, 21, 407, 22);
+		window.getContentPane().add(randomEventLbl);
+		if (manager.getRandomEvent().monsterLeave == true) {
+			randomEventLbl.setText("Monster randomly left overnight");
+			manager.getRandomEvent().monsterLeave = false;
+		}
+		if (manager.getRandomEvent().newMonster == true) {
+			randomEventLbl.setText("New Monster randomly joined overnight");
+			manager.getRandomEvent().newMonster = false;
+		}
+		if (manager.getRandomEvent().levelUp == true) {
+			randomEventLbl.setText("Monster randomly levelled up overnight");
+			manager.getRandomEvent().levelUp = false;
+		}
 	}
 }

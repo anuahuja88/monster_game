@@ -34,6 +34,9 @@ public class PostBattleScreen {
 	/**
 	 * Create the application.
 	 */
+	public PostBattleScreen() {
+		initialize();
+	}
 	public  PostBattleScreen(GameEnvironment incoming) {
 		manager = incoming;
 		screen = this;
