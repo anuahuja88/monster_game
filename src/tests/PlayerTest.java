@@ -9,12 +9,14 @@ import main.Player;
 import main.Monster;
 
 class PlayerTest {
-
+	
+	//check if the add current day method works
 	@Test
 	void addDayToCurrentTest() {
 		Player player = new Player();
 		player.setDays(10);
 		player.addCurrentDay();
+		
 		assertEquals(2, player.getCurrentDay());
 	}
 	
