@@ -62,11 +62,17 @@ public class GameOverScreen {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
-		JLabel gameOverLbl = new JLabel("Game Over :(");
-		gameOverLbl.setForeground(Color.RED);
+		JLabel gameOverLbl = new JLabel("");
 		gameOverLbl.setFont(new Font("Osaka", Font.PLAIN, 28));
 		gameOverLbl.setBounds(173, 61, 205, 66);
 		window.getContentPane().add(gameOverLbl);
+		if (manager.getPlayer().getWonLastGame() == true) {
+			gameOverLbl.setText("Game Over :)");
+			gameOverLbl.setForeground(Color.GREEN);
+		}else {
+			gameOverLbl.setText("Game Over :(");
+			gameOverLbl.setForeground(Color.RED);
+		}
 		
 		JLabel messageLbl = new JLabel(manager.getPlayer().getName() + " lasted " + manager.getPlayer().getCurrentDay() + " days.");
 		messageLbl.setFont(new Font("Osaka", Font.PLAIN, 16));

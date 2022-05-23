@@ -30,10 +30,9 @@ public class RandomEvent {
     public void setMonsterIndex() {
     	if(player.getMonsters().size() == 3) {
     		this.monsterIndex = random.nextInt(3);
-    	} else {
+    	}else {
     		this.monsterIndex = 0;
     	}
-
         
         this.wonLastGame = player.getWonLastGame();
 

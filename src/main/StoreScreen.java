@@ -188,16 +188,19 @@ public class StoreScreen {
 		purchaseMonst1.addActionListener(new ActionListener() {
 			int price = firstMonster.getPrice();
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().getCoins() >= price) {
-					manager.getPlayer().addMonster(firstMonster);
-					manager.getPlayer().changeCoins(-(price));
-					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
-					purchaseMonster(coinError);
+				if (manager.getPlayer().getMonsters().size() == 3) {
+					coinError.setText("Max amount of monsters in team");
 				}else {
-					coinError.setText("Not enough coins to purchase monster");
-		
-				}	
-				
+					if (manager.getPlayer().getCoins() >= price) {
+						manager.getPlayer().addMonster(firstMonster);
+						manager.getPlayer().changeCoins(-(price));
+						lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
+						purchaseMonster(coinError);
+					}else {
+						coinError.setText("Not enough coins to purchase monster");
+			
+					}	
+				}
 			}
 		});
 		purchaseMonst1.setBounds(6, 185, 117, 29);
@@ -209,14 +212,17 @@ public class StoreScreen {
 		purchaseMonst2.addActionListener(new ActionListener() {
 			int price = secondMonster.getPrice();
 			public void actionPerformed(ActionEvent e) {
-			if (manager.getPlayer().getCoins() >= price) {
-				manager.getPlayer().addMonster(secondMonster);
-				manager.getPlayer().changeCoins(-(price));
-				lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
-				purchaseMonster(coinError);
-			}else {
-				coinError.setText("Not enough coins to purchase monster");
-	
+				if (manager.getPlayer().getMonsters().size() == 3) {
+					coinError.setText("Max amount of monsters in team");
+				}else {
+				if (manager.getPlayer().getCoins() >= price) {
+					manager.getPlayer().addMonster(secondMonster);
+					manager.getPlayer().changeCoins(-(price));
+					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
+					purchaseMonster(coinError);
+				}else {
+					coinError.setText("Not enough coins to purchase monster");
+				}
 			}		
 			}	
 		});
@@ -226,14 +232,17 @@ public class StoreScreen {
 		JButton purchaseMonst3 = new JButton("Purchase");
 		purchaseMonst3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (manager.getPlayer().getCoins() >= thirdMonster.getPrice()) {
-					manager.getPlayer().addMonster(thirdMonster);
-					manager.getPlayer().changeCoins(-(thirdMonster.getPrice()));
-					lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
-					purchaseMonster(coinError);
+				if (manager.getPlayer().getMonsters().size() == 3) {
+					coinError.setText("Max amount of monsters in team");
 				}else {
-					coinError.setText("Not enough coins to purchase monster");
-		
+					if (manager.getPlayer().getCoins() >= thirdMonster.getPrice()) {
+						manager.getPlayer().addMonster(thirdMonster);
+						manager.getPlayer().changeCoins(-(thirdMonster.getPrice()));
+						lblAvailableCoins.setText("Available coins: " + manager.getPlayer().getCoins());
+						purchaseMonster(coinError);
+					}else {
+						coinError.setText("Not enough coins to purchase monster");
+					}
 				}		
 			}
 		});

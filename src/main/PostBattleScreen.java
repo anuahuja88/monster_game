@@ -62,7 +62,7 @@ public class PostBattleScreen {
 		
 		JLabel messageLabel = new JLabel("Congratulations, you won the battle!");
 		messageLabel.setFont(new Font("Osaka", Font.PLAIN, 16));
-		messageLabel.setBounds(148, 26, 279, 51);
+		messageLabel.setBounds(108, 22, 456, 51);
 		messageLabel.setForeground(Color.GREEN);
 		window.getContentPane().add(messageLabel);
 		
@@ -70,7 +70,12 @@ public class PostBattleScreen {
 		btnNewButton.setBounds(191, 287, 151, 57);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				if(manager.getPlayer().getCurrentDay() < manager.getPlayer().getDays() -1) {
+					finishedWindow();
+				}else {
+					window.dispose();
+					manager.launchGameOverScreen();
+				}
 			}
 		});
 		btnNewButton.setFont(new Font("Osaka", Font.PLAIN, 16));

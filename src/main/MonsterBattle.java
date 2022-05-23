@@ -83,7 +83,7 @@ public class MonsterBattle {
 		
 		JLabel welcomeLabel = new JLabel("Welcome to monster battle!");
 		welcomeLabel.setFont(new Font("Baloo", Font.PLAIN, 20));
-		welcomeLabel.setBounds(34, 23, 262, 45);
+		welcomeLabel.setBounds(34, 23, 377, 45);
 		window.getContentPane().add(welcomeLabel);
 		
 		JLabel nameLabel = new JLabel("Please enter your name:");
@@ -144,15 +144,15 @@ public class MonsterBattle {
 		
 		JLabel nameErrorlabel = new JLabel("");
 		nameErrorlabel.setForeground(Color.RED);
-		nameErrorlabel.setBounds(205, 52, 354, 26);
+		nameErrorlabel.setBounds(34, 52, 525, 26);
 		window.getContentPane().add(nameErrorlabel);
 		
 		//goes to choose monster screen and if name is not between 3 and 15 chars, throws an error
 		JButton chooseMonsterButton = new JButton("Choose Monster");
 		chooseMonsterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (nameTextField.getDocument().getLength() < 3 || (nameTextField.getDocument().getLength() > 15)) {
-					nameErrorlabel.setText("Please enter a name between 3 and 15 characters! :(");
+				if (nameTextField.getDocument().getLength() < 3 || (nameTextField.getDocument().getLength() > 15) || nameTextField.getText().matches("^[a-zA-Z]*$") == false) {
+					nameErrorlabel.setText("Please enter a name between 3 and 15 characters with only letters! :(");
 	
 				}else {
 				
