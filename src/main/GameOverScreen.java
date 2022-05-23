@@ -88,5 +88,10 @@ public class GameOverScreen {
 		quitButton.setFont(new Font("Osaka", Font.PLAIN, 16));
 		quitButton.setBounds(173, 256, 205, 66);
 		window.getContentPane().add(quitButton);
+		
+		JLabel scoreLabel = new JLabel("Your final score is " + manager.getPlayer().getScore());
+		scoreLabel.setFont(new Font("Osaka", Font.PLAIN, 16));
+		scoreLabel.setBounds(66, 190, 466, 28);
+		window.getContentPane().add(scoreLabel);
 	}
 }

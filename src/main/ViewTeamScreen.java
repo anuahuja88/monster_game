@@ -66,12 +66,12 @@ public class ViewTeamScreen {
 	private void initialize() {
 		window = new JFrame();
 		window.getContentPane().setFont(new Font("Osaka", Font.PLAIN, 16));
-		window.setBounds(100, 100, 622, 427);
+		window.setBounds(100, 100, 650, 450);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
 		JLabel messageLbl = new JLabel("");
-		messageLbl.setBounds(221, 6, 325, 34);
+		messageLbl.setBounds(230, 6, 325, 34);
 		messageLbl.setForeground(Color.RED);
 		messageLbl.setFont(new Font("Osaka", Font.PLAIN, 14));
 		window.getContentPane().add(messageLbl);
@@ -82,7 +82,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(lblNewLabel);
 		
 		JButton mainMenuButton = new JButton("Main Menu");
-		mainMenuButton.setBounds(464, 340, 144, 44);
+		mainMenuButton.setBounds(500, 384, 144, 44);
 		mainMenuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finshedWindow();
@@ -92,7 +92,7 @@ public class ViewTeamScreen {
 		window.getContentPane().add(mainMenuButton);
 		
 		JLabel inventoryLbl = new JLabel("Inventory");
-		inventoryLbl.setBounds(26, 296, 169, 21);
+		inventoryLbl.setBounds(16, 298, 169, 21);
 		inventoryLbl.setFont(new Font("Osaka", Font.PLAIN, 16));
 		window.getContentPane().add(inventoryLbl);
 		
@@ -105,7 +105,7 @@ public class ViewTeamScreen {
 		}
 		hlthPotionInvent.setText("Health Potions: " + amountHealth);
 		hlthPotionInvent.setFont(new Font("Osaka", Font.PLAIN, 14));
-		hlthPotionInvent.setBounds(6, 329, 128, 21);
+		hlthPotionInvent.setBounds(16, 396, 128, 21);
 		window.getContentPane().add(hlthPotionInvent);
 		
 		JLabel lblStrengthPotions = new JLabel("Strength Potions: 0");
@@ -117,7 +117,7 @@ public class ViewTeamScreen {
 		}
 		lblStrengthPotions.setText("Strength Potions: " + amountStrength);
 		lblStrengthPotions.setFont(new Font("Osaka", Font.PLAIN, 14));
-		lblStrengthPotions.setBounds(146, 329, 150, 21);
+		lblStrengthPotions.setBounds(207, 396, 150, 21);
 		window.getContentPane().add(lblStrengthPotions);
 		
 		JLabel lblJamJars = new JLabel("Jam Jars: 0");
@@ -128,7 +128,7 @@ public class ViewTeamScreen {
 		}
 		lblJamJars.setText("Jam Jars: " + amountJam);
 		lblJamJars.setFont(new Font("Osaka", Font.PLAIN, 14));
-		lblJamJars.setBounds(317, 329, 118, 21);
+		lblJamJars.setBounds(415, 396, 118, 21);
 		window.getContentPane().add(lblJamJars);
 		
 		JLabel healthLbl1 = new JLabel("Health: ");
@@ -213,8 +213,8 @@ public class ViewTeamScreen {
 					healthLbl1.setText("Health: " + manager.getPlayer().getMonsters().get(0).getHealth());
 					hlthPotionInvent.setText("Health Potions: " + (amountHealth -1));
 					messageLbl.setText("Health Potion Applied to monster");
-					window.repaint();
 					manager.getPlayer().getItems().remove(healthPotion);
+					window.repaint();
 				}else {
 					messageLbl.setText("Item does not exist in your inventory");
 				}
@@ -222,7 +222,7 @@ public class ViewTeamScreen {
 		});
 		window.getContentPane().add(applyHP_1);
 		
-		JButton applySP_1 = new JButton("Apply Strength  potion");
+		JButton applySP_1 = new JButton("Apply Strength potion");
 		applySP_1.setBounds(6, 219, 206, 34);
 		applySP_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -231,8 +231,8 @@ public class ViewTeamScreen {
 					damageLbl1.setText("Damage: " + manager.getPlayer().getMonsters().get(0).getDamage());
 					messageLbl.setText("Strength Potion Applied to monster");
 					lblStrengthPotions.setText("Strength Potions: " + (amountStrength-1));
-					window.repaint();
 					manager.getPlayer().getItems().remove(strengthPotion);
+					window.repaint();
 				}else {
 					messageLbl.setText("Item does not exist in your inventory");
 				}
@@ -251,8 +251,8 @@ public class ViewTeamScreen {
 					damageLbl1.setText("Damage: " + manager.getPlayer().getMonsters().get(0).getDamage());
 					messageLbl.setText("Jam Jar Applied to monster");
 					lblJamJars.setText("Jam Jars: " + (amountJam-1));
-					window.repaint();
 					manager.getPlayer().getItems().remove(jamJar);
+					window.repaint();
 				}else {
 					messageLbl.setText("Item does not exist in your inventory");
 				}
@@ -270,8 +270,8 @@ public class ViewTeamScreen {
 						healthLbl2.setText("Health: " + manager.getPlayer().getMonsters().get(1).getHealth());
 						messageLbl.setText("Health Potion Applied to monster");
 						hlthPotionInvent.setText("Health Potions: " + (amountHealth -1));
-						window.repaint();
 						manager.getPlayer().getItems().remove(healthPotion);
+						window.repaint();
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -293,8 +293,9 @@ public class ViewTeamScreen {
 						healthLbl3.setText("Health: " + manager.getPlayer().getMonsters().get(2).getHealth());
 						messageLbl.setText("Health Potion Applied to monster");
 						hlthPotionInvent.setText("Health Potions: " + (amountHealth -1));
-						window.repaint();
+						
 						manager.getPlayer().getItems().remove(healthPotion);
+						window.repaint();
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -306,7 +307,7 @@ public class ViewTeamScreen {
 		});
 		window.getContentPane().add(applyHP_3);
 		
-		JButton applySP_2 = new JButton("Apply Strength  potion");
+		JButton applySP_2 = new JButton("Apply Strength potion");
 		applySP_2.setBounds(207, 219, 206, 34);
 		applySP_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -316,8 +317,9 @@ public class ViewTeamScreen {
 						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(1).getDamage());
 						messageLbl.setText("Strength Potion Applied to monster");
 						lblStrengthPotions.setText("Strength Potions: " + (amountStrength-1));
-						window.repaint();
+						
 						manager.getPlayer().getItems().remove(strengthPotion);
+						window.repaint();
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -328,7 +330,7 @@ public class ViewTeamScreen {
 		});
 		window.getContentPane().add(applySP_2);
 		
-		JButton applySP_3 = new JButton("Apply Strength  potion");
+		JButton applySP_3 = new JButton("Apply Strength potion");
 		applySP_3.setBounds(405, 219, 203, 34);
 		applySP_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -338,8 +340,8 @@ public class ViewTeamScreen {
 						damageLbl3.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
 						messageLbl.setText("Strength Potion Applied to monster");
 						lblStrengthPotions.setText("Strength Potions: " + (amountStrength-1));
-						window.repaint();
 						manager.getPlayer().getItems().remove(strengthPotion);
+						window.repaint();
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -362,8 +364,9 @@ public class ViewTeamScreen {
 						damageLbl2.setText("Damage: " + manager.getPlayer().getMonsters().get(1).getDamage());
 						messageLbl.setText("Jam Jar Applied to monster");
 						lblJamJars.setText("Jam Jars: " + (amountJam-1));
-						window.repaint();
 						manager.getPlayer().getItems().remove(jamJar);
+						window.repaint();
+						
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -387,8 +390,8 @@ public class ViewTeamScreen {
 						damageLbl3.setText("Damage: " + manager.getPlayer().getMonsters().get(2).getDamage());
 						messageLbl.setText("Jam Jar Applied to monster");
 						lblJamJars.setText("Jam Jars: " + (amountJam-1));
-						window.repaint();
 						manager.getPlayer().getItems().remove(jamJar);
+						window.repaint();
 					}else {
 						messageLbl.setText("Item does not exist in your inventory");
 					}
@@ -398,6 +401,57 @@ public class ViewTeamScreen {
 			}
 		});
 		window.getContentPane().add(applyJJ_3);
+		
+		JButton sellHealthPotion = new JButton("Sell Health Potion");
+		sellHealthPotion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (manager.getPlayer().getItems().contains(healthPotion) == true){
+					messageLbl.setText("Health Potion Sold");
+					hlthPotionInvent.setText("Health Potion " + (amountHealth-1));
+					manager.getPlayer().getItems().remove(healthPotion);
+					manager.getPlayer().changeCoins(3);
+					window.repaint();
+				}else {
+					messageLbl.setText("Item does not exist in your inventory");
+				}
+			}
+		});
+		sellHealthPotion.setBounds(6, 331, 206, 34);
+		window.getContentPane().add(sellHealthPotion);
+		
+		JButton sellStrengthPotion = new JButton("Sell Strength Potion");
+		sellStrengthPotion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (manager.getPlayer().getItems().contains(strengthPotion) == true){
+					messageLbl.setText("Strength Potion Sold");
+					lblStrengthPotions.setText("Strength Potion: " + (amountStrength-1));
+					manager.getPlayer().getItems().remove(strengthPotion);
+					manager.getPlayer().changeCoins(3);
+					window.repaint();
+				}else {
+					messageLbl.setText("Item does not exist in your inventory");
+				}
+			}
+		});
+		sellStrengthPotion.setBounds(207, 331, 206, 34);
+		window.getContentPane().add(sellStrengthPotion);
+		
+		JButton btnSellJamJar = new JButton("Sell JamJar");
+		btnSellJamJar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (manager.getPlayer().getItems().contains(jamJar) == true){
+					messageLbl.setText("Jam Jar Sold");
+					lblJamJars.setText("Jam Jar: " + (amountJam-1));
+					manager.getPlayer().getItems().remove(jamJar);
+					manager.getPlayer().changeCoins(5);
+					window.repaint();
+				}else {
+					messageLbl.setText("Item does not exist in your inventory");
+				}
+			}
+		});
+		btnSellJamJar.setBounds(405, 331, 206, 34);
+		window.getContentPane().add(btnSellJamJar);
 		
 		
 		

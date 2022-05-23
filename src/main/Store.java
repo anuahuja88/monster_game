@@ -68,8 +68,6 @@ public class Store {
 			System.out.println("Not enough coins to purchase");
 		}
 	}
-
-		
 	
 	//create a random monster with random attributes
 	public Monster CreateRandomizedMonster() {
@@ -86,7 +84,6 @@ public class Store {
 		return monsterList;
 		
 	}
-	
 	// add to the list of names 
 	public ArrayList<String> CreateNameList() {
 		names.add("Goblin");

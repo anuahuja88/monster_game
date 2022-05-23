@@ -9,6 +9,7 @@ public class Player {
 	private int currentDay = 1;
 	private int difficulty;
 	private int coins;
+	private int score;
 	private boolean playerSelected;
 	private boolean wonLastGame = false;
 	private ArrayList<Monster> monsters = new ArrayList<Monster>();
@@ -36,7 +37,14 @@ public class Player {
 	public int getDays() {
 		return days;
 	}
-
+	public int getScore() {
+		if (getDifficuluty() == 0){
+			score = getDays() * getCoins() * 5;
+		}else {
+			score = getDays() * getCoins() * 10;
+		}
+		return score;
+	}
 	
 	public int getCurrentDay() {
 		return currentDay;
