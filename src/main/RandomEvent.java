@@ -19,14 +19,16 @@ public class RandomEvent {
 
     boolean wonLastGame;
 
-
-
-
+    //constructor sets the player and calls setMonsterindex and chose randomMethod methods
     public RandomEvent(Player player){
         this.player = player;
         setMonsterIndex();
         choseRandomMethod();
     }
+
+    
+    //setMonster index choses a random monster if the player has over three monsters, if less then chooses the first monster
+    //this monster will level up or leave if the method s called.
     public void setMonsterIndex() {
     	if(player.getMonsters().size() == 3) {
     		this.monsterIndex = random.nextInt(3);
@@ -37,9 +39,14 @@ public class RandomEvent {
         this.wonLastGame = player.getWonLastGame();
 
     }
+    
+    //returns monsterIndex
     public int getMonsterIndex() {
     	return monsterIndex;
     }
+    
+    
+    //chooses a random method to run depending on the probability variable 
     public void choseRandomMethod(){
     	
     	if(probability <= 20) {
@@ -65,7 +72,7 @@ public class RandomEvent {
     }
 
 
-    //add a jamjar item to a random monster in players monster list 
+    //add a jamjar item to a random monster in players monster list as a level up
     public void levelUp(){
         int addedHealth = item.getHealthAmount();
         int addedDamage = item.getDamageAmount();
@@ -83,12 +90,15 @@ public class RandomEvent {
         System.out.println(player.getMonster(monsterIndex) + " Has leveled up over night!");
     }
 
-
+    
+    //remove monster form players monster list 
     public void monsterLeave(){
     	System.out.println(player.getMonster(monsterIndex) + " Has left the team overnight");
         player.getMonsters().remove(monsterIndex);
 
     }
+    
+    //add a new random monster to the players monster list 
     public void newMonster(){
         Store store = new Store();
         Monster newMonster = store.CreateRandomizedMonster();
