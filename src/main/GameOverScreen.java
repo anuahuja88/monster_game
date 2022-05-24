@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+//GameOverScreen is where the player goes when they either win or lose the game
+//The final stats of the game will also be displayed to the player
 public class GameOverScreen {
 
 	private JFrame window;
@@ -74,10 +76,15 @@ public class GameOverScreen {
 			gameOverLbl.setForeground(Color.RED);
 		}
 		
-		JLabel messageLbl = new JLabel(manager.getPlayer().getName() + " lasted " + manager.getPlayer().getCurrentDay() + " days.");
+		JLabel messageLbl = new JLabel();
 		messageLbl.setFont(new Font("Osaka", Font.PLAIN, 16));
 		messageLbl.setBounds(66, 158, 466, 28);
 		window.getContentPane().add(messageLbl);
+		if (manager.getPlayer().getWonLastGame()==true) {
+			messageLbl.setText(manager.getPlayer().getName() + " lasted " + (manager.getPlayer().getCurrentDay()+1) + " days.");
+		}else {
+			messageLbl.setText(manager.getPlayer().getName() + " lasted " + (manager.getPlayer().getCurrentDay()) + " days.");
+		}
 		
 		JButton quitButton = new JButton("Quit");
 		quitButton.addActionListener(new ActionListener() {

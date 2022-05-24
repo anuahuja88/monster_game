@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+// BattleScreen displays the line up of monsters battling from the chosen teams
+//This is where the battle occurs and the outcome is then displayed to the user 
 public class BattleScreen {
 
 	private JFrame window;
@@ -57,6 +59,7 @@ public class BattleScreen {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
+		//sets up message label
 		JLabel messageLabel = new JLabel("");
 		messageLabel.setForeground(Color.RED);
 		messageLabel.setBounds(39, 26, 471, 27);
@@ -72,29 +75,27 @@ public class BattleScreen {
 		vsLabel.setBounds(257, 143, 67, 59);
 		window.getContentPane().add(vsLabel);
 		
+		//button that runs the battle functions and shows the player the outcome of the battle
 		JButton batlleButton = new JButton("Battle!");
 		batlleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				manager.battle(manager.getPlayer(), enemyPlayer);
-				if (manager.getPlayer().getWonLastGame() == false) {
-					messageLabel.setText("You lost");
-					if (manager.getPlayer().getCoins() < 3) {
-						finishedWindow();
-						manager.endGame(true);
-						manager.launchGameOverScreen();
-					}
-					
+				manager.battle(manager.getPlayer(), enemyPlayer);			
+				if (manager.getPlayer().getCoins() < 3 && manager.getPlayer().getWonLastGame()==false) {
+					finishedWindow();
+					manager.endGame(true);
+					manager.launchGameOverScreen();
 				}else {
 					finishedWindow();
 					manager.launchPostBattleScreen();	
+						
+
 				}
-				
-		
 			}
 		});
 		batlleButton.setBounds(199, 255, 154, 75);
 		window.getContentPane().add(batlleButton);
 		
+		//takes player back to main menu
 		JButton mainMenuButton = new JButton("Main Menu");
 		mainMenuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -106,16 +107,19 @@ public class BattleScreen {
 		mainMenuButton.setBounds(419, 322, 145, 35);
 		window.getContentPane().add(mainMenuButton);
 		
+		//displays home players name 
 		JLabel homePlayer = new JLabel(manager.getPlayer().getName());
 		homePlayer.setFont(new Font("Dialog", Font.BOLD, 16));
 		homePlayer.setBounds(55, 51, 154, 15);
 		window.getContentPane().add(homePlayer);
 		
+		//displays enemy players name 
 		JLabel enemyPlayerLbl = new JLabel(enemyPlayer.getName());
 		enemyPlayerLbl.setFont(new Font("Dialog", Font.BOLD, 16));
 		enemyPlayerLbl.setBounds(383, 52, 154, 15);
 		window.getContentPane().add(enemyPlayerLbl);
 		
+		//displays players team
 		JButton myMonst1 = new JButton("");
 		myMonst1.setBounds(42, 78, 145, 59);
 		window.getContentPane().add(myMonst1);
@@ -125,6 +129,7 @@ public class BattleScreen {
 			myMonst1.setText(manager.getPlayer().getMonsters().get(0).getMonsterName());
 		}
 		
+		//displays players team
 		JButton myMonst2 = new JButton("");
 		myMonst2.setBounds(42, 149, 145, 59);
 		window.getContentPane().add(myMonst2);
@@ -134,7 +139,7 @@ public class BattleScreen {
 			
 		}
 		
-		
+		//displays players team
 		JButton myMonst3 = new JButton("");
 		myMonst3.setBounds(42, 220, 145, 59);
 		window.getContentPane().add(myMonst3);
@@ -144,7 +149,7 @@ public class BattleScreen {
 			myMonst3.setText(manager.getPlayer().getMonsters().get(2).getMonsterName());
 			
 		}
-		
+		//displays enemys team
 		JButton enemyMonst1 = new JButton("");
 		enemyMonst1.setBounds(365, 78, 145, 59);
 		window.getContentPane().add(enemyMonst1);
@@ -152,7 +157,7 @@ public class BattleScreen {
 			enemyMonst1.setText(enemyPlayer.getMonsters().get(0).getMonsterName());
 			
 		}
-		
+		//displays enemys team
 		JButton enemyMonst2 = new JButton("");
 		enemyMonst2.setBounds(365, 149, 145, 59);
 		window.getContentPane().add(enemyMonst2);
@@ -161,7 +166,7 @@ public class BattleScreen {
 			enemyMonst2.setText(enemyPlayer.getMonsters().get(1).getMonsterName());
 			
 		}
-		
+		//displays enemys team
 		JButton enemyMonst3 = new JButton("");
 		enemyMonst3.setBounds(365, 220, 145, 59);
 		window.getContentPane().add(enemyMonst3);

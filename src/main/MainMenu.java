@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.Color;
 
+
+//Main menu is the hub of the game, the player can go to the store, view his team and battle from here
 public class MainMenu {
 
 	private JFrame window;

@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+
+//Where player can view his entire team and inventory of items and can apply those items to their team
 public class ViewTeamScreen {
 
 	private JFrame window;

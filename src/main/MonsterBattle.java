@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
+//The start screen of the game, where the player enters their name, chooses their difficulty and how many days they want to play for
 public class MonsterBattle {
 
 	private JFrame window;
