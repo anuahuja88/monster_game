@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import main.Player;
 import main.Monster;
+import main.JamJar_Item;
 
 class PlayerTest {
 	
@@ -20,28 +21,43 @@ class PlayerTest {
 		assertEquals(2, player.getCurrentDay());
 	}
 	
+	//check if add coins works
 	@Test
 	void addCoinTest() {
 		Player player = new Player();
 		player.changeCoins(5);
-		assertEquals(15, player.getCoins());
+		assertEquals(5, player.getCoins());
 	}
 	
+	//check if remove coins works
 	@Test
 	void removeCoinTest() {
 		Player player = new Player();
+		player.changeCoins(10);
 		player.changeCoins(-5);
 		assertEquals(5, player.getCoins());
 	}
 	
+	//check if buy monster works
 	@Test
-	void buyMonsterTest() {
+	void addMonsterTest() {
 		Player player = new Player();
 		Monster monster = new Monster("testname", 10, 20 ,10, 3);
 		player.addMonster(monster);
 		assertEquals(1, player.getMonsters().size());
 	}
 	
+	
+	//check if buy monster works
+	@Test
+	void addItemTest() {
+		Player player = new Player();
+		JamJar_Item item = new JamJar_Item();
+		player.addItem(item);
+		assertEquals(1, player.getItems().size());
+	}
+	
+	//check if when to many monsters 
 	@Test
 	void overMonsterLimitTest() {
 		Player player = new Player();
@@ -102,6 +118,27 @@ class PlayerTest {
 		player.getMonster(0).setIsAlive(false);
 		player.getMonster(1).setIsAlive(false);
 		assertFalse(player.checkMonstersAlive());
+	}
+	
+	
+	//check if the score calculated is accurate depending on the difficulty, days played and coins for easy
+	@Test
+	void scoreCalculateEasy() {
+		Player player = new Player();
+		player.setDifficulty(0);
+		player.setDays(5);
+		player.changeCoins(10);
+		assertEquals(250, player.getScore());
+	}
+	
+	//check if the score calculated is accurate depending on the difficulty, days played and coins for hard
+	@Test
+	void scoreCalculateHard() {
+		Player player = new Player();
+		player.setDifficulty(1);
+		player.setDays(5);
+		player.changeCoins(10);
+		assertEquals(500, player.getScore());
 	}
 	
 	

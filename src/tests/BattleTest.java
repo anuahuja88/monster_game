@@ -61,14 +61,14 @@ class BattleTest {
 				Monster monster1 = new Monster("testname", 20, 40 ,20, 3);
 				Monster monster2 = new Monster("testname", 10, 40 ,10, 3);
 				Player player = new Player();
-				player.setDifficulty(1);
+				player.setDifficulty(0);
 				Player enemyPlayer = new Player();
 				player.addMonster(monster1);
 				enemyPlayer.addMonster(monster2);
 				Battle battle = new Battle(player, enemyPlayer);
 				battle.StartBattle();
 				
-				assertEquals(13 , player.getCoins());   
+				assertEquals(3 , player.getCoins());   
 			}
 			
 	
@@ -78,14 +78,14 @@ class BattleTest {
 			Monster monster1 = new Monster("testname", 20, 40 ,20, 3);
 			Monster monster2 = new Monster("testname", 10, 40 ,10, 3);
 			Player player = new Player();
-			player.setDifficulty(2);
+			player.setDifficulty(1);
 			Player enemyPlayer = new Player();
 			player.addMonster(monster1);
 			enemyPlayer.addMonster(monster2);
 			Battle battle = new Battle(player, enemyPlayer);
 			battle.StartBattle();
 			
-			assertEquals(12 , player.getCoins());   
+			assertEquals(2 , player.getCoins());   
 		}
 
 }

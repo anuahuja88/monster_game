@@ -26,13 +26,16 @@ class RandomEventTest {
 	@Test
 	void removeMonsterTest() {
 		Player player = new Player();
+		
 		Monster monster1 = new Monster("firstAlive", 10, 20 ,10, 3);
 		Monster monster2 = new Monster("firstAlive", 10, 20 ,10, 3);
+		Monster monster3 = new Monster("firstAlive", 10, 20 ,10, 3);
 		player.addMonster(monster1);
 		player.addMonster(monster2);
+		player.addMonster(monster3);
 		RandomEvent event = new RandomEvent(player);
 		event.monsterLeave();
-		assertEquals(1, player.getMonsters().size());
+		assertEquals(2, player.getMonsters().size());
 	}
 	
 	
