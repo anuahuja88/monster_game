@@ -55,7 +55,7 @@ public class BattleScreen {
 	private void initialize() {
 		window = new JFrame();
 		window.setTitle("Battle Screen");
-		window.setBounds(100, 100, 578, 400);
+		window.setBounds(100, 100, 650, 450);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setLayout(null);
 		
@@ -104,7 +104,7 @@ public class BattleScreen {
 				manager.launchMainMenu();
 			}
 		});
-		mainMenuButton.setBounds(419, 322, 145, 35);
+		mainMenuButton.setBounds(472, 372, 145, 35);
 		window.getContentPane().add(mainMenuButton);
 		
 		//displays home players name 
