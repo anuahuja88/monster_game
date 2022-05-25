@@ -15,6 +15,7 @@ public class PostBattleScreen {
 	private JFrame window;
 	private GameEnvironment manager;
 	private PostBattleScreen screen;
+	private Store store;
 
 	/**
 	 * Launch the application.
@@ -41,6 +42,7 @@ public class PostBattleScreen {
 	public  PostBattleScreen(GameEnvironment incoming) {
 		manager = incoming;
 		screen = this;
+		store = new Store();
 		initialize();
 		window.setVisible(true);
 	}
@@ -74,15 +76,22 @@ public class PostBattleScreen {
 		}
 		
 		JButton btnNewButton = new JButton("Sleep");
-		btnNewButton.setBounds(179, 274, 223, 70);
+		btnNewButton.setBounds(125, 274, 321, 70);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(manager.getPlayer().getCurrentDay() < manager.getPlayer().getDays() -1) {
-					finishedWindow();
+				if (manager.getPlayer().getWonLastGame() == true) {
+					if(manager.getPlayer().getCurrentDay() < manager.getPlayer().getDays() -1) {
+						finishedWindow();
+					}else {
+						window.dispose();
+						manager.launchGameOverScreen();
+					}	
 				}else {
-					window.dispose();
-					manager.launchGameOverScreen();
+					manager.getPlayer().getMonsters().add(store.getMonsterList().get(0));
+					manager.getPlayer().changeCoins(-3);
+					finishedWindow();
 				}
+				
 			}
 		});
 		btnNewButton.setFont(new Font("Osaka", Font.PLAIN, 16));
@@ -95,7 +104,7 @@ public class PostBattleScreen {
 		if (manager.getPlayer().getWonLastGame() == true) {
 			coinsGained.setText("You gained " + manager.getBattle().getAddedCoins() + " coins");
 		}else {
-			coinsGained.setText("Your whole team is dead! Purchase another monster before battling again.");
+			coinsGained.setText("Your whole team is dead! Revive a random monster by clicking sleep for $3");
 		}
 	}
 }
