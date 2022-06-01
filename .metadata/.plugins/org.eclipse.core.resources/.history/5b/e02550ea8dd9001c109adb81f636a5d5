@@ -1,0 +1,85 @@
+package main;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class PostBattleScreen {
+
+	private JFrame window;
+	private GameEnvironment manager;
+	private PostBattleScreen screen;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PostBattleScreen window = new PostBattleScreen();
+					window.window.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public PostBattleScreen() {
+		initialize();
+	}
+	public  PostBattleScreen(GameEnvironment incoming) {
+		manager = incoming;
+		screen = this;
+		initialize();
+		window.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		window.dispose();
+	}
+	public void finishedWindow() {
+		manager.closePostBattleScreen(this);
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		window = new JFrame();
+		window.setBounds(100, 100, 578, 400);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.getContentPane().setLayout(null);
+		
+		JLabel messageLabel = new JLabel("Congratulations, you won the battle!");
+		messageLabel.setFont(new Font("Osaka", Font.PLAIN, 16));
+		messageLabel.setBounds(148, 26, 279, 51);
+		messageLabel.setForeground(Color.GREEN);
+		window.getContentPane().add(messageLabel);
+		
+		JButton btnNewButton = new JButton("Sleep");
+		btnNewButton.setBounds(191, 287, 151, 57);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				manager.goToSleep(screen);
+				finishedWindow();
+			}
+		});
+		btnNewButton.setFont(new Font("Osaka", Font.PLAIN, 16));
+		window.getContentPane().add(btnNewButton);
+		
+		JLabel coinsGained = new JLabel("You gained " + manager.getBattle().addedCoins);
+		coinsGained.setForeground(Color.BLACK);
+		coinsGained.setBounds(158, 73, 245, 33);
+		window.getContentPane().add(coinsGained);
+	}
+}
