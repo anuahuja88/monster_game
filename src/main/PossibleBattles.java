@@ -2,6 +2,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
+	// PossibleBattles class creates a list of three player objects for the player to chose to battle from 
 public class PossibleBattles {
 	private Player player;
 	private Player enemyPlayer;
@@ -10,9 +11,8 @@ public class PossibleBattles {
 	ArrayList<Player> possibleBattles = new ArrayList<Player>();
 	
 	
-	PossibleBattles(Player player) {
+	public PossibleBattles(Player player) {
 		this.player = player;
-		this.playerMonsterLength = player.getMonsters().size();
 		createPossibleBattleList();
 	}
 	
@@ -25,7 +25,10 @@ public class PossibleBattles {
 	}
 	
 	
-	
+	public void resetPossibleBattles() {
+		possibleBattles.clear();
+		createPossibleBattleList();
+	}
 	// gets possible battle list
 	public ArrayList<Player> getPossibleBattles() {
 		return possibleBattles;
@@ -37,7 +40,7 @@ public class PossibleBattles {
 		Random random  = new Random();
 		Store monsterCreator = new Store();
 		
-		ArrayList<Monster> enemyMonsters = monsterCreator.createMonsterList(); // creates a monster list with an equal number as the main player for the enemy
+		ArrayList<Monster> enemyMonsters = monsterCreator.createMonsterList(0);
 		String name = names.get(random.nextInt(names.size()));
 		Player enemy = new Player(name, enemyMonsters);
 		
@@ -56,6 +59,9 @@ public class PossibleBattles {
 		names.add("Robert");
 		names.add("Gilbert");
 		names.add("Ben");
+		names.add("Liam");
+		names.add("Tom");
+		names.add("John");
 		return names;
 	}
 	

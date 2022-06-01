@@ -1,5 +1,6 @@
 package main;
 
+	// the monster object stores a name, health, max health, damage and price
 public class Monster {
 	private String monsterName;
 	private int health;
@@ -34,7 +35,11 @@ public class Monster {
 	}
 	
 	public void changeHealth(int amount) {
-		this.health += amount;
+		if (this.health + amount >= maxHealth){
+			this.health = maxHealth;
+		}else {
+			this.health += amount;
+		}
 	}
 
 	public void setHealth(int amount){

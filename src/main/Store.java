@@ -2,6 +2,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
+	//store creates two lists of monster and items and prints options to the player to buy
 public class Store {
 	private ArrayList<Monster> monsterList = new ArrayList<Monster>();
 	ArrayList<Item> itemList = new ArrayList<Item>();
@@ -9,6 +10,7 @@ public class Store {
 	
 	public Store(){
 		createMonsterList();
+		createItemList();
 	}
 	// loop three times creating a new randomized monster and adding it to the monster list
 	public ArrayList<Monster> createMonsterList() {
@@ -23,7 +25,9 @@ public class Store {
 		public ArrayList<Monster> createMonsterList(int length) {
 			CreateNameList();
 			for(int index = 0; index < length; index++) {
+				
 				monsterList.add(CreateRandomizedMonster());
+				System.out.println(monsterList.get(index).getMonsterName());
 			}
 			return monsterList;
 		}
@@ -38,7 +42,6 @@ public class Store {
 			return itemList;
 		}
 	public ArrayList<Item> getItemList(){
-		createItemList();
 		return itemList;
 	}
 	
@@ -65,8 +68,6 @@ public class Store {
 			System.out.println("Not enough coins to purchase");
 		}
 	}
-
-		
 	
 	//create a random monster with random attributes
 	public Monster CreateRandomizedMonster() {
@@ -83,7 +84,6 @@ public class Store {
 		return monsterList;
 		
 	}
-	
 	// add to the list of names 
 	public ArrayList<String> CreateNameList() {
 		names.add("Goblin");
@@ -92,6 +92,10 @@ public class Store {
 		names.add("Scarry Guy");
 		names.add("Goop Thing");
 		names.add("Horrible Hands");
+		names.add("Big Vlad");
+		names.add("Auntie patel");
+		names.add("Happy man");
+		names.add("King Kong");
 		
 		return names;
 	}

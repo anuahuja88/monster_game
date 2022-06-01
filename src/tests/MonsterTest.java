@@ -19,6 +19,24 @@ class MonsterTest {
 		assertTrue(monster.getIsAlive());
 	}
 	
+	
+	@Test
+	void healAtMaxHealthTest() {
+		Monster monster = new Monster("testname", 20, 20 ,10, 3);
+		monster.changeHealth(5);
+		assertEquals(20, monster.getHealth());
+		assertTrue(monster.getIsAlive());
+	}
+	
+	@Test
+	void healUpToMaxHealthTest() {
+		Monster monster = new Monster("testname", 15, 20 ,10, 3);
+		monster.changeHealth(10);
+		assertEquals(20, monster.getHealth());
+		assertTrue(monster.getIsAlive());
+	}
+	
+	
 	@Test
 	void changeDamageTest() {
 		Monster monster = new Monster("testname", 10, 20, 10, 3);
@@ -38,5 +56,6 @@ class MonsterTest {
 		assertFalse(monster.getIsAlive());
 		
 	}
+	
 
 }

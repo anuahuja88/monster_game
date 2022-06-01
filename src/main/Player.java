@@ -1,13 +1,16 @@
 package main;
 import java.util.ArrayList;
 
+	// the player class stores a name, days(to be played), current day, difficulty (either 1 or 2)
+	// coins and a boolean for one last game. it also contains a monster and item list
 public class Player {
 	private String name;
 	private int days;
 	private int currentDay = 1;
 	private int difficulty;
-	private int coins = 10;
-	private boolean playerSelected = false;
+	private int coins;
+	private int score;
+	private boolean playerSelected;
 	private boolean wonLastGame = false;
 	private ArrayList<Monster> monsters = new ArrayList<Monster>();
 	private ArrayList<Item> items = new ArrayList<Item>();
@@ -34,13 +37,20 @@ public class Player {
 	public int getDays() {
 		return days;
 	}
-
+	public int getScore() {
+		if (getDifficuluty() == 0){
+			score = getDays() * getCoins() * 5;
+		}else {
+			score = getDays() * getCoins() * 10;
+		}
+		return score;
+	}
 	
 	public int getCurrentDay() {
 		return currentDay;
 	}
 	
-	public void addDay() {
+	public void addCurrentDay() {
 		currentDay++;
 	}
 	
@@ -70,6 +80,9 @@ public class Player {
 		coins += amount;
 	}
 	
+	public void setCoins(int coins) {
+		this.coins  = coins;
+	}
 	public int getCoins() {
 		return coins;
 	}

@@ -1,5 +1,6 @@
 package main;
-
+	
+	//Increase monster health and damage by 5 and cost 5 coins 
 public class JamJar_Item implements Item{
 	private int price = 5;
 	private int addedHealth = 5;

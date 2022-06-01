@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
+//The start screen of the game, where the player enters their name, chooses their difficulty and how many days they want to play for
 public class MonsterBattle {
 
 	private JFrame window;
@@ -83,7 +85,7 @@ public class MonsterBattle {
 		
 		JLabel welcomeLabel = new JLabel("Welcome to monster battle!");
 		welcomeLabel.setFont(new Font("Baloo", Font.PLAIN, 20));
-		welcomeLabel.setBounds(34, 23, 262, 45);
+		welcomeLabel.setBounds(34, 23, 377, 45);
 		window.getContentPane().add(welcomeLabel);
 		
 		JLabel nameLabel = new JLabel("Please enter your name:");
@@ -144,15 +146,15 @@ public class MonsterBattle {
 		
 		JLabel nameErrorlabel = new JLabel("");
 		nameErrorlabel.setForeground(Color.RED);
-		nameErrorlabel.setBounds(205, 52, 354, 26);
+		nameErrorlabel.setBounds(34, 52, 525, 26);
 		window.getContentPane().add(nameErrorlabel);
 		
 		//goes to choose monster screen and if name is not between 3 and 15 chars, throws an error
 		JButton chooseMonsterButton = new JButton("Choose Monster");
 		chooseMonsterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (nameTextField.getDocument().getLength() < 3 || (nameTextField.getDocument().getLength() > 15)) {
-					nameErrorlabel.setText("Please enter a name between 3 and 15 characters! :(");
+				if (nameTextField.getDocument().getLength() < 3 || (nameTextField.getDocument().getLength() > 15) || nameTextField.getText().matches("^[a-zA-Z]*$") == false) {
+					nameErrorlabel.setText("Please enter a name between 3 and 15 characters with only letters! :(");
 	
 				}else {
 				
@@ -160,9 +162,10 @@ public class MonsterBattle {
 				manager.getPlayer().setName(nameTextField.getText());
 				if (easyBox.isSelected()) {
 					manager.getPlayer().setDifficulty(0);
-					
+					manager.getPlayer().setCoins(10);
 				}else {
 					manager.getPlayer().setDifficulty(1);
+					manager.getPlayer().setCoins(5);
 				}
 				finishedWindow();
 					

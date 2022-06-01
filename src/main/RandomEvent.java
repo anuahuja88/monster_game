@@ -2,6 +2,9 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
+	//RandomEvent runs three level up, added monster and monster leaves on a monster in the player objects monster list
+	//Events are selected based on the choseRandomMethod method based on the probability variable a random number 0 to 100
+	//If the player lost the last game the probability of a monster leaving goes up
 public class RandomEvent {
 
     Random random = new Random();
@@ -9,44 +12,67 @@ public class RandomEvent {
     JamJar_Item item = new JamJar_Item();
     int probability = random.nextInt(100);
     int monsterIndex;
+    boolean levelUp = false;
+    boolean monsterLeave = false;
+    boolean newMonster = false;
 
 
     boolean wonLastGame;
 
-
-
-
+    //constructor sets the player and calls setMonsterindex and chose randomMethod methods
     public RandomEvent(Player player){
         this.player = player;
         setMonsterIndex();
+        choseRandomMethod();
     }
+
+    
+    //setMonster index choses a random monster if the player has over three monsters, if less then chooses the first monster
+    //this monster will level up or leave if the method s called.
     public void setMonsterIndex() {
-        this.monsterIndex = random.nextInt(player.getMonsters().size());
+    	if(player.getMonsters().size() == 3) {
+    		this.monsterIndex = random.nextInt(3);
+    	}else {
+    		this.monsterIndex = 0;
+    	}
+        
         this.wonLastGame = player.getWonLastGame();
 
     }
+    
+    //returns monsterIndex
+    public int getMonsterIndex() {
+    	return monsterIndex;
+    }
+    
+    
+    //chooses a random method to run depending on the probability variable 
     public void choseRandomMethod(){
     	
     	if(probability <= 20) {
     		levelUp();
+    		levelUp = true;
     	}
     	if (probability >= 21 && probability <= 40){
     		newMonster();
+    		newMonster = true;
     	}
     
         if(wonLastGame) {
         	if(probability >= 41 && probability <= 50) {
         		monsterLeave();
+        		monsterLeave = true;
         	} 
         }else if (probability >= 41 && probability <= 70) {
         	monsterLeave();
+        	monsterLeave = true;
         }
         
         
     }
 
 
-    //add a jamjar item to a random monster in players monster list 
+    //add a jamjar item to a random monster in players monster list as a level up
     public void levelUp(){
         int addedHealth = item.getHealthAmount();
         int addedDamage = item.getDamageAmount();
@@ -64,12 +90,15 @@ public class RandomEvent {
         System.out.println(player.getMonster(monsterIndex) + " Has leveled up over night!");
     }
 
-
+    
+    //remove monster form players monster list 
     public void monsterLeave(){
     	System.out.println(player.getMonster(monsterIndex) + " Has left the team overnight");
         player.getMonsters().remove(monsterIndex);
 
     }
+    
+    //add a new random monster to the players monster list 
     public void newMonster(){
         Store store = new Store();
         Monster newMonster = store.CreateRandomizedMonster();

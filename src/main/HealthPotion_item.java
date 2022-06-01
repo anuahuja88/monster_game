@@ -1,5 +1,6 @@
 package main;
 
+	// Increase monster health by 5 and cost 3 coins 
 public class HealthPotion_item implements Item{
 	private int price = 3;
 	private int addedHealth = 5;
